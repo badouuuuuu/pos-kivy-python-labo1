@@ -70,11 +70,15 @@
                     text: "0"
                 Button:
                     text: "."
-    
-                Button:
-                    text: "Cancel"
-                    background_color: (1.0, 0.0, 0.0, 1.0)
-                    
-                Button:
-                    text: "Enter"
-                    background_color: (0, 200, 0, .5)
+
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    size_hint: 1, 1
+                    Button:
+                        text: "Cancel"
+                        background_color: (1.0, 0.0, 0.0, 1.0)
+                            
+                    Button:
+                        text: "Enter"
+                        background_color: (0, 200, 0, .5)
