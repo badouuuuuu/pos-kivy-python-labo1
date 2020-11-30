@@ -1,14 +1,45 @@
+#:kivy 1.11.1
 
 GridLayout:
-    cols: 4
-    rows: 3
-    padding: 1
-    Button:
-        text: "Add User"
-    Button:
-        text: "Modify User"
-    Button:
-        text: "Add Menu"
+    anchor_x: "center"
+    anchor_y: "center"
 
-    Button:
-        text: "Modify Menu"
+    AnchorLayout:
+        anchor_x: "left"
+        anchor_y: "top"
+        size_hint: (0.2, 0.75)
+
+        GridLayout:
+            cols: 3
+            Button:
+                text: "X"
+            Button:
+                text: "X"
+            Button:
+                text: "X"
+            Button:
+                text: "X"
+            Button:
+                text: "X"
+            Button:
+                text: "X"
+
+    AnchorLayout:
+        anchor_x: "right"
+        anchor_y: "top"
+        size_hint: (0.8, 0.75)
+
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+                text: "HELLO..."
+            Label:
+                text: "WORLD..."
+
+    AnchorLayout:
+        anchor_x: "left"
+        anchor_y: "bottom"
+        size_hint: (1, 0.25)
+
+        Label:
+            text: "FOOTER"
