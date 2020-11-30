@@ -3,8 +3,10 @@
  
 from kivy.base import runTouchApp
 from kivy.lang import Builder
-import sys
-sys.path.insert(1, 'app/my_sqlite3_v1.py')
+from kivy.core.window import Window
+
+Window.size = (1024, 768)
+Window.minimum_width, Window.minimum_height = Window.size
 
 
 
@@ -39,7 +41,6 @@ BoxLayout:
             Rectangle:
                 size: self.size
                 pos: self.pos
-
         Label:
             text: "INFO DATABASE ICI"
 
@@ -83,10 +84,6 @@ BoxLayout:
                 text: "Enter"
             Button:
                 text: "."
-
-
-
-
 
 
 """))
