@@ -13,7 +13,7 @@ Window.clearcolor = (0,0,0.3,0.1)
 
 class MainApp(App):
     def build(self):
-        GeneralLayout = GridLayout(
+        layout = GridLayout(
             cols=4,
             row_force_default=True,
             row_default_height=40,  
@@ -21,21 +21,15 @@ class MainApp(App):
             spacing= 20,
             padding=40
             )
+        btn = Button(text='Button 1')
+        btn2 = Button(text='Button 2')
+        btn3 = Button(text='Button 3')
+        btn4 = Button(text='Button 4')
         
-        newlayout = GridLayout(
-            
-        )
-        
-        btn_addUser= Button(text='Add user')
-        btn_modifyUser = Button(text='Modify user')
-        btn_addMenu = Button(text='Add Menu')
-        btn_modifyMenu = Button(text='Modify Menu')
-        
-        
-        GeneralLayout.add_widget(btn_addUser)
-        GeneralLayout.add_widget(btn_modifyUser)
-        GeneralLayout.add_widget(btn_addMenu)
-        GeneralLayout.add_widget(btn_modifyMenu)
-        return GeneralLayout
+        layout.add_widget(btn)
+        layout.add_widget(btn2)
+        layout.add_widget(btn3)
+        layout.add_widget(btn4)
+        return layout
 
 MainApp().run()

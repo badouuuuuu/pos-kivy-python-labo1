@@ -1,6 +1,8 @@
 #! /usr/bin/python3
 
- 
+import sys
+
+
 from kivy.base import runTouchApp
 from kivy.lang import Builder
 from kivy.core.window import Window
