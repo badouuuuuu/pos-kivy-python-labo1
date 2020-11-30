@@ -4,6 +4,7 @@
 from kivy.base import runTouchApp
 from kivy.lang import Builder
 
+
 runTouchApp(Builder.load_string("""
 
 BoxLayout:
@@ -32,7 +33,7 @@ BoxLayout:
 
         GridLayout:
             size_hint: .7, 1
-            padding: 1
+            padding: 4
             canvas.before:
                 Color:
                     rgba: 1, 0, 0, 1
