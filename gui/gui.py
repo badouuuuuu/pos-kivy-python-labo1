@@ -30,6 +30,18 @@ BoxLayout:
             text: "Add Menu"
         Button:
             text: "Modify Menu"
+    BoxLayout:
+        orientation: 'vertical'
+
+        canvas.before:
+            Color:
+                rgba: 0, 0, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        Label:
+            text: "INFO DATABASE ICI"
 
     BoxLayout:
         size_hint: 1, 0.75
@@ -69,20 +81,10 @@ BoxLayout:
                 text: "Cancel"
             Button:
                 text: "Enter"
-               
+            Button:
+                text: "."
 
-        BoxLayout:
-            orientation: 'vertical'
 
-            canvas.before:
-                Color:
-                    rgba: 0, 0, 1, 1
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
-
-            Label:
-                text: "INFO DATABASE ICI"
 
 
 
