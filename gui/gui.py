@@ -1,6 +1,8 @@
 #! /usr/bin/python3
 
- 
+import sys
+
+
 from kivy.base import runTouchApp
 from kivy.lang import Builder
 from kivy.core.window import Window
@@ -8,18 +10,17 @@ from kivy.core.window import Window
 Window.size = (1024, 768)
 Window.minimum_width, Window.minimum_height = Window.size
 
-
-
 runTouchApp(Builder.load_string("""
 
 BoxLayout:
     orientation: 'vertical'
     BoxLayout:
-        size_hint: 1, .15
-        padding: 1
+        size_hint: 1, .1
+        padding: 20
+        spacing: 20
         canvas.before:
             Color:
-                rgba: 0, 0, 0, 50
+                rgba: (0,0,0.53,0.2)
             Rectangle:
                 size: self.size
                 pos: self.pos
@@ -32,29 +33,29 @@ BoxLayout:
             text: "Add Menu"
         Button:
             text: "Modify Menu"
+
     BoxLayout:
-        orientation: 'vertical'
+        size_hint: 1, 1
+        padding: 40
+        spacing: 40
 
         canvas.before:
             Color:
-                rgba: 0, 0, 1, 1
+                rgba: (0,0,0.53,0.2)
             Rectangle:
                 size: self.size
                 pos: self.pos
         Label:
             text: "INFO DATABASE ICI"
 
-    BoxLayout:
-        size_hint: 1, 0.75
-
+    
         GridLayout:
-            size_hint: .7, 1
-            padding: 1
+            padding: 2
+            spacing:4
             canvas.before:
                 Color:
-                    rgba: 1, 0, 0, 1
-
-
+                    rgba: (0,0,0.53,0.2)
+                    
             cols: 3
 
             Button:
@@ -76,14 +77,20 @@ BoxLayout:
                 text: "2"
             Button:
                 text: "3"      
-                
-                        
+
             Button:
-                text: "Cancel"
-            Button:
-                text: "Enter"
+                text: "0"
             Button:
                 text: "."
+ 
+            Button:
+                text: "Cancel"
+                background_color: (1.0, 0.0, 0.0, 1.0)
+                
+            Button:
+                text: "Enter"
+                background_color: (0, 200, 0, .5)
+   
 
 
 """))
