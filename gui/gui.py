@@ -3,6 +3,9 @@
  
 from kivy.base import runTouchApp
 from kivy.lang import Builder
+import sys
+sys.path.insert(1, 'app/my_sqlite3_v1.py')
+
 
 
 runTouchApp(Builder.load_string("""
@@ -10,8 +13,8 @@ runTouchApp(Builder.load_string("""
 BoxLayout:
     orientation: 'vertical'
     BoxLayout:
-        size_hint: 1, .10
-
+        size_hint: 1, .15
+        padding: 1
         canvas.before:
             Color:
                 rgba: 0, 0, 0, 50
@@ -33,18 +36,13 @@ BoxLayout:
 
         GridLayout:
             size_hint: .7, 1
-            padding: 4
+            padding: 1
             canvas.before:
                 Color:
                     rgba: 1, 0, 0, 1
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
+
 
             cols: 3
-      
-            row_force_default: True
-            row_default_height: 40
 
             Button:
                 text: "7"
