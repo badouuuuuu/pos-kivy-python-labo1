@@ -2,14 +2,14 @@
 
 **Dev environement :**
 
-    [Kivy *2.0.0rc3*](https://kivy.org/#home) 
-    [Python *3.8.6*](https://www.python.org/) 
-    [sqlite3 *3.33.0*](https://www.sqlite.org/index.html)
+- [Kivy *2.0.0rc3*](https://kivy.org/#home) 
+- [Python *3.8.6*](https://www.python.org/) 
+- [sqlite3 *3.33.0*](https://www.sqlite.org/index.html)
 
 **Dev on b ranch :**
 
-    [test-gui](https://github.com/badouuuuuu/labo1/tree/test-gui)
-    [dev](https://github.com/badouuuuuu/labo1/tree/dev)
+- [test-gui](https://github.com/badouuuuuu/labo1/tree/test-gui)
+- [dev](https://github.com/badouuuuuu/labo1/tree/dev)
 
 **Linux installation :**
 
