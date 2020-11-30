@@ -11,7 +11,7 @@ from my_sqlite3_v1 import *
 ##########################
 #### Global variables ####
 ##########################
-db_name = 'meals.db'
+db_name = './database/meals.db'
 db_path = db_name #will be different if "db" is not in the same directory
 
 ###################
