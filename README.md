@@ -6,7 +6,7 @@
 - [Python *3.8.6*](https://www.python.org/) 
 - [sqlite3 *3.33.0*](https://www.sqlite.org/index.html)
 
-**Dev on b ranch :**
+**Dev on branch :**
 
 - [test-gui](https://github.com/badouuuuuu/labo1/tree/test-gui)
 - [dev](https://github.com/badouuuuuu/labo1/tree/dev)
