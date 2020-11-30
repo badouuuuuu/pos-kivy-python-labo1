@@ -1,6 +1,7 @@
 #! /usr/bin/python3
 
 import kivy
+import sqlite3
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
@@ -9,29 +10,46 @@ from kivy.uix.button import Button
 from kivy.core.window import Window
 from kivy.uix.widget import Widget
 
-from __init__ import *
+
+try:
+    conn = sqlite3.connect(r'database/meals.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM employee")
+    query_result = cursor.fetchall()
+except sqlite3.Error as error:
+    print("Error while reading from cursor : ", error)
+print(query_result)
 
 Window.size = (1024, 768)
 Window.minimum_width, Window.minimum_height = Window.size
 
+class AskId(Widget):
+    print('ok')
+    '''
+    def __init__(self, **kwargs):
+        
+        super(AskId, self).__init__(**kwargs)
+        self.employeeId = TextInput(multiline=False)
+        self.add_widget(self.employeeId)
+        '''
 
 class MyGridLayout(Widget):
-        def add_user(self):
-            print('Add User')
-        # Mise en place de class, mise au propre du fichier gui.py
+    def add_user(self):
+        print('Add User')
+    # Mise en place de class, mise au propre du fichier gui.py
+    
+    def modify_user(self):
+        print('Modify User')
         
-        def modify_user(self):
-            print('Modify User')
-            
-        def add_menu(self):
-            print('Add menu')
-        
-        def modify_menu(self):
-            print('Modify menu')
+    def add_menu(self):
+        print('Add menu')
+    
+    def modify_menu(self):
+        print('Modify menu')
 
 class Meals(App):
     def build(self):
-        return MyGridLayout()
+        return AskId()
 
     
 if __name__ == "__main__":

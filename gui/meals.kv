@@ -1,3 +1,82 @@
+<AskId>
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        BoxLayout:
+            size_hint: 1, .3
+            padding: 10
+            spacing: 10
+            canvas.before:
+                Color:
+                    rgba: (0,0,0.53,0.2)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Label:
+                text: "Entrez votre id"
+                font_size: '90dp'
+
+        BoxLayout:
+            size_hint: 1, 1
+            padding: 40
+            spacing: 40
+
+            canvas.before:
+                Color:
+                    rgba: (0,0,0.53,0.2)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Label:
+                text: "0"
+                font_size: '120dp'
+
+            GridLayout:
+                padding: 2
+                spacing:4
+                canvas.before:
+                    Color:
+                        rgba: (0,0,0.53,0.2)
+                        
+                cols: 3
+
+                Button:
+                    text: "7"
+                Button:
+                    text: "8"
+                Button:
+                    text: "9"
+                Button:
+                    text: "4"
+                Button:
+                    text: "5"
+                Button:
+                    text: "6"      
+                
+                Button:
+                    text: "1"
+                Button:
+                    text: "2"
+                Button:
+                    text: "3"      
+
+                Button:
+                    text: "0"
+                Button:
+                    text: "."
+
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    size_hint: 1, 1
+                    Button:
+                        text: "Cancel"
+                        background_color: (1.0, 0.0, 0.0, 1.0)
+                            
+                    Button:
+                        text: "Enter"
+                        background_color: (0, 200, 0, .5)
+
 <MyGridLayout>
     BoxLayout:
         orientation: 'vertical'
