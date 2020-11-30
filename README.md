@@ -27,7 +27,7 @@
   	   pip3 install kivy
   	   pip3 install kivy_examples
 
-**Utilisation :**
+**Utilisation :** 
 
  - Executez le fichier main.py
  
