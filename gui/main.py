@@ -27,6 +27,7 @@ print(query_result)
 
 Window.size = (1024, 768)
 Window.minimum_width, Window.minimum_height = Window.size
+Window.borderless = True
 id = None
 
 # Get Employee List on startup
@@ -56,13 +57,7 @@ class PopUpShow(FloatLayout):
 
 
 class AskId(Widget):
-    
 
-    
-
-    
-    
-    
     def change_label_method(self):
         show = PopUpShow() # Create a new instance of the P class 
 

@@ -2,9 +2,23 @@
     layout_widget: askid_label
     id: ask_id
 
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'top'
+        pos_hint: {'top': 0.5 + self.size_hint[1]/2}
+    Button:
+        text: 'x'
+        color: 1.0, 0.0, 0.0, 1.0
+        font_size: 50
+        size_hint: None, None
+        background_color: 0, 0, 0, 0
+        on_press:
+            AskId().stop()
+
     BoxLayout:
         orientation: 'vertical'
         size: root.width, root.height
+
         BoxLayout:
             size_hint: 1, .3
             padding: 10
@@ -84,6 +98,7 @@
                         background_color: (0, 200, 0, .5)
                         on_release:
                             root.change_label_method()
+
 <PopUpShow>:
     id : popup_id_unknown
     
