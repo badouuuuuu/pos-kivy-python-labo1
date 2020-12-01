@@ -14,7 +14,7 @@ print('###############################')
 #### Global variables ####
 ##########################
 db_name = '/home/devops/Desktop/labo1/database/'
-db_path = 'meals.db'
+db_path = '/home/devops/Desktop/labo1/database/meals.db'
 #will be different if "db" is not in the same directory
 
 ###################
