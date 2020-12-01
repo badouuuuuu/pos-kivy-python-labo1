@@ -25,7 +25,7 @@ Window.size = (1024, 768)
 Window.minimum_width, Window.minimum_height = Window.size
 id = None
 class PopUpShow(FloatLayout):
-    def show_popup():
+    def show_popup_unknown():
         show = PopUpShow() # Create a new instance of the P class 
 
         popupWindow = Popup(
@@ -49,10 +49,12 @@ class AskId(Widget):
         self.layout_widget.text = '0'
 
         if id == None:
-            PopUpShow.show_popup()
+            PopUpShow.show_popup_unknown()
             print('id nok')
         else:
             print('id ok')
+    def deleteLine(self):
+        print('Delete Line')
         
 class MyGridLayout(Widget):
     def add_user(self):
@@ -71,7 +73,17 @@ class MyGridLayout(Widget):
 class Meals(App):
     def build(self):
         return AskId()
+    
+class ExampleApp(App):
+    def Pressbtn(self, instance):
+        instance.parent.ids.lobj.text = str(instance)
+        instance.parent.ids.ltext.text = instance.text
+        instance.parent.ids.lid.text= self.get_id(instance)
 
+    def get_id(self,  instance):
+        for id, widget in instance.parent.ids.items():
+            if widget.__self__ == instance:
+                return id
     
 if __name__ == "__main__":
     Meals().run()

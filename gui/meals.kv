@@ -1,6 +1,7 @@
 <AskId>
     layout_widget: askid_label
     id: ask_id
+
     BoxLayout:
         orientation: 'vertical'
         size: root.width, root.height
@@ -76,7 +77,8 @@
                     Button:
                         text: "Cancel"
                         background_color: (1.0, 0.0, 0.0, 1.0)
-                            
+                        on_press:
+                            root.deleteLine()
                     Button:
                         text: "Enter"
                         background_color: (0, 200, 0, .5)
@@ -191,3 +193,6 @@
                     Button:
                         text: "Enter"
                         background_color: (0, 200, 0, .5)
+
+<ExampleApp>
+    id : example_app
