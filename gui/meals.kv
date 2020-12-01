@@ -86,7 +86,9 @@
     id : popup_id_unknown
     
     size: root.width, root.height
-    background_color: (0,0,0.53,0.2)
+    canvas.before:
+        Color:
+            rgba: (0,0,0.53,0.2)
 
     Label:
         text: "Votre id est inconnu"
@@ -94,7 +96,7 @@
         pos_hint: {"x":0.2, "top":1}
 
     Button:
-        background_color: (0,0,0.53,0.2)
+        background_color: (1.0, 0.0, 0.0, 1.0)
         text: "Retour"
         size_hint: 0.8, 0.2
         pos_hint: {"x":0.1, "y":0.1}
