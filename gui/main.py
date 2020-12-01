@@ -12,7 +12,7 @@ from kivy.uix.widget import Widget
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
 
-from app.meals_management_v1 import purchase as askid_purchase
+from app.meals_management_v1 import get_id_list, get_employee_name, get_employee_id
 
 '''
 try:
@@ -28,6 +28,15 @@ print(query_result)
 Window.size = (1024, 768)
 Window.minimum_width, Window.minimum_height = Window.size
 id = None
+
+# Get Employee List on startup
+employee_list = get_id_list('employee')
+
+for list in employee_list:
+    print(list)
+    print(get_employee_name(list))
+        
+        
 class PopUpShow(FloatLayout):
     def show_popup_unknown():
         show = PopUpShow() # Create a new instance of the P class 
@@ -47,6 +56,13 @@ class PopUpShow(FloatLayout):
 
 
 class AskId(Widget):
+    
+
+    
+
+    
+    
+    
     def change_label_method(self):
         show = PopUpShow() # Create a new instance of the P class 
 
@@ -59,7 +75,7 @@ class AskId(Widget):
             print('id ok')
     def deleteLine(self, **kwargs):
         print('Delete Line')
-        askid_purchase()
+
 class MyGridLayout(Widget):
     def add_user(self):
         print('Add User')
