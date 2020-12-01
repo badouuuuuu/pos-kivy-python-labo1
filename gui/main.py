@@ -12,7 +12,7 @@ from kivy.uix.widget import Widget
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
 
-from app.meals_management_v1 import test as mealstrigger 
+from app.meals_management_v1 import get_employee_id as mealstrigger
 
 '''
 try:
@@ -57,7 +57,7 @@ class AskId(Widget):
             print('id nok')
         else:
             print('id ok')
-    def deleteLine(self):
+    def deleteLine(self, **kwargs):
         print('Delete Line')
         mealstrigger()
 class MyGridLayout(Widget):
