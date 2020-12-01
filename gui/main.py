@@ -23,7 +23,7 @@ print(query_result)
 
 Window.size = (1024, 768)
 Window.minimum_width, Window.minimum_height = Window.size
-id = '0'
+id = None
 class PopUpShow(FloatLayout):
     def show_popup():
         show = PopUpShow() # Create a new instance of the P class 
@@ -48,11 +48,11 @@ class AskId(Widget):
 
         self.layout_widget.text = '0'
 
-        if id != '1':
-            self.layout_widget.text = id
+        if id == None:
             PopUpShow.show_popup()
+            print('id nok')
         else:
-            self.layout_widget.text = 'Unknown'
+            print('id ok')
         
 class MyGridLayout(Widget):
     def add_user(self):
