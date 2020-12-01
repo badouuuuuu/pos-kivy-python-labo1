@@ -12,6 +12,9 @@ from kivy.uix.widget import Widget
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
 
+from app.meals_management_v1 import test as mealstrigger 
+
+'''
 try:
     conn = sqlite3.connect(r'database/meals.db')
     cursor = conn.cursor()
@@ -20,6 +23,7 @@ try:
 except sqlite3.Error as error:
     print("Error while reading from cursor : ", error)
 print(query_result)
+'''
 
 Window.size = (1024, 768)
 Window.minimum_width, Window.minimum_height = Window.size
@@ -55,7 +59,7 @@ class AskId(Widget):
             print('id ok')
     def deleteLine(self):
         print('Delete Line')
-        
+        mealstrigger()
 class MyGridLayout(Widget):
     def add_user(self):
         print('Add User')
