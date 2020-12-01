@@ -1,5 +1,6 @@
 <AskId>
     layout_widget: askid_label
+    id: ask_id
     BoxLayout:
         orientation: 'vertical'
         size: root.width, root.height
@@ -81,6 +82,23 @@
                         background_color: (0, 200, 0, .5)
                         on_release:
                             root.change_label_method()
+<PopUpShow>:
+    id : popup_id_unknown
+    
+    size: root.width, root.height
+    background_color: (0,0,0.53,0.2)
+
+    Label:
+        text: "Votre id est inconnu"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top":1}
+
+    Button:
+        background_color: (0,0,0.53,0.2)
+        text: "Retour"
+        size_hint: 0.8, 0.2
+        pos_hint: {"x":0.1, "y":0.1}
+
 
 <MyGridLayout>
 

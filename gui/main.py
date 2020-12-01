@@ -9,7 +9,8 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.core.window import Window
 from kivy.uix.widget import Widget
-
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.popup import Popup
 
 try:
     conn = sqlite3.connect(r'database/meals.db')
@@ -22,11 +23,28 @@ print(query_result)
 
 Window.size = (1024, 768)
 Window.minimum_width, Window.minimum_height = Window.size
+id = '0'
+class PopUpShow(FloatLayout):
+    def show_popup():
+        show = PopUpShow() # Create a new instance of the P class 
+
+        popupWindow = Popup(title="Identifiant introuvable", content=show, size_hint=(None,None),size=(600,400)) 
+        # Create the popup window
+
+        popupWindow.open() # show the popup
+
 
 class AskId(Widget):
     def change_label_method(self):
-        self.layout_widget.text = 'test'
-        print('test')
+        show = PopUpShow() # Create a new instance of the P class 
+
+        self.layout_widget.text = '0'
+
+        if id != '1':
+            self.layout_widget.text = id
+            PopUpShow.show_popup()
+        else:
+            self.layout_widget.text = 'Unknown'
         
 class MyGridLayout(Widget):
     def add_user(self):
