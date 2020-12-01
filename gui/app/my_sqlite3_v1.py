@@ -23,6 +23,7 @@ disconnect_from_db()
 
 def connect_to_db(db_path): #/home/tux/meals.db  meals.db
   try:
+    print('connect to db ok')
     db_link = sqlite3.connect(db_path)
   except sqlite3.Error as error:
     print("Error while connecting to database : ", error)
@@ -30,6 +31,7 @@ def connect_to_db(db_path): #/home/tux/meals.db  meals.db
 
 def create_cursor(db_link):
   try:
+    print('created cursor ok')
     db_cursor = db_link.cursor()
   except sqlite3.Error as error:
     print("Error while creating database cursor : ", error)
@@ -37,6 +39,7 @@ def create_cursor(db_link):
 
 def read_from_cursor(db_cursor,sql_query,sql_values=tuple()):
   try:
+    print('read from cursor ok')
     db_cursor.execute(sql_query,sql_values)
     query_result = db_cursor.fetchall()
   except sqlite3.Error as error:
