@@ -24,7 +24,8 @@ Window.size = (1024, 768)
 Window.minimum_width, Window.minimum_height = Window.size
 
 class AskId(Widget):
-    print('ok')
+    def change_label_method(self):
+        self.layout_widget.text = 'test'
     '''
     def __init__(self, **kwargs):
         
@@ -34,6 +35,10 @@ class AskId(Widget):
         '''
 
 class MyGridLayout(Widget):
+    def change_label_method(self):
+        self.layout_widget.text = 'test'
+        print('test')
+
     def add_user(self):
         print('Add User')
     # Mise en place de class, mise au propre du fichier gui.py
