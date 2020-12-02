@@ -50,7 +50,6 @@ class PopUpShow(FloatLayout):
 
 
 class AskId(Widget):
-    getEmployee()
     def change_label_method(self):
         show = PopUpShow() # Create a new instance of the P class 
 
@@ -79,6 +78,8 @@ class MyGridLayout(Widget):
         print('Modify menu')
 
 class Meals(App):
+    def on_start(self):
+        getEmployee()
     def build(self):
         return AskId()
     
