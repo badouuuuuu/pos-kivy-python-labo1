@@ -26,7 +26,7 @@ print(query_result)
 
 Window.size = (1024, 768)
 Window.minimum_width, Window.minimum_height = Window.size
-# Window.borderless = True
+Window.borderless = True
 id = None
 
         
