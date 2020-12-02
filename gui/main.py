@@ -11,8 +11,7 @@ from kivy.core.window import Window
 from kivy.uix.widget import Widget
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
-
-from app.meals_management_v1 import get_id_list, get_employee_name, get_employee_id
+from app.employee import getEmployee
 
 '''
 try:
@@ -27,18 +26,12 @@ print(query_result)
 
 Window.size = (1024, 768)
 Window.minimum_width, Window.minimum_height = Window.size
-Window.borderless = True
+# Window.borderless = True
 id = None
 
-# Get Employee List on startup
-employee_list = get_id_list('employee')
-
-for list in employee_list:
-    print(list)
-    print(get_employee_name(list))
-        
         
 class PopUpShow(FloatLayout):
+
     def show_popup_unknown():
         show = PopUpShow() # Create a new instance of the P class 
 
@@ -57,7 +50,7 @@ class PopUpShow(FloatLayout):
 
 
 class AskId(Widget):
-
+    getEmployee()
     def change_label_method(self):
         show = PopUpShow() # Create a new instance of the P class 
 
