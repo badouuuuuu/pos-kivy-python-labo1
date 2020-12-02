@@ -127,43 +127,11 @@
     BoxLayout:
         orientation: 'vertical'
         size: root.width, root.height
-        Label:
-            id: labelResult
-            
-            canvas.before: 
-                Color: 
-                    rgb: .13, .17, .18, 1
-                Rectangle: 
-                    pos: self.pos 
-                    size: self.size
-                    
-            halign: 'center'
-            valign: 'center'
-            font_size: 40
-            text_size: 550, None
-            size_hint: 1, .15
-            shorten: True
-            shorten_from: 'right'
 
-        Label:
-            id: label
-            
-            canvas.before: 
-                Color: 
-                    rgb: .13, .17, .18, 1
-                Rectangle: 
-                    pos: self.pos 
-                    size: self.size
-            
-            halign: 'right'
-            valign: 'center'
-            font_size: 90
-            text_size: 550, None
-            size_hint: 1, .35
-            shorten: True
-            shorten_from: 'right'
 
         BoxLayout:
+            #Ligne 134 en attendant
+            id: labelResult
             size_hint: 1, .1
             padding: 20
             spacing: 20
@@ -199,9 +167,12 @@
                     size: self.size
                     pos: self.pos
             Label:
-                text: "INFO DATABASE ICI"
+                id: label
+                size_hint_y: None
+                text_size: self.width, None
+                height: self.texture_size[1]
+                text: ""
 
-        
             GridLayout:
                 padding: 2
                 spacing:4
@@ -212,9 +183,6 @@
                 cols: 3
                 Button:
                     text: '7'
-                    
-                    background_normal: ''
-                    background_color: .2, .24, .26, 1
                     on_press: app.trigger = True
                     on_press:
                         if (app.triggerC): label.text = self.text
@@ -223,9 +191,6 @@
                     
                 Button:
                     text: '8'
-                    
-                    background_normal: ''
-                    background_color: .2, .24, .26, 1
                     on_press: app.trigger = True
                     on_press:
                         if (app.triggerC): label.text = self.text
@@ -234,9 +199,6 @@
                     
                 Button:
                     text: '9'
-                    
-                    background_normal: ''
-                    background_color: .2, .24, .26, 1
                     on_press: app.trigger = True
                     on_press:
                         if (app.triggerC): label.text = self.text
@@ -245,9 +207,6 @@
                     
                 Button:
                     text: '4'
-                    
-                    background_normal: ''
-                    background_color: .2, .24, .26, 1
                     on_press: app.trigger = True
                     on_press:
                         if (app.triggerC): label.text = self.text
@@ -256,9 +215,6 @@
                     
                 Button:
                     text: '5'
-                    
-                    background_normal: ''
-                    background_color: .2, .24, .26, 1
                     on_press: app.trigger = True
                     on_press:
                         if (app.triggerC): label.text = self.text
@@ -267,9 +223,6 @@
                     
                 Button:
                     text: '6'
-                    
-                    background_normal: ''
-                    background_color: .2, .24, .26, 1
                     on_press: app.trigger = True
                     on_press:
                         if (app.triggerC): label.text = self.text
@@ -279,9 +232,6 @@
                     
                 Button:
                     text: '1'
-                    
-                    background_normal: ''
-                    background_color: .2, .24, .26, 1
                     on_press: app.trigger = True
                     on_press:
                         if (app.triggerC): label.text = self.text
@@ -290,9 +240,6 @@
                     
                 Button:
                     text: '2'
-                    
-                    background_normal: ''
-                    background_color: .2, .24, .26, 1
                     on_press: app.trigger = True
                     on_press:
                         if (app.triggerC): label.text = self.text
@@ -301,9 +248,6 @@
                     
                 Button:
                     text: '3'
-                    
-                    background_normal: ''
-                    background_color: .2, .24, .26, 1
                     on_press: app.trigger = True
                     on_press:
                         if (app.triggerC): label.text = self.text
@@ -313,9 +257,6 @@
 
                 Button:
                     text: '0'
-                    
-                    background_normal: ''
-                    background_color: .2, .24, .26, 1
                     on_press: app.trigger = True
                     on_press:
                         if (app.triggerC): label.text = self.text
@@ -324,9 +265,6 @@
                     
                 Button:
                     text: '.'
-                    
-                    background_normal: ''
-                    background_color: .2, .24, .26, 1
                     on_press:
                         if (app.trigger): label.text += self.text
                         if (app.trigger): app.triggerC = False
