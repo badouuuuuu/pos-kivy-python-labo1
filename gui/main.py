@@ -12,6 +12,7 @@ from kivy.uix.widget import Widget
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
 from app.employee import getEmployee
+from kivy.properties import ObjectProperty
 
 '''
 try:
@@ -26,7 +27,7 @@ print(query_result)
 
 Window.size = (1024, 768)
 Window.minimum_width, Window.minimum_height = Window.size
-Window.borderless = True
+# Window.borderless = True
 id = None
 
         
@@ -64,6 +65,8 @@ class AskId(Widget):
         print('Delete Line')
 
 class MyGridLayout(Widget):
+    calcResult = ObjectProperty(None)
+    calcDisplay = ObjectProperty(None)
     def add_user(self):
         print('Add User')
     # Mise en place de class, mise au propre du fichier gui.py
@@ -76,12 +79,33 @@ class MyGridLayout(Widget):
     
     def modify_menu(self):
         print('Modify menu')
-
+        
+class Calculator(Widget):
+    label = ''
+    
+    def delete(self, instance):
+        self.display.text = instance[:0]
+    
+    def del1(self, instance):
+        self.display.text = instance[:-1]
+    
+    def calc(self, instance):
+        try:
+            self.display.text = str(eval(instance))
+            self.result.text = str(eval(instance))
+        except Exception:
+            self.display.text = '0'
+            self.result.text = 'ERROR'
+            
 class Meals(App):
+    trigger = False
+    triggerC = False
+    triggerD = False
     def on_start(self):
         getEmployee()
+
     def build(self):
-        return AskId()
+        return MyGridLayout()
     
 class ExampleApp(App):
     def Pressbtn(self, instance):

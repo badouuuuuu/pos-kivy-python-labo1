@@ -120,10 +120,49 @@
 
 
 <MyGridLayout>
-
+    id: calculator
+    display: label
+    result: labelResult
+    
     BoxLayout:
         orientation: 'vertical'
         size: root.width, root.height
+        Label:
+            id: labelResult
+            
+            canvas.before: 
+                Color: 
+                    rgb: .13, .17, .18, 1
+                Rectangle: 
+                    pos: self.pos 
+                    size: self.size
+                    
+            halign: 'center'
+            valign: 'center'
+            font_size: 40
+            text_size: 550, None
+            size_hint: 1, .15
+            shorten: True
+            shorten_from: 'right'
+
+        Label:
+            id: label
+            
+            canvas.before: 
+                Color: 
+                    rgb: .13, .17, .18, 1
+                Rectangle: 
+                    pos: self.pos 
+                    size: self.size
+            
+            halign: 'right'
+            valign: 'center'
+            font_size: 90
+            text_size: 550, None
+            size_hint: 1, .35
+            shorten: True
+            shorten_from: 'right'
+
         BoxLayout:
             size_hint: 1, .1
             padding: 20
@@ -171,31 +210,127 @@
                         rgba: (0,0,0.53,0.2)
                         
                 cols: 3
+                Button:
+                    text: '7'
+                    
+                    background_normal: ''
+                    background_color: .2, .24, .26, 1
+                    on_press: app.trigger = True
+                    on_press:
+                        if (app.triggerC): label.text = self.text
+                        else: label.text += self.text
+                        if (app.triggerC): app.triggerC = False
+                    
+                Button:
+                    text: '8'
+                    
+                    background_normal: ''
+                    background_color: .2, .24, .26, 1
+                    on_press: app.trigger = True
+                    on_press:
+                        if (app.triggerC): label.text = self.text
+                        else: label.text += self.text
+                        if (app.triggerC): app.triggerC = False
+                    
+                Button:
+                    text: '9'
+                    
+                    background_normal: ''
+                    background_color: .2, .24, .26, 1
+                    on_press: app.trigger = True
+                    on_press:
+                        if (app.triggerC): label.text = self.text
+                        else: label.text += self.text
+                        if (app.triggerC): app.triggerC = False
+                    
+                Button:
+                    text: '4'
+                    
+                    background_normal: ''
+                    background_color: .2, .24, .26, 1
+                    on_press: app.trigger = True
+                    on_press:
+                        if (app.triggerC): label.text = self.text
+                        else: label.text += self.text
+                        if (app.triggerC): app.triggerC = False
+                    
+                Button:
+                    text: '5'
+                    
+                    background_normal: ''
+                    background_color: .2, .24, .26, 1
+                    on_press: app.trigger = True
+                    on_press:
+                        if (app.triggerC): label.text = self.text
+                        else: label.text += self.text
+                        if (app.triggerC): app.triggerC = False
+                    
+                Button:
+                    text: '6'
+                    
+                    background_normal: ''
+                    background_color: .2, .24, .26, 1
+                    on_press: app.trigger = True
+                    on_press:
+                        if (app.triggerC): label.text = self.text
+                        else: label.text += self.text
+                        if (app.triggerC): app.triggerC = False
+
+                    
+                Button:
+                    text: '1'
+                    
+                    background_normal: ''
+                    background_color: .2, .24, .26, 1
+                    on_press: app.trigger = True
+                    on_press:
+                        if (app.triggerC): label.text = self.text
+                        else: label.text += self.text
+                        if (app.triggerC): app.triggerC = False
+                    
+                Button:
+                    text: '2'
+                    
+                    background_normal: ''
+                    background_color: .2, .24, .26, 1
+                    on_press: app.trigger = True
+                    on_press:
+                        if (app.triggerC): label.text = self.text
+                        else: label.text += self.text
+                        if (app.triggerC): app.triggerC = False
+                    
+                Button:
+                    text: '3'
+                    
+                    background_normal: ''
+                    background_color: .2, .24, .26, 1
+                    on_press: app.trigger = True
+                    on_press:
+                        if (app.triggerC): label.text = self.text
+                        else: label.text += self.text
+                        if (app.triggerC): app.triggerC = False
+                    
 
                 Button:
-                    text: "7"
+                    text: '0'
+                    
+                    background_normal: ''
+                    background_color: .2, .24, .26, 1
+                    on_press: app.trigger = True
+                    on_press:
+                        if (app.triggerC): label.text = self.text
+                        else: label.text += self.text
+                        if (app.triggerC): app.triggerC = False
+                    
                 Button:
-                    text: "8"
-                Button:
-                    text: "9"
-                Button:
-                    text: "4"
-                Button:
-                    text: "5"
-                Button:
-                    text: "6"      
-                
-                Button:
-                    text: "1"
-                Button:
-                    text: "2"
-                Button:
-                    text: "3"      
-
-                Button:
-                    text: "0"
-                Button:
-                    text: "."
+                    text: '.'
+                    
+                    background_normal: ''
+                    background_color: .2, .24, .26, 1
+                    on_press:
+                        if (app.trigger): label.text += self.text
+                        if (app.trigger): app.triggerC = False
+                        if (app.trigger): app.trigger = False
 
                 BoxLayout:
                     orientation: 'vertical'
@@ -208,6 +343,7 @@
                     Button:
                         text: "Enter"
                         background_color: (0, 200, 0, .5)
-
-<ExampleApp>
-    id : example_app
+                        on_press:
+                            if (app.trigger): calculator.calc(label.text)
+                            if (app.trigger): calculator.calc(labelResult.text)
+                            if (app.trigger): app.triggerC = True
