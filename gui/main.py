@@ -11,9 +11,11 @@ from kivy.core.window import Window
 from kivy.uix.widget import Widget
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
+from kivy.properties import ObjectProperty
+from kivy.uix.screenmanager import Screen, ScreenManager
+
 from app.getemployeeFunction import getEmployee
-from kivy.properties import ObjectProperty
-from kivy.properties import ObjectProperty
+
 
 class PopUpShow(FloatLayout):
 
@@ -45,11 +47,14 @@ class AskId(Widget):
             print('id nok')
         else:
             print('id ok')
+            
+            pos_app.screen_manager.current = "POS"
     def deleteLine(self, **kwargs):
         print('Delete Line')
 
 class MyGridLayout(Widget):
-
+    def back(self):
+        pos_app.screen_manager.current = "Connect"
     def add_user(self):
         print('Add User')
     # Mise en place de class, mise au propre du fichier gui.py
@@ -92,7 +97,20 @@ class Meals(App):
         getEmployee()
 
     def build(self):
-        return MyGridLayout()
+        self.screen_manager = ScreenManager()
 
+        self.connect_page = AskId()
+        screen = Screen(name="Connect")
+        screen.add_widget(self.connect_page)
+        self.screen_manager.add_widget(screen)
+        
+        self.pos_page = MyGridLayout()
+        screen = Screen(name="POS")
+        screen.add_widget(self.pos_page)
+        self.screen_manager.add_widget(screen)
+        
+        return self.screen_manager
+        
 if __name__ == "__main__":
-    Meals().run()
+   pos_app  = Meals()
+   pos_app.run()
