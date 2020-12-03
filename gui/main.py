@@ -25,11 +25,6 @@ except sqlite3.Error as error:
 print(query_result)
 '''
 
-Window.size = (1024, 768)
-Window.minimum_width, Window.minimum_height = Window.size
-# Window.borderless = True
-id = None
-
         
 class PopUpShow(FloatLayout):
 
@@ -101,11 +96,16 @@ class Meals(App):
     trigger = False
     triggerC = False
     triggerD = False
+    
+    Window.size = (1024, 768)
+    Window.minimum_width, Window.minimum_height = Window.size
+    # Window.borderless = True
+    id = None
     def on_start(self):
         getEmployee()
 
     def build(self):
-        return MyGridLayout()
+        return AskId()
 
 if __name__ == "__main__":
     Meals().run()
