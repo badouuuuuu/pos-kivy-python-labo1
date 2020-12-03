@@ -13,7 +13,8 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
 from app.getemployeeFunction import getEmployee
 from kivy.properties import ObjectProperty
-        
+from kivy.properties import ObjectProperty
+
 class PopUpShow(FloatLayout):
 
     def show_popup_unknown():
@@ -48,8 +49,7 @@ class AskId(Widget):
         print('Delete Line')
 
 class MyGridLayout(Widget):
-    calcResult = ObjectProperty(None)
-    calcDisplay = ObjectProperty(None)
+
     def add_user(self):
         print('Add User')
     # Mise en place de class, mise au propre du fichier gui.py
