@@ -1,10 +1,11 @@
-#! /usr/bin/python3
 
 ##########################################
 #### Our SQLite3 management functions ####
 ##########################################
 import sqlite3
-
+print('###############################')
+print('#### sqlite3 files loaded #### ')
+print('###############################')
 '''
 Les 4 opérations fondamentales sur une base de données
 INSERT (CREATE)
@@ -22,6 +23,7 @@ disconnect_from_db()
 
 def connect_to_db(db_path): #/home/tux/meals.db  meals.db
   try:
+
     db_link = sqlite3.connect(db_path)
   except sqlite3.Error as error:
     print("Error while connecting to database : ", error)
@@ -29,6 +31,7 @@ def connect_to_db(db_path): #/home/tux/meals.db  meals.db
 
 def create_cursor(db_link):
   try:
+
     db_cursor = db_link.cursor()
   except sqlite3.Error as error:
     print("Error while creating database cursor : ", error)

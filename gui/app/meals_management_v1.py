@@ -6,13 +6,16 @@ import os
 import datetime
 import shutil
 
-from my_sqlite3_v1 import *
-
+from app.my_sqlite3_v1 import *
+print('###############################')
+print('#### meals files loaded   #### ')
+print('###############################')
 ##########################
 #### Global variables ####
 ##########################
-db_name = './database/meals.db'
-db_path = db_name #will be different if "db" is not in the same directory
+#db_name = '/home/devops/Desktop/labo1/database/'
+db_path = './database/meals.db'
+#will be different if "db" is not in the same directory
 
 ###################
 #### Functions ####
@@ -27,6 +30,10 @@ def choose_enquiry(): # choisir une requête
     'Exit']
   choice = enquiries.choose('Choose one of these options: ', options)
   trigger_enquiry(choice)
+
+
+def test():
+    print('link file ok meals-managementv1')
 
 def trigger_enquiry(choice): # déclencher une requête
   if (choice == 'Purchase'):
@@ -242,7 +249,7 @@ def modify_employee():
     disconnect_from_db(db_link)
     save_database(db_path)
 
-choose_enquiry()
+
 
 def add_menu():
   print('add_menu')
@@ -259,5 +266,5 @@ def exit_program():
 ###################
 #### Main code ####
 ###################
-choose_enquiry()
+
 
