@@ -11,20 +11,8 @@ from kivy.core.window import Window
 from kivy.uix.widget import Widget
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
-from app.employee import getEmployee
+from app.getemployeeFunction import getEmployee
 from kivy.properties import ObjectProperty
-
-'''
-try:
-    conn = sqlite3.connect(r'database/meals.db')
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM employee")
-    query_result = cursor.fetchall()
-except sqlite3.Error as error:
-    print("Error while reading from cursor : ", error)
-print(query_result)
-'''
-
         
 class PopUpShow(FloatLayout):
 
@@ -100,12 +88,11 @@ class Meals(App):
     Window.size = (1024, 768)
     Window.minimum_width, Window.minimum_height = Window.size
     # Window.borderless = True
-    id = None
     def on_start(self):
         getEmployee()
 
     def build(self):
-        return AskId()
+        return MyGridLayout()
 
 if __name__ == "__main__":
     Meals().run()
