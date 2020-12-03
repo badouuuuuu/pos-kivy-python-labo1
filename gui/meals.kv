@@ -157,8 +157,6 @@
 
         BoxLayout:
             size_hint: 1, 1
-            padding: 40
-            spacing: 40
 
             canvas.before:
                 Color:
@@ -166,122 +164,130 @@
                 Rectangle:
                     size: self.size
                     pos: self.pos
-            Label:
-                id: label
-                size_hint: 1, 1
-                text_size: self.width, self.height
-                height: self.texture_size[1]
-                text: "11177777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777771111111111111111111"
-
             GridLayout:
-                padding: 2
-                spacing:4
+                cols:2
+                padding: 40
+                spacing: 40
                 canvas.before:
                     Color:
                         rgba: (0,0,0.53,0.2)
-                        
-                cols: 3
-                Button:
-                    text: '7'
-                    on_press: app.trigger = True
-                    on_press:
-                        if (app.triggerC): label.text = self.text
-                        else: label.text += self.text
-                        if (app.triggerC): app.triggerC = False
+                Label:
                     
-                Button:
-                    text: '8'
-                    on_press: app.trigger = True
-                    on_press:
-                        if (app.triggerC): label.text = self.text
-                        else: label.text += self.text
-                        if (app.triggerC): app.triggerC = False
-                    
-                Button:
-                    text: '9'
-                    on_press: app.trigger = True
-                    on_press:
-                        if (app.triggerC): label.text = self.text
-                        else: label.text += self.text
-                        if (app.triggerC): app.triggerC = False
-                    
-                Button:
-                    text: '4'
-                    on_press: app.trigger = True
-                    on_press:
-                        if (app.triggerC): label.text = self.text
-                        else: label.text += self.text
-                        if (app.triggerC): app.triggerC = False
-                    
-                Button:
-                    text: '5'
-                    on_press: app.trigger = True
-                    on_press:
-                        if (app.triggerC): label.text = self.text
-                        else: label.text += self.text
-                        if (app.triggerC): app.triggerC = False
-                    
-                Button:
-                    text: '6'
-                    on_press: app.trigger = True
-                    on_press:
-                        if (app.triggerC): label.text = self.text
-                        else: label.text += self.text
-                        if (app.triggerC): app.triggerC = False
-
-                    
-                Button:
-                    text: '1'
-                    on_press: app.trigger = True
-                    on_press:
-                        if (app.triggerC): label.text = self.text
-                        else: label.text += self.text
-                        if (app.triggerC): app.triggerC = False
-                    
-                Button:
-                    text: '2'
-                    on_press: app.trigger = True
-                    on_press:
-                        if (app.triggerC): label.text = self.text
-                        else: label.text += self.text
-                        if (app.triggerC): app.triggerC = False
-                    
-                Button:
-                    text: '3'
-                    on_press: app.trigger = True
-                    on_press:
-                        if (app.triggerC): label.text = self.text
-                        else: label.text += self.text
-                        if (app.triggerC): app.triggerC = False
-                    
-
-                Button:
-                    text: '0'
-                    on_press: app.trigger = True
-                    on_press:
-                        if (app.triggerC): label.text = self.text
-                        else: label.text += self.text
-                        if (app.triggerC): app.triggerC = False
-                    
-                Button:
-                    text: '.'
-                    on_press:
-                        if (app.trigger): label.text += self.text
-                        if (app.trigger): app.triggerC = False
-                        if (app.trigger): app.trigger = False
-
-                BoxLayout:
-                    orientation: 'vertical'
-
+                    id: label
                     size_hint: 1, 1
-                    Button:
-                        text: "Cancel"
-                        background_color: (1.0, 0.0, 0.0, 1.0)
+                    text_size: self.width, self.height
+                    height: self.texture_size[1]
+                    text: "11177777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777771111111111111111111"
+
+                GridLayout:
+                    padding: 2
+                    spacing:4
+                    canvas.before:
+                        Color:
+                            rgba: (1.0, 0.0, 0.0, 1.0)
                             
+                    cols: 3
                     Button:
-                        text: "Enter"
-                        background_color: (0, 200, 0, .5)
+                        text: '7'
+                        on_press: app.trigger = True
                         on_press:
-                            if (app.trigger): calculator.calc(label.text)
-                            if (app.trigger): calculator.calc(labelResult.text)
-                            if (app.trigger): app.triggerC = True
+                            if (app.triggerC): label.text = self.text
+                            else: label.text += self.text
+                            if (app.triggerC): app.triggerC = False
+                        
+                    Button:
+                        text: '8'
+                        on_press: app.trigger = True
+                        on_press:
+                            if (app.triggerC): label.text = self.text
+                            else: label.text += self.text
+                            if (app.triggerC): app.triggerC = False
+                        
+                    Button:
+                        text: '9'
+                        on_press: app.trigger = True
+                        on_press:
+                            if (app.triggerC): label.text = self.text
+                            else: label.text += self.text
+                            if (app.triggerC): app.triggerC = False
+                        
+                    Button:
+                        text: '4'
+                        on_press: app.trigger = True
+                        on_press:
+                            if (app.triggerC): label.text = self.text
+                            else: label.text += self.text
+                            if (app.triggerC): app.triggerC = False
+                        
+                    Button:
+                        text: '5'
+                        on_press: app.trigger = True
+                        on_press:
+                            if (app.triggerC): label.text = self.text
+                            else: label.text += self.text
+                            if (app.triggerC): app.triggerC = False
+                        
+                    Button:
+                        text: '6'
+                        on_press: app.trigger = True
+                        on_press:
+                            if (app.triggerC): label.text = self.text
+                            else: label.text += self.text
+                            if (app.triggerC): app.triggerC = False
+
+                        
+                    Button:
+                        text: '1'
+                        on_press: app.trigger = True
+                        on_press:
+                            if (app.triggerC): label.text = self.text
+                            else: label.text += self.text
+                            if (app.triggerC): app.triggerC = False
+                        
+                    Button:
+                        text: '2'
+                        on_press: app.trigger = True
+                        on_press:
+                            if (app.triggerC): label.text = self.text
+                            else: label.text += self.text
+                            if (app.triggerC): app.triggerC = False
+                        
+                    Button:
+                        text: '3'
+                        on_press: app.trigger = True
+                        on_press:
+                            if (app.triggerC): label.text = self.text
+                            else: label.text += self.text
+                            if (app.triggerC): app.triggerC = False
+                        
+
+                    Button:
+                        text: '0'
+                        on_press: app.trigger = True
+                        on_press:
+                            if (app.triggerC): label.text = self.text
+                            else: label.text += self.text
+                            if (app.triggerC): app.triggerC = False
+                        
+                    Button:
+                        text: '.'
+                        on_press:
+                            if (app.trigger): label.text += self.text
+                            if (app.trigger): app.triggerC = False
+                            if (app.trigger): app.trigger = False
+
+                    BoxLayout:
+                        orientation: 'vertical'
+
+                        size_hint: 1, 1
+                        Button:
+                            text: "Cancel"
+                            background_color: (1.0, 0.0, 0.0, 1.0)
+                                
+                        Button:
+                            text: "Enter"
+                            background_color: (0, 200, 0, .5)
+                            on_press:
+                                if (app.trigger): calculator.calc(label.text)
+                                if (app.trigger): calculator.calc(labelResult.text)
+                                if (app.trigger): app.triggerC = True
