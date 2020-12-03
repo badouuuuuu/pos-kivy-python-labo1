@@ -20,7 +20,7 @@ from app.getemployeeFunction import getEmployee
 class PopUpShow(FloatLayout):
 
     def show_popup_unknown():
-        show = PopUpShow() # Create a new instance of the P class 
+        show = PopUpShow() 
 
         popupWindow = Popup(
             title="Identifiant introuvable", 
@@ -38,8 +38,6 @@ class PopUpShow(FloatLayout):
 
 class AskId(Widget):
     def change_label_method(self):
-        show = PopUpShow() # Create a new instance of the P class 
-
         self.layout_widget.text = '0'
 
         if id == None:
@@ -57,8 +55,7 @@ class MyGridLayout(Widget):
         pos_app.screen_manager.current = "Connect"
     def add_user(self):
         print('Add User')
-    # Mise en place de class, mise au propre du fichier gui.py
-    
+
     def modify_user(self):
         print('Modify User')
         
