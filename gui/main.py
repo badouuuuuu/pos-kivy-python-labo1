@@ -106,17 +106,6 @@ class Meals(App):
 
     def build(self):
         return MyGridLayout()
-    
-class ExampleApp(App):
-    def Pressbtn(self, instance):
-        instance.parent.ids.lobj.text = str(instance)
-        instance.parent.ids.ltext.text = instance.text
-        instance.parent.ids.lid.text= self.get_id(instance)
 
-    def get_id(self,  instance):
-        for id, widget in instance.parent.ids.items():
-            if widget.__self__ == instance:
-                return id
-    
 if __name__ == "__main__":
     Meals().run()

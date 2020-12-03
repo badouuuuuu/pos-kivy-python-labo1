@@ -13,8 +13,8 @@ print('###############################')
 ##########################
 #### Global variables ####
 ##########################
-db_name = '/home/devops/Desktop/labo1/database/'
-db_path = '/home/devops/Desktop/labo1/database/meals.db'
+#db_name = '/home/devops/Desktop/labo1/database/'
+db_path = './database/meals.db'
 #will be different if "db" is not in the same directory
 
 ###################
