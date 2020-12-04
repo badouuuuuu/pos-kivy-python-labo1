@@ -9,4 +9,6 @@ def getEmployee():
         employee = get_employee_name(list)
         print('------------')
         print('Name : ' + employee + '\nid : ' + str(list))
+    
+        return employee_list
         
