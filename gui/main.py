@@ -1,7 +1,5 @@
 #! /usr/bin/python3
 
-import kivy
-import sqlite3
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
@@ -11,11 +9,11 @@ from kivy.core.window import Window
 from kivy.uix.widget import Widget
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
-from kivy.properties import ListProperty
-from kivy.properties import StringProperty 
+from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
-from app.getemployeeFunction import getEmployee
+from app.getemployeeFunction import getEmployee, getMenuList
+
 
 class PopUpShow(FloatLayout):
 
@@ -40,13 +38,12 @@ class AskId(Widget):
     
     employeeId_DB  = ListProperty([])
     employeeId_DB = []
-    print(employeeId_DB)
     
     getEmployeeId = getEmployee()
 
     for id in getEmployeeId:
         employeeId_DB.append(id)
-        print(employeeId_DB)
+        
     
         displayPOSid = StringProperty(str(employeeId_DB[0])) 
         
@@ -64,7 +61,22 @@ class AskId(Widget):
         print('Delete Line')
 
 class MyGridLayout(ScrollView):
-    displayPOS = StringProperty('') 
+    
+    
+    MyMenuId = ListProperty([])
+    MyMenuId = []
+    displayPOS = ListProperty([])
+    displayPOS = []
+  
+    
+    getMenuId = getMenuList()
+  
+    
+    for menuid in getMenuId:
+        MyMenuId.append(menuid)
+  
+        print('Menu:\n' + str(MyMenuId))
+
     
     def back(self):
         pos_app.screen_manager.current = "Connect"
@@ -124,5 +136,5 @@ class Meals(App):
         return self.screen_manager
         
 if __name__ == "__main__":
-   pos_app  = Meals()
-   pos_app.run()
+    pos_app  = Meals()
+    pos_app.run()
