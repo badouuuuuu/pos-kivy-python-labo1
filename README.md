@@ -32,7 +32,6 @@
  - Executez le fichier main.py
  
   	   python3 ./gui/main.py
-	   
-<a align="center" href="https://github.com/badouuuuuu/">
-  <img src="https://github-readme-stats.vercel.app/api?username=badouuuuuu&theme=merko" />
-</a>
+
+  <img align="center" src="https://github-readme-stats.vercel.app/api?username=badouuuuuu&theme=merko" />
+
