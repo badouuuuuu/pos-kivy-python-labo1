@@ -32,3 +32,4 @@
  - Executez le fichier main.py
  
   	   python3 ./gui/main.py
+[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=badouuuuuu)](https://github.com/badouuuuuu/github-readme-stats)
