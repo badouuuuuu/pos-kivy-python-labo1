@@ -96,7 +96,7 @@
                     Button:
                         text: "Enter"
                         background_color: (0, 200, 0, .5)
-                        on_press:
+                        on_release:
                             root.change_label_method()
                 
 <PopUpShow>:
@@ -176,7 +176,7 @@
                     id: label
                     disabled_foreground_color: [0,0,0,0]
                     foreground_color: [255,255,255,255]
-                    text: root.displayPOS
+                    text: ''
                     text_color: 255,255,255
                     allow_copy: False
                     cursor_blink: False
