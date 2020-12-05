@@ -18,7 +18,6 @@ def getMenuList():
         list = get_menu_price(i)
         menudescription = get_menu_description(i)
         mylist.append({i, list, menudescription})
-        print(list)
 
     return mylist
 

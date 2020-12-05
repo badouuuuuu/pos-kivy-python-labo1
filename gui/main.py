@@ -61,23 +61,18 @@ class AskId(Widget):
         print('Delete Line')
 
 class MyGridLayout(ScrollView):
-    
-    
     MyMenuId = ListProperty([])
     MyMenuId = []
     displayPOS = ListProperty([])
     displayPOS = []
   
-    
     getMenuId = getMenuList()
   
-    
     for menuid in getMenuId:
         MyMenuId.append(menuid)
   
-        print('Menu:\n' + str(MyMenuId))
+        print('Menu: \n' + str(MyMenuId))
 
-    
     def back(self):
         pos_app.screen_manager.current = "Connect"
     def add_user(self):
