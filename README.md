@@ -33,5 +33,7 @@
  
   	   python3 ./gui/main.py
 
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=badouuuuuu&theme=merko" />
+<p align="center>
+<img align="center" src="https://github-readme-stats.vercel.app/api?username=badouuuuuu&theme=merko" />
+</p>
 
