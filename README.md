@@ -32,8 +32,3 @@
  - Executez le fichier main.py
  
   	   python3 ./gui/main.py
-
-<p align="center>
-<img align="center" src="https://github-readme-stats.vercel.app/api?username=badouuuuuu&theme=merko" />
-</p>
-
