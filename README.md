@@ -33,6 +33,6 @@
  
   	   python3 ./gui/main.py
 	   
-<a href="https://github.com/badouuuuuu/">
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=badouuuuuu&theme=merko" />
+<a align="center" href="https://github.com/badouuuuuu/">
+  <img src="https://github-readme-stats.vercel.app/api?username=badouuuuuu&theme=merko" />
 </a>
