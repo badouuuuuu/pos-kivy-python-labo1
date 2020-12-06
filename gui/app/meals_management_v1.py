@@ -109,7 +109,7 @@ def get_employee_id(value): #TODO idem que get_menu_id()?
   #print(employee_id_list) #[1, 2, 3, 4]
   employee_id = value
   while employee_id not in employee_id_list:
-    os.system('clear')
+    #os.system('clear')
     employee_id = value
     if not employee_id:
       employee_id = 0

@@ -36,7 +36,6 @@ class PopUpShow(FloatLayout):
 
 class AskId(Widget):
 
-   
     def change_label_method(self):
         displayPOSid  = ''
 
@@ -48,9 +47,18 @@ class AskId(Widget):
             PopUpShow.show_popup_unknown()
             print('id nok')
         else:
-            print('id ok')
+           test = get_employee_id(int(displayPOSid))
+           if test == 0:
+               print('ID inconnu')
+           else:
+               print(test)
+               print('id ok')
+               pos_app.screen_manager.current = "POS"
             
-            pos_app.screen_manager.current = "POS"
+            
+            
+            
+            
     def deleteLine(self, **kwargs):
         print('Delete Line')
 
