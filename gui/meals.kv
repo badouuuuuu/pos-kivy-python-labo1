@@ -49,13 +49,18 @@
             TextInput:
                 id: askid_label
                 text: ''
-                font_size: '25dp'
+                font_size: self.size[0] * 0.1
                 background_color: 0,0,0.53,0.1
                 disabled_foreground_color: [0,0,0,0]
                 foreground_color: [255,255,255,255]
                 text_color: 255,255,255
                 allow_copy: False
                 cursor_blink: False
+                halign: 'center'
+                valign: 'middle'
+                size: self.parent.size[0], 200
+                on_text_validate: root.CheckId()
+                multiline: False
 
 
             GridLayout:
@@ -170,7 +175,7 @@
                         text: "Enter"
                         background_color: (0, 200, 0, .5)
                         on_release:
-                            root.change_label_method()
+                            root.CheckId()
                 
 <PopUpShow>:
     id : popup_id_unknown
