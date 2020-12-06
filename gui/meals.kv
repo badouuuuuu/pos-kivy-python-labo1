@@ -198,7 +198,7 @@
 
 
 <MyGridLayout>
-    id: calculator
+    id: additionulator
     display: label
     result: labelResult
     
@@ -365,11 +365,11 @@
                             text: "Cancel"
                             background_color: (1.0, 0.0, 0.0, 1.0)
                             on_press:
-                                root.back()    
+                                root.del1()    
                         Button:
                             text: "Enter"
                             background_color: (0, 200, 0, .5)
                             on_press:
-                                if (app.trigger): calculator.calc(label.text)
-                                if (app.trigger): calculator.calc(labelResult.text)
+                                if (app.trigger): root.addition(label.text)
+                                if (app.trigger): root.addition(labelResult.text)
                                 if (app.trigger): app.triggerC = True

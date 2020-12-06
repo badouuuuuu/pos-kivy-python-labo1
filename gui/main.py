@@ -57,8 +57,9 @@ class AskId(Widget):
             
     def deleteLine(self, **kwargs):
         print('Delete Line')
+        self.ids.askid_label.text = ''
 
-class MyGridLayout(ScrollView):
+class MyGridLayout(Widget):
     
     def list_menu(self):
         menu_id_db = get_id_list('menu')
@@ -83,30 +84,33 @@ class MyGridLayout(ScrollView):
     
     def modify_menu(self):
         print('Modify menu')
-        
-class Calculator(Widget):
-    label = ''
     
     def delete(self, instance):
+        self.display.text = str(eval(instance))
         self.display.text = instance[:0]
     
     def del1(self, instance):
+        self.display.text = str(eval(instance))
         self.display.text = instance[:-1]
     
-    def calc(self, instance):
+    def addition(self, instance):
         try:
             self.display.text = str(eval(instance))
             self.result.text = str(eval(instance))
+            display = self.result.text
+            total = [0, 0, 0]
+            total.append(int(display))
+
+            print(total)
+
         except Exception:
             self.display.text = '0'
             self.result.text = 'ERROR'
-            
+
 class Meals(App):
     trigger = False
     triggerC = False
     triggerD = False
-    
-    
     Window.size = (1024, 768)
     Window.minimum_width, Window.minimum_height = Window.size
     # Window.borderless = True
