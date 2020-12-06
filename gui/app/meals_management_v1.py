@@ -5,7 +5,6 @@ import os
 import datetime
 import shutil
 import sys
-sys.path.insert(1, '/home/devops/Desktop/Labo1-Backup1/labo1/')
 
 from app.my_sqlite3_v1 import *
 print('###############################')
