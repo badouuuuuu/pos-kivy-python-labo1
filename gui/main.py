@@ -12,7 +12,7 @@ from kivy.uix.popup import Popup
 from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
-from app.getemployeeFunction import getEmployee, getMenuList
+from app.getFunction import getEmployee, getMenuList
 
 
 class PopUpShow(FloatLayout):
@@ -35,18 +35,24 @@ class PopUpShow(FloatLayout):
 
 
 class AskId(Widget):
-    
-    employeeId_DB  = ListProperty([])
-    employeeId_DB = []
-    
-    getEmployeeId = getEmployee()
 
-    for id in getEmployeeId:
-        employeeId_DB.append(id)
-        
+    displayPOSid  = ''
+
+    EmployeeId = ListProperty([])
+    EmployeeId = []
+    displayPOS = ListProperty([])
+    displayPOS = []
+  
     
-        displayPOSid = StringProperty(str(employeeId_DB[0])) 
-        
+    getemployee = getEmployee()
+  
+    
+    for menuid in getemployee:
+        EmployeeId.append(menuid)
+  
+    print('Employee:\n' + str(EmployeeId))
+
+
     def change_label_method(self):
         self.layout_widget.text = '0'
 
@@ -71,7 +77,7 @@ class MyGridLayout(ScrollView):
     for menuid in getMenuId:
         MyMenuId.append(menuid)
   
-        print('Menu: \n' + str(MyMenuId))
+    print('Menu:\n' + str(MyMenuId))
 
     def back(self):
         pos_app.screen_manager.current = "Connect"
