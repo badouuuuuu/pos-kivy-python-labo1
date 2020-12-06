@@ -42,11 +42,8 @@ class AskId(Widget):
         displayPOSid = self.ids.askid_label.text 
         print(employee_id_db)    
     
-        checkid = get_employee_id(displayPOSid)
-
-        if checkid not in employee_id_db:
+        if displayPOSid in employee_id_db:
             PopUpShow.show_popup_unknown()
-            displayPOSid  = ''
             print('id nok')
             print(displayPOSid)
         else:
