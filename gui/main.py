@@ -13,7 +13,7 @@ from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
 from app.getFunction import getEmployee, getMenuList
-
+from app.meals_management_v1 import get_employee_id
 
 class PopUpShow(FloatLayout):
 
@@ -36,27 +36,15 @@ class PopUpShow(FloatLayout):
 
 class AskId(Widget):
 
-    displayPOSid  = ''
-
-    EmployeeId = ListProperty([])
-    EmployeeId = []
-    displayPOS = ListProperty([])
-    displayPOS = []
-  
-    
-    getemployee = getEmployee()
-  
-    
-    for menuid in getemployee:
-        EmployeeId.append(menuid)
-  
-    print('Employee:\n' + str(EmployeeId))
-
-
+   
     def change_label_method(self):
-        self.layout_widget.text = '0'
+        displayPOSid  = ''
 
-        if id == None:
+        getemployee = self.ids.askid_label.text 
+        displayPOSid = self.ids.askid_label.text 
+        print(displayPOSid)
+
+        if getemployee == '0':
             PopUpShow.show_popup_unknown()
             print('id nok')
         else:
@@ -114,6 +102,7 @@ class Meals(App):
     trigger = False
     triggerC = False
     triggerD = False
+    
     
     Window.size = (1024, 768)
     Window.minimum_width, Window.minimum_height = Window.size

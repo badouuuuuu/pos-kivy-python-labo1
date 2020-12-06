@@ -1,10 +1,11 @@
 #! /usr/bin/python3
 
 from os import write
-import enquiries
 import os
 import datetime
 import shutil
+import sys
+sys.path.insert(1, '/home/devops/Desktop/Labo1-Backup1/labo1/')
 
 from app.my_sqlite3_v1 import *
 print('###############################')
@@ -28,8 +29,8 @@ def choose_enquiry(): # choisir une requête
     'Add menu',
     'Modify menu',
     'Exit']
-  choice = enquiries.choose('Choose one of these options: ', options)
-  trigger_enquiry(choice)
+  #choice = enquiries.choose('Choose one of these options: ', options)
+  #trigger_enquiry(choice)
 
 
 def test():
@@ -102,13 +103,14 @@ def get_purchase_id():
   purchase_id = last_purchase_id + 1
   return purchase_id
 
-def get_employee_id(): #TODO idem que get_menu_id()?
+
+def get_employee_id(value): #TODO idem que get_menu_id()?
   employee_id_list = get_id_list('employee')
   #print(employee_id_list) #[1, 2, 3, 4]
-  employee_id = 0
+  employee_id = value
   while employee_id not in employee_id_list:
     os.system('clear')
-    employee_id = input("Enter the employee ID : ")
+    employee_id = value
     if not employee_id:
       employee_id = 0
     else:
