@@ -70,6 +70,7 @@ class MyGridLayout(Widget):
         
         test = get_menu_description(displayLeft)
         print(test)
+        self.ids.label.text = ''
 
     def back(self):
         pos_app.screen_manager.current = "Connect"
