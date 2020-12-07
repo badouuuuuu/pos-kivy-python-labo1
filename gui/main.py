@@ -13,7 +13,7 @@ from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
 # from app.getFunction import getEmployee, getMenuList
-from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description
+from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name
 
 class PopUpShow(FloatLayout):
 
@@ -43,7 +43,9 @@ class AskId(Widget):
         print(employee_id_db)    
     
         checkid = get_employee_id(displayPOSid)
-
+        
+        employeeName = get_employee_name(displayPOSid)
+        print(employeeName)
         if checkid not in employee_id_db:
             PopUpShow.show_popup_unknown()
             displayPOSid  = ''
@@ -62,14 +64,19 @@ class AskId(Widget):
 class MyGridLayout(Widget):
     
     def list_menu(self):
+        menuList = ListProperty([])
+        menuList = []
         menu_id_db = get_id_list('menu')
-        print(menu_id_db)
-        
+        for id in menu_id_db:
+           menu = get_menu_description(id)
+           menuList.append(menu)
+           print(menuList)
+
         displayLeft = self.ids.label.text
-        print(displayLeft)
         
-        test = get_menu_description(displayLeft)
-        print(test)
+        
+        MenuDescription = get_menu_description(displayLeft)
+        print(displayLeft + ' ' + MenuDescription)
         self.ids.label.text = ''
 
     def back(self):
