@@ -7,14 +7,6 @@
         anchor_x: 'right'
         anchor_y: 'top'
         pos_hint: {'top': 0.5 + self.size_hint[1]/2}
-    Button:
-        text: 'x'
-        color: 1.0, 0.0, 0.0, 1.0
-        font_size: 50
-        size_hint: None, None
-        background_color: 0, 0, 0, 0
-        on_press:
-            AskId().stop()
 
     BoxLayout:
         orientation: 'vertical'
