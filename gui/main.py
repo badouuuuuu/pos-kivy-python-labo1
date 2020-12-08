@@ -13,8 +13,8 @@ from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
 # from app.getFunction import getEmployee, getMenuList
-from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name
-from app.purchase import order
+from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name, get_purchase_id
+from app.purchase import order, menus
 
 class PopUpShow(FloatLayout):
 
@@ -46,8 +46,8 @@ class AskId(Widget):
         checkid = get_employee_id(displayPOSid)
         
         employeeName = get_employee_name(displayPOSid)
-        order[2].append(employeeName)
-        print(employeeName)
+        order["employee"] = employeeName
+        print(order["employee"])
         if checkid not in employee_id_db:
             PopUpShow.show_popup_unknown()
             displayPOSid  = ''
@@ -66,6 +66,9 @@ class AskId(Widget):
 class MyGridLayout(Widget):
     
     def list_menu(self):
+        getpurchase_id = get_purchase_id()
+        menus[0] = getpurchase_id
+
         menuList = ListProperty([])
         menuList = []
         menu_id_db = get_id_list('menu')
@@ -77,13 +80,13 @@ class MyGridLayout(Widget):
         displayLeft = self.ids.label.text
        
         MenuDescription = get_menu_description(displayLeft)
-        order[1].append(MenuDescription)
-
-        print(order)
-        print(displayLeft + ' ' + MenuDescription)
+        order["menu_name"] = MenuDescription
+        print(menus)
+        
         self.ids.label.text = ''
-        order[0]
-        print(order[2])
+
+
+
         
     def back(self):
         pos_app.screen_manager.current = "Connect"
