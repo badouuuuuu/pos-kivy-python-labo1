@@ -14,6 +14,7 @@ from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
 # from app.getFunction import getEmployee, getMenuList
 from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name
+from app.purchase import order
 
 class PopUpShow(FloatLayout):
 
@@ -45,6 +46,7 @@ class AskId(Widget):
         checkid = get_employee_id(displayPOSid)
         
         employeeName = get_employee_name(displayPOSid)
+        order[2].append(employeeName)
         print(employeeName)
         if checkid not in employee_id_db:
             PopUpShow.show_popup_unknown()
@@ -70,15 +72,19 @@ class MyGridLayout(Widget):
         for id in menu_id_db:
            menu = get_menu_description(id)
            menuList.append(menu)
-           print(menuList)
+        print(menuList)
 
         displayLeft = self.ids.label.text
-        
-        
+       
         MenuDescription = get_menu_description(displayLeft)
+        order[1].append(MenuDescription)
+
+        print(order)
         print(displayLeft + ' ' + MenuDescription)
         self.ids.label.text = ''
-
+        order[0]
+        print(order[2])
+        
     def back(self):
         pos_app.screen_manager.current = "Connect"
     def add_user(self):
