@@ -49,12 +49,12 @@ def trigger_enquiry(choice): # déclencher une requête
   elif (choice == 'Exit'):
     exit_program()
 
-def purchase():
+def purchase(menu_id, confirm, employee_id):
   purchase_id = get_purchase_id()
   current_date = datetime.datetime.now()
   formated_date = current_date.strftime("%d-%m-%Y %H:%M:%S")
 
-  employee_id = get_employee_id()
+  employee_id = get_employee_id(employee_id)
   employee_name = get_employee_name(employee_id)
   ticket_data = [purchase_id,formated_date,employee_name]
 
@@ -65,14 +65,14 @@ def purchase():
   write_to_cursor(db_cursor,sql_query,sql_values)
 
   menu_id_list = get_id_list('menu')
-
+  
   while True:
-    menu_id = input("\nEnter menu ID : ")
+    menu_id = menu_id
 
     if not menu_id: #TODO if menu_id in menu_id_list:
       break
 
-    os.system('clear')
+    
     menu_id = int(menu_id)
     if menu_id in menu_id_list:
         menu_price = get_menu_price(menu_id) #TODO get_purchase_detail plutôt que get_menu_price?
@@ -81,13 +81,15 @@ def purchase():
         write_to_cursor(db_cursor,sql_query,sql_values)
         ticket_data.append(sql_values)
     display_ticket(ticket_data)
-
-  confirm = input("Confirm your order (y/n) : ")
+  
+  confirm = confirm
   if ((confirm == 'y') and (len(ticket_data) >= 4)):
     commit_to_db(db_link)
     disconnect_from_db(db_link)
     save_database(db_path)
-  choose_enquiry()
+  print('FINISHED')
+  return menu_id
+
 
 def get_purchase_id():
   db_link = connect_to_db(db_path)
