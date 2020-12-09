@@ -235,14 +235,20 @@
                     size: self.size
                     pos: self.pos
             GridLayout:
-                cols:2
-
+                cols:3
+    
                 padding: 40
                 spacing: 40
                 canvas.before:
                     Color:
                         rgba: (0,0,0.53,0.2)
+                Label:
+                    id: label_backup
+                    size_hint: .5, .5
+                    background: 3,0,5.53,0.1
+                    text: 'aaaaa'
                 TextInput:
+                    size_hint: 1, .5
                     background_color: 0,0,0.53,0.1
                     id: label
                     disabled_foreground_color: [0,0,0,0]
@@ -253,7 +259,7 @@
                     cursor_blink: False
                     multiline: False
                     on_text_validate: root.list_menu()
-
+           
                 GridLayout:
                     padding: 2
                     spacing:4

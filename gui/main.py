@@ -72,7 +72,6 @@ class AskId(Widget):
 
 class MyGridLayout(Widget):
 
-        
     getpurchase_id = get_purchase_id()
 
     order = []
@@ -94,9 +93,11 @@ class MyGridLayout(Widget):
         menu_id_db = get_id_list('menu')
         for id in menu_id_db:
             menu = get_menu_description(id)
+            self.ids.label_backup.text = self.descr
             menuList.append(menu)
         
         displayLeft = self.ids.label.text 
+        
     
         MenuDescription = get_menu_description(displayLeft) 
         
