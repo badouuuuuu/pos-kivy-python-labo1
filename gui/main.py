@@ -15,7 +15,7 @@ from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
 # from app.getFunction import getEmployee, getMenuList
-from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name, get_purchase_id
+from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name, get_purchase_id, get_menu_price
 from kivy.uix.recycleview import RecycleView 
 
 
@@ -74,6 +74,7 @@ class AskId(Widget):
         self.ids.askid_label.text = ''
 
 class MyGridLayout(ScrollView):
+    
     menu_id_db = get_id_list('menu')
     getpurchase_id = get_purchase_id()
     order = []
@@ -88,12 +89,14 @@ class MyGridLayout(ScrollView):
     def __init__(self, **kwargs):
         super(MyGridLayout, self).__init__(**kwargs)
         label_backup = StringProperty('')
-
+        # self.ids.label_backup_addition.add_widget(Button(text='LOL'))
         for id_menu in self.menu_id_db:
                 print('id : ' + str(id_menu))  
                 self.descr = get_menu_description(id_menu)
                 print('menu : ' + self.descr)
-                self.ids.label_backup.text += f'Menu {str(id_menu)}:' + self.descr  + '\n'
+                self.price = str(get_menu_price(id_menu))
+                print('price : ' + self.price)
+                self.ids.label_backup.text += f'Menu #{str(id_menu)} - {self.price}€\n' + self.descr  + '\n' + '---------------------- ' + '\n'
                 
         print('------------')   
 
@@ -104,13 +107,11 @@ class MyGridLayout(ScrollView):
         menu_id_db = get_id_list('menu')
         for id in menu_id_db:
             menu = get_menu_description(id)
-            self.ids.label_backup.text += self.descr + '\n'
+            self.ids.label_backup_addition.text = self.ids.label_backup.text + self.descr + '\n'
             menuList.append(menu)
         
         displayLeft = self.ids.label.text 
 
-        self.ids.label_backup.text = ''
-    
         MenuDescription = get_menu_description(displayLeft) 
         
         self.order.append(MenuDescription)
@@ -118,13 +119,12 @@ class MyGridLayout(ScrollView):
         test = self.purchase_menu["id employee"][23]
         print(test)
         
-        self.data = [{'text': str(x)} for x in range(5)] 
-
-        displayLabel = self.ids.label_backup.text 
+        self.ids.label_backup_addition.text = 'Votre commande :'
         for i in test:
             print(i)
-            self.ids.label_backup.text =  i + '\n'
+            self.ids.label_backup_addition.text =  i + '\n'
             
+
             
 
 

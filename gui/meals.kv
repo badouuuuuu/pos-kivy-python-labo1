@@ -227,8 +227,6 @@
 
         ScrollView:
             size_hint: 1, 1
-
-    
             canvas.before:
                 Color:
                     rgba: (0,0,0.53,0.2)
@@ -236,7 +234,8 @@
                     size: self.size
                     pos: self.pos
             GridLayout:
-                cols:3
+                cols:2
+
                 id: layout_content
                 padding: 40
                 spacing: 40
@@ -245,9 +244,14 @@
                         rgba: (0,0,0.53,0.2)
                 Label:
                     id: label_backup
-                    size_hint: .5, .5
+                    size_hint: .3, .5
                     background: 3,0,5.53,0.1
                     text: ''
+                Label:
+                    id: label_backup_addition
+                    size_hint: .3, .5
+                    background: 3,0,5.53,0.1
+                    text: 'Votre commande : \n'
                 TextInput:
                     size_hint: 1, .5
                     background_color: 0,0,0.53,0.1
