@@ -4,16 +4,19 @@ from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.core.window import Window
 from kivy.uix.widget import Widget
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
+from kivy.properties import ObjectProperty
 from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
 # from app.getFunction import getEmployee, getMenuList
 from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name, get_purchase_id
+from kivy.uix.recycleview import RecycleView 
 
 
 class PopUpShow(FloatLayout):
@@ -70,10 +73,9 @@ class AskId(Widget):
         print('Delete Line')
         self.ids.askid_label.text = ''
 
-class MyGridLayout(Widget):
-
+class MyGridLayout(ScrollView):
+    menu_id_db = get_id_list('menu')
     getpurchase_id = get_purchase_id()
-
     order = []
     purchase_menu = {
         "id employee" : { # to change with id add by user in Connect Page
@@ -81,30 +83,50 @@ class MyGridLayout(Widget):
                         }
                     }       
     print('------------')
-    menu_id_db = get_id_list('menu')
-    for id_menu in menu_id_db:
-        print('id : ' + str(id_menu))  
-        descr = get_menu_description(id_menu)
-        print('menu : ' + descr)
-    print('------------')
+
+    
+    def __init__(self, **kwargs):
+        super(MyGridLayout, self).__init__(**kwargs)
+        label_backup = StringProperty('')
+
+        
+        for id_menu in self.menu_id_db:
+                print('id : ' + str(id_menu))  
+                self.descr = get_menu_description(id_menu)
+                print('menu : ' + self.descr)
+                self.ids.label_backup.text += self.descr + '\n'
+        print('------------')   
+
+
+        
     def list_menu(self):
         menuList = ListProperty([]) 
         menuList = []
         menu_id_db = get_id_list('menu')
         for id in menu_id_db:
             menu = get_menu_description(id)
-            self.ids.label_backup.text = self.descr
+            self.ids.label_backup.text += self.descr
             menuList.append(menu)
         
         displayLeft = self.ids.label.text 
-        
+
+        self.ids.label_backup.text = ''
     
         MenuDescription = get_menu_description(displayLeft) 
         
         self.order.append(MenuDescription)
         self.ids.label.text = ''
+        test = self.purchase_menu["id employee"][23]
+        print(test)
         
-        print(self.purchase_menu)
+        self.data = [{'text': str(x)} for x in range(5)] 
+
+        displayLabel = self.ids.label_backup.text 
+        for i in test:
+            print(i)
+            self.ids.label_backup.text =  i + '\n'
+            
+            
 
 
         

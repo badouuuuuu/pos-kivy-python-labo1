@@ -190,6 +190,8 @@
 
 
 <MyGridLayout>
+    layout_content: layout_content
+
     id: additionulator
     display: label
     result: labelResult
@@ -197,8 +199,6 @@
     BoxLayout:
         orientation: 'vertical'
         size: root.width, root.height
-
-
         BoxLayout:
             #Ligne 134 en attendant
             id: labelResult
@@ -225,8 +225,9 @@
                 text: "Modify Menu"
                 on_press: root.modify_menu()
 
-        BoxLayout:
+        ScrollView:
             size_hint: 1, 1
+
     
             canvas.before:
                 Color:
@@ -236,7 +237,7 @@
                     pos: self.pos
             GridLayout:
                 cols:3
-    
+                id: layout_content
                 padding: 40
                 spacing: 40
                 canvas.before:
@@ -246,7 +247,7 @@
                     id: label_backup
                     size_hint: .5, .5
                     background: 3,0,5.53,0.1
-                    text: 'aaaaa'
+                    text: ''
                 TextInput:
                     size_hint: 1, .5
                     background_color: 0,0,0.53,0.1
