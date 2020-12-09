@@ -36,7 +36,7 @@ class PopUpShow(FloatLayout):
 
 
 class AskId(Widget):
-
+    order = []
     def CheckId(self):
         displayPOSid  = ''
         employee_id_db = get_id_list('employee')
@@ -67,26 +67,29 @@ class AskId(Widget):
         self.ids.askid_label.text = ''
 
 class MyGridLayout(Widget):
-    
+    getpurchase_id = get_purchase_id()
+ 
+    order = []
+    purchase_menu = {
+    getpurchase_id: order
+    }       
     def list_menu(self):
         
-        getpurchase_id = get_purchase_id()
-            
-        menuList = ListProperty([])
+        menuList = ListProperty([]) # ListProperty est une fonction kivy pour du GUI affichage
         menuList = []
         menu_id_db = get_id_list('menu')
         for id in menu_id_db:
            menu = get_menu_description(id)
            menuList.append(menu)
-        print(menuList)
-
-        displayLeft = self.ids.label.text
-       
-        MenuDescription = get_menu_description(displayLeft)
-        order = dict()
         
-        order["purchase_id"] = MenuDescription
-        print(order)
+        displayLeft = self.ids.label.text # Kivy > affichage a l'écran
+       
+        MenuDescription = get_menu_description(displayLeft) # récuperation du nom du menu via l'id encodé
+        
+        self.order.append(MenuDescription)
+        self.ids.label.text = ''
+        
+        print(self.purchase_menu)
 
 
         
