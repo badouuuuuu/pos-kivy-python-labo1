@@ -89,23 +89,22 @@ class MyGridLayout(ScrollView):
         super(MyGridLayout, self).__init__(**kwargs)
         label_backup = StringProperty('')
 
-        
         for id_menu in self.menu_id_db:
                 print('id : ' + str(id_menu))  
                 self.descr = get_menu_description(id_menu)
                 print('menu : ' + self.descr)
-                self.ids.label_backup.text += self.descr + '\n'
+                self.ids.label_backup.text += f'Menu {str(id_menu)}:' + self.descr  + '\n'
+                
         print('------------')   
 
 
-        
     def list_menu(self):
         menuList = ListProperty([]) 
         menuList = []
         menu_id_db = get_id_list('menu')
         for id in menu_id_db:
             menu = get_menu_description(id)
-            self.ids.label_backup.text += self.descr
+            self.ids.label_backup.text += self.descr + '\n'
             menuList.append(menu)
         
         displayLeft = self.ids.label.text 
