@@ -42,23 +42,28 @@ class AskId(Widget):
         employee_id_db = get_id_list('employee')
         displayPOSid = self.ids.askid_label.text 
         print(employee_id_db)    
-    
-        checkid = get_employee_id(displayPOSid)
-        employee_id_backup = checkid
-        print('TTTTT')
-        print(employee_id_backup)
-        employeeName = get_employee_name(displayPOSid)
-        print(employeeName)
+        print('encodé : '+displayPOSid)
+        
+        intdisplayPOSid = int(displayPOSid)
 
-        if checkid not in employee_id_db:
-            PopUpShow.show_popup_unknown()
-            displayPOSid  = ''
-            print('id nok')
-            print(displayPOSid)
-        else:
-            print('id ok')
-            print(displayPOSid)
-            pos_app.screen_manager.current = "POS"
+        while intdisplayPOSid in employee_id_db:
+            try:
+                employeeName = get_employee_name(displayPOSid)
+                print(employeeName)
+
+                print('id ok')
+                print(displayPOSid)
+                pos_app.screen_manager.current = "POS"
+                break
+            except:
+                PopUpShow.show_popup_unknown()
+                displayPOSid  = ''
+                print('id nok')
+                print(displayPOSid)
+                break
+                
+        
+
             
 
             
