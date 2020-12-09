@@ -46,21 +46,20 @@ class AskId(Widget):
         
         intdisplayPOSid = int(displayPOSid)
 
-        while intdisplayPOSid in employee_id_db:
-            try:
+        if intdisplayPOSid in employee_id_db:
+
                 employeeName = get_employee_name(displayPOSid)
                 print(employeeName)
-
                 print('id ok')
                 print(displayPOSid)
                 pos_app.screen_manager.current = "POS"
-                break
-            except:
-                PopUpShow.show_popup_unknown()
-                displayPOSid  = ''
-                print('id nok')
-                print(displayPOSid)
-                break
+
+        else:
+            self.ids.askid_label.text   = ''
+            PopUpShow.show_popup_unknown()
+            print('id nok')
+            print(displayPOSid)
+            
                 
         
 
