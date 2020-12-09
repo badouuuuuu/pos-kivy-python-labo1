@@ -67,26 +67,34 @@ class AskId(Widget):
         self.ids.askid_label.text = ''
 
 class MyGridLayout(Widget):
+
+        
     getpurchase_id = get_purchase_id()
- 
+
     order = []
     purchase_menu = {
         "id employee" : { # to change with id add by user in Connect Page
         getpurchase_id: order
                         }
                     }       
-    
+    print('------------')
+    menu_id_db = get_id_list('menu')
+    for id_menu in menu_id_db:
+        print('id : ' + str(id_menu))  
+        descr = get_menu_description(id_menu)
+        print('menu : ' + descr)
+    print('------------')
     def list_menu(self):
-        menuList = ListProperty([]) # ListProperty est une fonction kivy pour du GUI affichage
+        menuList = ListProperty([]) 
         menuList = []
         menu_id_db = get_id_list('menu')
         for id in menu_id_db:
             menu = get_menu_description(id)
             menuList.append(menu)
         
-        displayLeft = self.ids.label.text # Kivy > affichage a l'écran
-
-        MenuDescription = get_menu_description(displayLeft) # récuperation du nom du menu via l'id encodé
+        displayLeft = self.ids.label.text 
+    
+        MenuDescription = get_menu_description(displayLeft) 
         
         self.order.append(MenuDescription)
         self.ids.label.text = ''
