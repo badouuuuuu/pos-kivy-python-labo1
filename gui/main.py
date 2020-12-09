@@ -13,8 +13,8 @@ from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
 # from app.getFunction import getEmployee, getMenuList
-from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name, get_purchase_id, purchase
-from app.purchase import order, menus, employee_id_backup
+from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name, get_purchase_id
+
 
 class PopUpShow(FloatLayout):
 
@@ -48,9 +48,8 @@ class AskId(Widget):
         print('TTTTT')
         print(employee_id_backup)
         employeeName = get_employee_name(displayPOSid)
-        order["employee"] = employeeName
-        
-        print(order["employee"])
+        print(employeeName)
+
         if checkid not in employee_id_db:
             PopUpShow.show_popup_unknown()
             displayPOSid  = ''
@@ -72,8 +71,7 @@ class MyGridLayout(Widget):
     def list_menu(self):
         
         getpurchase_id = get_purchase_id()
-        menus[0] = getpurchase_id
-        
+            
         menuList = ListProperty([])
         menuList = []
         menu_id_db = get_id_list('menu')
@@ -85,13 +83,11 @@ class MyGridLayout(Widget):
         displayLeft = self.ids.label.text
        
         MenuDescription = get_menu_description(displayLeft)
-        order["menu_name"] = MenuDescription
+        order = dict()
         
-        if displayLeft != '':
-            self.ids.label.text = ''
-            purchase(displayLeft, 'n', employee_id_backup) ## Check YES/NO TODO
-        else:
-            self.ids.label.text = ''
+        order["purchase_id"] = MenuDescription
+        print(order)
+
 
         
     def back(self):

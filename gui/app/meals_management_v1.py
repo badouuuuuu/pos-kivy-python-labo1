@@ -168,10 +168,12 @@ def display_ticket(ticket_data):
     price = ticket_data[index][2]
     detail_string = "Menu: {:<18} {:>6} €"
     detail_line = detail_string.format(description,price)
-    print(detail_line)
+    
     amount = amount + price
+    return amount
   amount_line = '\nAmount : ' + str(amount) + ' €'
   print(amount_line)
+  
 
 def get_menu_description(menu_id):
   db_link = connect_to_db(db_path)
