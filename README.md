@@ -9,7 +9,7 @@
 **Dev on branch :**
 
 - [test-gui](https://github.com/badouuuuuu/labo1/tree/test-gui)
-- [testdisplay](https://github.com/badouuuuuu/labo1/tree/testdisplay)
+- [dev](https://github.com/badouuuuuu/labo1/tree/dev)
 
 **Linux installation :**
 
