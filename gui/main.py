@@ -17,26 +17,7 @@ from kivy.uix.scrollview import ScrollView
 # from app.getFunction import getEmployee, getMenuList
 from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name, get_purchase_id, get_menu_price
 from kivy.uix.recycleview import RecycleView 
-
-
-class PopUpShow(FloatLayout):
-
-    def show_popup_unknown():
-        show = PopUpShow() 
-
-        popupWindow = Popup(
-            title="Identifiant introuvable", 
-            content=show, 
-            size_hint=(None,None),
-            size=(600,400),
-            background = 'atlas://data/images/defaulttheme/button_pressed',
-            background_color = (0,0,0.1,0.75),
-            opacity = 1
-                            ) 
-        # Create the popup window
-
-        popupWindow.open() # show the popup
-
+from app.menuPopup import PopUpShow
 
 class AskId(Widget):
     order = []
@@ -119,10 +100,6 @@ class MyGridLayout(ScrollView):
             print(i)
             self.ids.label_backup_addition.text +=  i + '\n'
             
-
-            
-
-
         
     def back(self):
         pos_app.screen_manager.current = "Connect"
