@@ -22,11 +22,11 @@ from kivy.uix.recycleview import RecycleView
 
 class PopUpShow(FloatLayout):
 
-    def show_popup_unknown():
+    def show_popup_unknown(self):
         show = PopUpShow() 
 
         popupWindow = Popup(
-            title="Identifiant introuvable", 
+            title=self.ids.popup_label.text, 
             content=show, 
             size_hint=(None,None),
             size=(600,400),

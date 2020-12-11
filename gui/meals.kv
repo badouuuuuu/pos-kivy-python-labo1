@@ -171,14 +171,15 @@
                 
 <PopUpShow>:
     id : popup_id_unknown
-    
+    popup_label : popup_label
     size: root.width, root.height
     canvas.before:
         Color:
             rgba: (0,0,0.53,0.2)
-
+    
     Label:
-        text: "Votre id est inconnu"
+        id: popup_label
+        text: ""
         size_hint: 0.6, 0.2
         pos_hint: {"x":0.2, "top":1}
 

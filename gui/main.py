@@ -86,7 +86,7 @@ class MyGridLayout(ScrollView):
             menuList.append(menu)
         
         displayLeft = self.ids.label.text 
-
+        
         MenuDescription = get_menu_description(displayLeft) 
         label_backup_addition = StringProperty('')
         
@@ -105,16 +105,70 @@ class MyGridLayout(ScrollView):
         pos_app.screen_manager.current = "Connect"
     def add_user(self):
         print('Add User')
+        show = PopUpShow() 
+    
+        popupWindow = Popup(
+            title="Ajouter un employée", 
+            content=show, 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1
+                            ) 
+        # Create the popup window
 
+        popupWindow.open() # show the popup
+        
     def modify_user(self):
         print('Modify User')
+            
+        show = PopUpShow() 
+    
+        popupWindow = Popup(
+            title="Modify Employee", 
+            content=show, 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1
+                            ) 
+
+
+        popupWindow.open() # show the popup
         
     def add_menu(self):
         print('Add menu')
+        show = PopUpShow() 
     
+        popupWindow = Popup(
+            title="Add Menu", 
+            content=show, 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1
+                            ) 
+        popupWindow.open()
+
     def modify_menu(self):
         print('Modify menu')
+        
+        show = PopUpShow() 
     
+        popupWindow = Popup(
+            title="Modify Menu", 
+            content=show, 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1
+                            ) 
+        popupWindow.open()
+        
     def delete(self, instance):
         self.display.text = str(eval(instance))
         self.display.text = instance[:0]
