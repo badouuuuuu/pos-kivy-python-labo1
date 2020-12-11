@@ -62,13 +62,7 @@ class AskId(Widget):
             PopUpShow.show_popup_unknown()
             print('id nok')
             print(displayPOSid)
-            
-                
-        
 
-            
-
-            
     def deleteLine(self, **kwargs):
         print('Delete Line')
         self.ids.askid_label.text = ''
@@ -113,16 +107,17 @@ class MyGridLayout(ScrollView):
         displayLeft = self.ids.label.text 
 
         MenuDescription = get_menu_description(displayLeft) 
+        label_backup_addition = StringProperty('')
         
         self.order.append(MenuDescription)
         self.ids.label.text = ''
         test = self.purchase_menu["id employee"][23]
         print(test)
-        
-        self.ids.label_backup_addition.text = 'Votre commande :'
+
+        self.ids.label_backup_addition.text = f'Votre commande :\n------------------\n' 
         for i in test:
             print(i)
-            self.ids.label_backup_addition.text =  i + '\n'
+            self.ids.label_backup_addition.text +=  i + '\n'
             
 
             
