@@ -173,21 +173,75 @@
     id : popup_id_unknown
     popup_label : popup_label
     size: root.width, root.height
-    canvas.before:
-        Color:
-            rgba: (0,0,0.53,0.2)
-    
-    Label:
-        id: popup_label
-        text: ""
-        size_hint: 0.6, 0.2
-        pos_hint: {"x":0.2, "top":1}
 
-    Button:
-        background_color: (1.0, 0.0, 0.0, 1.0)
-        text: "Retour"
-        size_hint: 0.8, 0.2
-        pos_hint: {"x":0.1, "y":0.1}
+    BoxLayout:
+        orientation: 'vertical'
+        GridLayout:
+            cols: 2
+            size_hint: 1, .35
+            padding: 10
+            spacing: 10
+            Label:
+                id: popup_label
+                text: "Name"
+                size_hint: 0.3, 0.15
+                pos_hint: {"x":0.2, "top":1}
+
+            TextInput:
+                
+                #background_color: 0,0,0.53,0.1
+                id: label
+                #disabled_foreground_color: [0,0,0,0]
+                #foreground_color: [255,255,255,255]
+                text: ''
+                text_color: 255,255,255
+                allow_copy: False
+                cursor_blink: False
+                multiline: False
+            Label:
+                id: popup_label
+                text: "Family Name"
+                size_hint: 0.3, 0.15
+                pos_hint: {"x":0.2, "top":1}
+
+            TextInput:
+                
+                #background_color: 0,0,0.53,0.1
+                id: label
+                #disabled_foreground_color: [0,0,0,0]
+                #foreground_color: [255,255,255,255]
+                text: ''
+                text_color: 255,255,255
+                allow_copy: False
+                cursor_blink: False
+                multiline: False
+
+            Label:
+                id: popup_label
+                text: "Email"
+                size_hint: 0.3, 0.15
+                pos_hint: {"x":0.2, "top":1}
+
+            TextInput:
+                
+                #background_color: 0,0,0.53,0.1
+                id: label
+                #disabled_foreground_color: [0,0,0,0]
+                #foreground_color: [255,255,255,255]
+                text: ''
+                text_color: 255,255,255
+                allow_copy: False
+                cursor_blink: False
+                multiline: False
+
+        Button:
+            
+            size_hint: 0.17, 0.1
+            background_color: (1.0, 0.0, 0.0, 1.0)
+            text: "Retour"
+            on_press: root.backPopup()
+            
+            pos_hint: {"x":0.45, "y":0.1}
 
 
 <MyGridLayout>

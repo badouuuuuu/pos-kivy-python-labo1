@@ -20,8 +20,14 @@ from kivy.uix.recycleview import RecycleView
 
 
 
-class PopUpShow(FloatLayout):
-
+class PopUpShow(BoxLayout):
+    def __init__(self, **kwargs):
+        super(PopUpShow, self).__init__(**kwargs)
+        pass
+    
+    def backPopup(self):
+        self.popupWindow.dismiss()
+        
     def show_popup_unknown(self):
         show = PopUpShow() 
 
@@ -32,7 +38,8 @@ class PopUpShow(FloatLayout):
             size=(600,400),
             background = 'atlas://data/images/defaulttheme/button_pressed',
             background_color = (0,0,0.1,0.75),
-            opacity = 1
+            opacity = 1,
+            multiline=False,
                             ) 
         # Create the popup window
 
