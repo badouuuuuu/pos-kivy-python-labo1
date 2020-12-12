@@ -57,3 +57,19 @@ class PopUpShow(BoxLayout):
                             ) 
         # Create the popup window
         popupWindow.open() # show the popup
+        
+    def show_popup_nomenu():
+        show = PopUpShow() 
+
+        popupWindow = Popup(
+            title='Menu inexistant', 
+            content=show, 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1,
+            
+                            ) 
+        # Create the popup window
+        popupWindow.open() # show the popup

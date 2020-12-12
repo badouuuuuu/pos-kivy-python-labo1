@@ -82,110 +82,117 @@ class MyGridLayout(ScrollView):
 
     def list_menu(self):
         menuList = ListProperty([]) 
-        menuList = []
         menu_id_db = get_id_list('menu')
-        for id in menu_id_db:
-            menu = get_menu_description(id)
-            self.ids.label_backup_addition.text = self.ids.label_backup.text + self.descr + '\n'
-            menuList.append(menu)
-        
+        menuList = []
         displayLeft = self.ids.label.text 
         
-        MenuDescription = get_menu_description(displayLeft) 
-        MenuPrice = get_menu_price(displayLeft)
-        label_backup_addition = StringProperty('')
-        
-        self.order.append(MenuDescription)
-        self.order_price.append(MenuPrice)
-        self.ids.label.text = ''
-        order_of_employee = self.purchase_menu["id employee"][23]
-        order_of_employee_price = self.purchase_menu["id employee"]['prix']
-
-        self.ids.label_backup_addition.text = 'Votre menu: \n\n'
-        
-        order_price = []
-        compteur = 0
-
-        for price in order_of_employee_price:
-    
-            order_price.append(price)
-            print(order_price)
-        
-        for nameMenuOrdered in order_of_employee:
-            print(nameMenuOrdered)
-            self.ids.label_backup_addition.text +=  nameMenuOrdered + '  ' + str(order_price[compteur]) + ' €\n'
-            self.ids.label.text = ''
-            compteur = compteur + 1
-        total = sum(order_price)
-        self.ids.label_backup_addition.text += '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
-        
-    def back(self):
-        pos_app.screen_manager.current = "Connect"
-    def add_user(self):
-        print('Add User')
-        show = PopUpShow() 
-    
-        popupWindow = Popup(
-            title="Ajouter un employée", 
-            content=show, 
-            size_hint=(None,None),
-            size=(600,400),
-            background = 'atlas://data/images/defaulttheme/button_pressed',
-            background_color = (0,0,0.1,0.75),
-            opacity = 1
-                            ) 
-        # Create the popup window
-
-        popupWindow.open() # show the popup
-        
-    def modify_user(self):
-        print('Modify User')
+        if int(displayLeft) in menu_id_db:
             
-        show = PopUpShow() 
-    
-        popupWindow = Popup(
-            title="Modify Employee", 
-            content=show, 
-            size_hint=(None,None),
-            size=(600,400),
-            background = 'atlas://data/images/defaulttheme/button_pressed',
-            background_color = (0,0,0.1,0.75),
-            opacity = 1
-                            ) 
+            for id in menu_id_db:
+                menu = get_menu_description(id)
+                self.ids.label_backup_addition.text = self.ids.label_backup.text + self.descr + '\n'
+                menuList.append(menu)
+            
+            
+            
+            MenuDescription = get_menu_description(displayLeft) 
+            MenuPrice = get_menu_price(displayLeft)
+            label_backup_addition = StringProperty('')
+            
+            self.order.append(MenuDescription)
+            self.order_price.append(MenuPrice)
+            self.ids.label.text = ''
+            order_of_employee = self.purchase_menu["id employee"][23]
+            order_of_employee_price = self.purchase_menu["id employee"]['prix']
 
+            self.ids.label_backup_addition.text = 'Votre menu: \n\n'
+            
+            order_price = []
+            compteur = 0
 
-        popupWindow.open() # show the popup
+            for price in order_of_employee_price:
         
-    def add_menu(self):
-        print('Add menu')
-        show = PopUpShow() 
-    
-        popupWindow = Popup(
-            title="Add Menu", 
-            content=show, 
-            size_hint=(None,None),
-            size=(600,400),
-            background = 'atlas://data/images/defaulttheme/button_pressed',
-            background_color = (0,0,0.1,0.75),
-            opacity = 1
-                            ) 
-        popupWindow.open()
-
-    def modify_menu(self):
-        print('Modify menu')
+                order_price.append(price)
+                print(order_price)
+            
+            for nameMenuOrdered in order_of_employee:
+                print(nameMenuOrdered)
+                self.ids.label_backup_addition.text +=  nameMenuOrdered + '  ' + str(order_price[compteur]) + ' €\n'
+                self.ids.label.text = ''
+                compteur = compteur + 1
+            total = sum(order_price)
+            self.ids.label_backup_addition.text += '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
+        else: 
+            PopUpShow.show_popup_nomenu()
+            
+              
+        def back(self):
+            pos_app.screen_manager.current = "Connect"
+        def add_user(self):
+            print('Add User')
+            show = PopUpShow() 
         
-        show = PopUpShow() 
-    
-        popupWindow = Popup(
-            title="Modify Menu", 
-            content=show, 
-            size_hint=(None,None),
-            size=(600,400),
-            background = 'atlas://data/images/defaulttheme/button_pressed',
-            background_color = (0,0,0.1,0.75),
-            opacity = 1
-                            ) 
-        popupWindow.open()
+            popupWindow = Popup(
+                title="Ajouter un employée", 
+                content=show, 
+                size_hint=(None,None),
+                size=(600,400),
+                background = 'atlas://data/images/defaulttheme/button_pressed',
+                background_color = (0,0,0.1,0.75),
+                opacity = 1
+                                ) 
+            # Create the popup window
+
+            popupWindow.open() # show the popup
+            
+        def modify_user(self):
+            print('Modify User')
+                
+            show = PopUpShow() 
+        
+            popupWindow = Popup(
+                title="Modify Employee", 
+                content=show, 
+                size_hint=(None,None),
+                size=(600,400),
+                background = 'atlas://data/images/defaulttheme/button_pressed',
+                background_color = (0,0,0.1,0.75),
+                opacity = 1
+                                ) 
+
+
+            popupWindow.open() # show the popup
+            
+        def add_menu(self):
+            print('Add menu')
+            show = PopUpShow() 
+        
+            popupWindow = Popup(
+                title="Add Menu", 
+                content=show, 
+                size_hint=(None,None),
+                size=(600,400),
+                background = 'atlas://data/images/defaulttheme/button_pressed',
+                background_color = (0,0,0.1,0.75),
+                opacity = 1
+                                ) 
+            popupWindow.open()
+
+        def modify_menu(self):
+            print('Modify menu')
+            
+            show = PopUpShow() 
+        
+            popupWindow = Popup(
+                title="Modify Menu", 
+                content=show, 
+                size_hint=(None,None),
+                size=(600,400),
+                background = 'atlas://data/images/defaulttheme/button_pressed',
+                background_color = (0,0,0.1,0.75),
+                opacity = 1
+                                ) 
+            popupWindow.open()
         
     def delete(self, instance):
         self.display.text = str(eval(instance))
