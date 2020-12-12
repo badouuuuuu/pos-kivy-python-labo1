@@ -53,9 +53,13 @@ class MyGridLayout(ScrollView):
     menu_id_db = get_id_list('menu')
     getpurchase_id = get_purchase_id()
     order = []
+    order_price = []
+    total = 0
     purchase_menu = {
         "id employee" : { # to change with id add by user in Connect Page
-        getpurchase_id: order
+        getpurchase_id: order, 
+        "prix" : order_price
+        
                         }
                     }       
     print('------------')
@@ -71,7 +75,7 @@ class MyGridLayout(ScrollView):
                 print('menu : ' + self.descr)
                 self.price = str(get_menu_price(id_menu))
                 print('price : ' + self.price)
-                self.ids.label_backup.text += f'Menu #{str(id_menu)} - {self.price}€\n' + self.descr  + '\n' + '---------------------- ' + '\n'
+                self.ids.label_backup.text += f'Menu #{str(id_menu)} - {self.price}€\n' + self.descr  + '\n' 
                 
         print('------------')   
 
@@ -88,18 +92,32 @@ class MyGridLayout(ScrollView):
         displayLeft = self.ids.label.text 
         
         MenuDescription = get_menu_description(displayLeft) 
+        MenuPrice = get_menu_price(displayLeft)
         label_backup_addition = StringProperty('')
         
         self.order.append(MenuDescription)
+        self.order_price.append(MenuPrice)
         self.ids.label.text = ''
-        test = self.purchase_menu["id employee"][23]
-        print(test)
+        order_of_employee = self.purchase_menu["id employee"][23]
+        order_of_employee_price = self.purchase_menu["id employee"]['prix']
 
-        self.ids.label_backup_addition.text = f'Votre commande :\n------------------\n' 
-        for i in test:
-            print(i)
-            self.ids.label_backup_addition.text +=  i + '\n'
-            
+        self.ids.label_backup_addition.text = 'Votre menu: \n\n'
+        
+        order_price = []
+        compteur = 0
+
+        for price in order_of_employee_price:
+    
+            order_price.append(price)
+            print(order_price)
+        
+        for nameMenuOrdered in order_of_employee:
+            print(nameMenuOrdered)
+            self.ids.label_backup_addition.text +=  nameMenuOrdered + '  ' + str(order_price[compteur]) + ' €\n'
+            self.ids.label.text = ''
+            compteur = compteur + 1
+        total = sum(order_price)
+        self.ids.label_backup_addition.text += '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
         
     def back(self):
         pos_app.screen_manager.current = "Connect"
