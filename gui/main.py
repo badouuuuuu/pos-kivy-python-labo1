@@ -40,7 +40,19 @@ class AskId(Widget):
 
         else:
             self.ids.askid_label.text   = ''
-            PopUpShow.show_popup_unknown()
+            show = PopUpShow() 
+
+            popupWindow = Popup(
+            title='Votre id est inconnu', 
+            content=show, 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1,
+            multiline=False,
+                            ) 
+            popupWindow.open()
             print('id nok')
             print(displayPOSid)
 

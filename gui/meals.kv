@@ -184,32 +184,37 @@
             Label:
                 id: popup_label
                 text: "Name"
-                size_hint: 0.3, 0.15
-                pos_hint: {"x":0.2, "top":1}
+
 
             TextInput:
-                
-                #background_color: 0,0,0.53,0.1
+
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                background_color: 0,0,0.53,0.1
                 id: label
-                #disabled_foreground_color: [0,0,0,0]
-                #foreground_color: [255,255,255,255]
+                disabled_foreground_color: [0,0,0,0]
+                foreground_color: [255,255,255,255]
                 text: ''
                 text_color: 255,255,255
                 allow_copy: False
                 cursor_blink: False
                 multiline: False
+
             Label:
                 id: popup_label
                 text: "Family Name"
-                size_hint: 0.3, 0.15
-                pos_hint: {"x":0.2, "top":1}
+
 
             TextInput:
-                
-                #background_color: 0,0,0.53,0.1
+
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                background_color: 0,0,0.53,0.1
                 id: label
-                #disabled_foreground_color: [0,0,0,0]
-                #foreground_color: [255,255,255,255]
+                disabled_foreground_color: [0,0,0,0]
+                foreground_color: [255,255,255,255]
                 text: ''
                 text_color: 255,255,255
                 allow_copy: False
@@ -219,15 +224,17 @@
             Label:
                 id: popup_label
                 text: "Email"
-                size_hint: 0.3, 0.15
-                pos_hint: {"x":0.2, "top":1}
 
             TextInput:
-                
-                #background_color: 0,0,0.53,0.1
+                size_hint: 0.05, 0.02
+                pos_hint: {"x":0.15, "top":1}
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                background_color: 0,0,0.53,0.1
                 id: label
-                #disabled_foreground_color: [0,0,0,0]
-                #foreground_color: [255,255,255,255]
+                disabled_foreground_color: [0,0,0,0]
+                foreground_color: [255,255,255,255]
                 text: ''
                 text_color: 255,255,255
                 allow_copy: False
@@ -235,14 +242,21 @@
                 multiline: False
 
         Button:
+            cols:1
+            size_hint: 0.17, 0.05
+            background_color: (0, 200, 0, .5)
+            text: "Save"
+            on_press: root.backPopup()
             
-            size_hint: 0.17, 0.1
+            pos_hint: {"x":0.45, "y":0.05}
+        Button:
+            cols:2
+            size_hint: 0.17, 0.05
             background_color: (1.0, 0.0, 0.0, 1.0)
             text: "Retour"
             on_press: root.backPopup()
             
-            pos_hint: {"x":0.45, "y":0.1}
-
+            pos_hint: {"x":0.45, "y":0.05}
 
 <MyGridLayout>
     layout_content: layout_content
