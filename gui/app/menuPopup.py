@@ -28,19 +28,32 @@ class PopUpShow(BoxLayout):
     def backPopup(self):
         self.popupWindow.dismiss()
         
-    def show_popup_unknown(self):
+    def show_popup_unknown():
         show = PopUpShow() 
 
         popupWindow = Popup(
-            title=self.ids.popup_label.text, 
+            title='', 
             content=show, 
             size_hint=(None,None),
             size=(600,400),
             background = 'atlas://data/images/defaulttheme/button_pressed',
             background_color = (0,0,0.1,0.75),
             opacity = 1,
-            multiline=False,
+            
                             ) 
         # Create the popup window
+    def show_popup_askid():
+        show = PopUpShow() 
 
+        popupWindow = Popup(
+            title='Votre id est inconnu', 
+            content=show, 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1,
+            
+                            ) 
+        # Create the popup window
         popupWindow.open() # show the popup
