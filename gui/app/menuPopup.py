@@ -47,7 +47,7 @@ class PopUpShow(BoxLayout):
 
         popupWindow = Popup(
             title='Votre id est inconnu', 
-            content=show, 
+            content=Label(text="Cet utilisateur n'existe pas"), 
             size_hint=(None,None),
             size=(600,400),
             background = 'atlas://data/images/defaulttheme/button_pressed',
@@ -63,7 +63,24 @@ class PopUpShow(BoxLayout):
 
         popupWindow = Popup(
             title='Menu inexistant', 
-            content=show, 
+            content=Label(text="Le menu n'existe pas"), 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1,
+            
+                            ) 
+        # Create the popup window
+        popupWindow.open() # show the popup
+        
+        
+    def ErrorMessage():
+        show = PopUpShow() 
+
+        popupWindow = Popup(
+            title='Menu inexistant', 
+            content=Label(text="Veuillez n'encoder qu'un seul chiffre a la fois"), 
             size_hint=(None,None),
             size=(600,400),
             background = 'atlas://data/images/defaulttheme/button_pressed',

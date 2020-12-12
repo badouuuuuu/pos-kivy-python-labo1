@@ -86,8 +86,10 @@ class MyGridLayout(ScrollView):
         menuList = []
         displayLeft = self.ids.label.text 
         
-        if displayLeft == '0000':
-            print('TICKET DATA')
+        if displayLeft == ' ' or displayLeft == '' or len(displayLeft) > 1:
+            print('ErrorMessage')
+            PopUpShow.ErrorMessage()
+            self.ids.label.text = ''
         else:
             if int(displayLeft) in menu_id_db:
                 
@@ -201,10 +203,16 @@ class MyGridLayout(ScrollView):
         self.display.text = str(eval(instance))
         self.display.text = instance[:0]
     
-    def del1(self, instance):
-        self.display.text = str(eval(instance))
-        self.display.text = instance[:-1]
-    
+    def del1(self):
+        print(self.purchase_menu["id employee"][23])
+        print(self.purchase_menu["id employee"]["prix"])
+        self.order.pop()
+        self.order[:-1] 
+        self.order_price[:-1]
+        self.list_menu()
+        
+        print(self.purchase_menu["id employee"][23])
+        print(self.purchase_menu["id employee"]["prix"])
     def addition(self, instance):
         try:
             self.display.text = str(eval(instance))
