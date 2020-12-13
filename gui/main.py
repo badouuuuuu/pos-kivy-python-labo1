@@ -36,6 +36,7 @@ class AskId(Widget):
                 print(employeeName)
                 print('id ok')
                 print(displayPOSid)
+                
                 pos_app.screen_manager.current = "POS"
 
         else:
@@ -69,13 +70,14 @@ class MyGridLayout(ScrollView):
         super(MyGridLayout, self).__init__(**kwargs)
         label_backup = StringProperty('')
         # self.ids.label_backup_addition.add_widget(Button(text='LOL'))
+        self.ids.label_backup.text += 'Menu:\n\n'
         for id_menu in self.menu_id_db:
                 print('id : ' + str(id_menu))  
                 self.descr = get_menu_description(id_menu)
                 print('menu : ' + self.descr)
                 self.price = str(get_menu_price(id_menu))
                 print('price : ' + self.price)
-                self.ids.label_backup.text += f'Menu #{str(id_menu)} - {self.price}€\n' + self.descr  + '\n' 
+                self.ids.label_backup.text += f'{str(id_menu)} - {self.price}€ - ' + self.descr  + '\n' 
                 
         print('------------')   
 

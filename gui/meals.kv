@@ -23,9 +23,9 @@
                     size: self.size
                     pos: self.pos
             Label:
-                
+                bold: True
                 text: "Entrez votre id"
-                font_size: '90dp'
+                font_size: '75dp'
 
         BoxLayout:
             size_hint: 1, 1
@@ -39,6 +39,7 @@
                     size: self.size
                     pos: self.pos
             TextInput:
+                center: self.parent.center 
                 id: askid_label
                 text: ''
                 font_size: self.size[0] * 0.1
@@ -63,7 +64,7 @@
                         rgba: (0,0,0.53,0.2)
                         
                 cols: 3
-
+                bold: True
                 Button:
                     text: '7'
                     on_press: app.trigger = True
@@ -194,7 +195,7 @@
                 halign: 'center'
                 valign: 'middle'
                 background_color: 0,0,0.53,0.1
-                id: label
+                id: label_name
                 disabled_foreground_color: [0,0,0,0]
                 foreground_color: [255,255,255,255]
                 text: ''
@@ -216,7 +217,7 @@
                 halign: 'center'
                 valign: 'middle'
                 background_color: 0,0,0.53,0.1
-                id: label
+                id: label_familyname
                 disabled_foreground_color: [0,0,0,0]
                 foreground_color: [255,255,255,255]
                 text: ''
@@ -237,7 +238,7 @@
                 halign: 'center'
                 valign: 'middle'
                 background_color: 0,0,0.53,0.1
-                id: label
+                id: label_email
                 disabled_foreground_color: [0,0,0,0]
                 foreground_color: [255,255,255,255]
                 text: ''
@@ -251,17 +252,17 @@
             size_hint: 0.17, 0.05
             background_color: (0, 200, 0, .5)
             text: "Save"
-            on_press: root.backPopup()
+            on_press: root.popup_adduser()
             spacing :40
             pos_hint: {"x":0.45, "y":0.05}
-            
+            bold: True
         Button:
             
             spacing :40
             cols:2
             size_hint: 0.17, 0.05
             background_color: (1.0, 0.0, 0.0, 1.0)
-            text: "Retour"
+            text: "Cancel"
             on_press: root.backPopup()
             
             pos_hint: {"x":0.45, "y":0.05}
@@ -314,17 +315,27 @@
                 cols:2
 
                 id: layout_content
-                padding: 40
-                spacing: 40
+                padding: 20
+                spacing: 20
                 canvas.before:
                     Color:
                         rgba: (0,0,0.53,0.2)
                 Label:
+                    bold: True
                     id: label_backup
                     size_hint: .3, .5
-                    background: 3,0,5.53,0.1
+                    background: 3,25,5.53,0.1
                     text: ''
+                    background_color: 0,0,0.53,0.1
+                    disabled_foreground_color: [0,0,0,0]
+                    foreground_color: [255,255,255,255]
+                    text: ''
+                    text_color: 255,255,255
+                    allow_copy: False
+                    cursor_blink: False
+
                 Label:
+                    bold: True
                     id: label_backup_addition
                     size_hint: .3, .5
                     background: 3,0,5.53,0.1

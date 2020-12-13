@@ -195,11 +195,11 @@ def save_database(db_name):
   backup = backup_dir + '/' + db_name + '_' + hour
   shutil.copyfile(source, backup)
 
-def add_employee():
+def add_employee(name, family, email, confirm):
   print('add_employee')
-  first_name = input("First name : ")
-  family_name = input("Family name : ")
-  email_address = input("Email address : ")
+  first_name = name
+  family_name = family
+  email_address = email
   
   db_link = connect_to_db(db_path)
   db_cursor = create_cursor(db_link)
@@ -207,14 +207,15 @@ def add_employee():
   sql_values = (first_name, family_name, email_address)
   write_to_cursor(db_cursor, sql_query, sql_values)
 
-  confirm = input("Confirm your request (y/n) : ")
+  confirm = confirm
   
   if confirm == 'y':
     commit_to_db(db_link)
     disconnect_from_db(db_link)
-    save_database(db_path)
+    print('Sended to database')
+    #save_database(db_path)
 
-  choose_enquiry()
+  #choose_enquiry()
 
 def modify_employee():
   print('modify_employee')
