@@ -180,8 +180,8 @@
         GridLayout:
             cols: 2
             size_hint: 1, .35
-            padding: 10
-            spacing: 10
+            padding: 40
+            spacing: 40
             Label:
                 id: popup_label
                 text: "Name"
@@ -245,16 +245,19 @@
                 allow_copy: False
                 cursor_blink: False
                 multiline: False
-
+        
         Button:
             cols:1
             size_hint: 0.17, 0.05
             background_color: (0, 200, 0, .5)
             text: "Save"
             on_press: root.backPopup()
-            
+            spacing :40
             pos_hint: {"x":0.45, "y":0.05}
+            
         Button:
+            
+            spacing :40
             cols:2
             size_hint: 0.17, 0.05
             background_color: (1.0, 0.0, 0.0, 1.0)
@@ -330,12 +333,17 @@
                     size_hint: 1, .5
                     background_color: 0,0,0.53,0.1
                     id: label
+                    text: ''
+                    font_size: self.size[0] * 0.1
+                    background_color: 0,0,0.53,0.1
                     disabled_foreground_color: [0,0,0,0]
                     foreground_color: [255,255,255,255]
-                    text: ''
                     text_color: 255,255,255
                     allow_copy: False
                     cursor_blink: False
+                    halign: 'center'
+                    valign: 'middle'
+                    size: self.parent.size[0], 200
                     multiline: False
                     on_text_validate: root.list_menu()
 
