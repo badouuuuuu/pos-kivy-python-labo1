@@ -189,7 +189,7 @@
 
             TextInput:
                 padding: [0, (self.height-self.line_height)/2]
-
+                on_text_validate: root.popup_adduser()
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 text_size: self.size
                 halign: 'center'
@@ -211,7 +211,7 @@
 
             TextInput:
                 padding: [0, (self.height-self.line_height)/2]
-
+                on_text_validate: root.popup_adduser()
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 text_size: self.size
                 halign: 'center'
@@ -232,7 +232,7 @@
 
             TextInput:
                 padding: [0, (self.height-self.line_height)/2]
-
+                on_text_validate: root.popup_adduser()
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 text_size: self.size
                 halign: 'center'
@@ -252,7 +252,8 @@
             size_hint: 0.17, 0.05
             background_color: (0, 200, 0, .5)
             text: "Save"
-            on_press: root.popup_adduser()
+            on_release: root.popup_adduser()
+            
             spacing :40
             pos_hint: {"x":0.45, "y":0.05}
             bold: True

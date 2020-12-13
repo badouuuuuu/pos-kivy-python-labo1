@@ -31,17 +31,34 @@ class PopUpShow(BoxLayout):
     
     
     def popup_adduser(self):
+        name = self.ids.label_name.text
+        email = self.ids.label_email.text
+        family = self.ids.label_familyname.text
+    
+        if name == '' or email == '' or family == '':
+            print('pas de champs vide')
+        else:
+            
+           # self.value.append(self.ids.label_email.text)
+           # self.value.append(self.ids.label_familyname.text)
+           # self.value.append(self.ids.label_name.text)
 
-        self.value.append(self.ids.label_email.text)
-        self.value.append(self.ids.label_familyname.text)
-        self.value.append(self.ids.label_name.text)
-        
-        print(self.value)
-        name = self.value[2]
-        email = self.value[0]
-        family = self.value[1]
-        confirm = 'y'
-        add_employee(name, family, email, confirm)
+            popupWindow = Popup(
+            title='Enregistré', 
+            content=Label(text=f"Ajouté au registre\n"), 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1,
+            
+                                ) 
+            popupWindow.open()
+            confirm = 'y'
+            add_employee(name, family, email, confirm)
+            self.ids.label_name.text = ''
+            self.ids.label_email.text = ''
+            self.ids.label_familyname.text = ''
 
     
     def backPopup(self):
