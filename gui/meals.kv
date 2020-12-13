@@ -148,22 +148,21 @@
                         if (app.triggerC): app.triggerC = False
                     
                 Button:
-                    text: '.'
+                    text: 'DEL'
+                    background_color: (255, 125, 0, .9)
+                    color: (0,0,0,0.5)
                     on_press:
-                        if (app.trigger): askid_label.text += self.text
-                        if (app.trigger): app.triggerC = False
-                        if (app.trigger): app.trigger = False
-
+                        askid_label.text = ''
 
                 BoxLayout:
                     orientation: 'vertical'
 
                     size_hint: 1, 1
                     Button:
-                        text: "Cancel"
+                        text: "Exit"
                         background_color: (1.0, 0.0, 0.0, 1.0)
                         on_press:
-                            root.deleteLine()
+                            root.exit()
                     Button:
                         text: "Enter"
                         background_color: (0, 200, 0, .5)
@@ -189,7 +188,7 @@
 
             TextInput:
                 padding: [0, (self.height-self.line_height)/2]
-                on_text_validate: root.popup_adduser()
+                on_text_validate: label_familyname.focus = True
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 text_size: self.size
                 halign: 'center'
@@ -225,6 +224,7 @@
                 allow_copy: False
                 cursor_blink: False
                 multiline: False
+                on_text_validate: label_email.focus = True
 
             Label:
                 id: popup_label
@@ -472,7 +472,3 @@
                             background_color: (0, 200, 0, .5)
                             on_press:
                                 root.list_menu()
-
-                                #if (app.trigger): root.addition(label.text)
-                                #if (app.trigger): root.addition(labelResult.text)
-                                #if (app.trigger): app.triggerC = True
