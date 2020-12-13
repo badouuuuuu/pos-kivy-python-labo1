@@ -1,8 +1,6 @@
 #! /usr/bin/python3
 # coding: utf-8
  
-
-
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
@@ -20,8 +18,10 @@ from kivy.uix.scrollview import ScrollView
 from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name, get_purchase_id, get_menu_price
 from kivy.uix.recycleview import RecycleView 
 from app.menuPopup import PopUpShow
+from kivy.config import Config
 
 from kivy.uix.vkeyboard import VKeyboard 
+Config.set('kivy','window_icon','meals.ico')
 
 class Test(VKeyboard): 
     player = VKeyboard() 
