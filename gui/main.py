@@ -131,73 +131,73 @@ class MyGridLayout(ScrollView):
                 PopUpShow.show_popup_nomenu()
                 self.ids.label.text = ''
 
-        def back(self):
-            pos_app.screen_manager.current = "Connect"
-        def add_user(self):
-            print('Add User')
-            show = PopUpShow() 
-        
-            popupWindow = Popup(
-                title="Ajouter un employée", 
-                content=show, 
-                size_hint=(None,None),
-                size=(600,400),
-                background = 'atlas://data/images/defaulttheme/button_pressed',
-                background_color = (0,0,0.1,0.75),
-                opacity = 1
-                                ) 
-            # Create the popup window
+    def back(self):
+        pos_app.screen_manager.current = "Connect"
+    def add_user(self):
+        print('Add User')
+        show = PopUpShow() 
+    
+        popupWindow = Popup(
+            title="Ajouter un employée", 
+            content=show, 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1
+                            ) 
+        # Create the popup window
 
-            popupWindow.open() # show the popup
+        popupWindow.open() # show the popup
+        
+    def modify_user(self):
+        print('Modify User')
             
-        def modify_user(self):
-            print('Modify User')
-                
-            show = PopUpShow() 
-        
-            popupWindow = Popup(
-                title="Modify Employee", 
-                content=show, 
-                size_hint=(None,None),
-                size=(600,400),
-                background = 'atlas://data/images/defaulttheme/button_pressed',
-                background_color = (0,0,0.1,0.75),
-                opacity = 1
-                                ) 
+        show = PopUpShow() 
+    
+        popupWindow = Popup(
+            title="Modify Employee", 
+            content=show, 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1
+                            ) 
 
 
-            popupWindow.open() # show the popup
-            
-        def add_menu(self):
-            print('Add menu')
-            show = PopUpShow() 
+        popupWindow.open() # show the popup
         
-            popupWindow = Popup(
-                title="Add Menu", 
-                content=show, 
-                size_hint=(None,None),
-                size=(600,400),
-                background = 'atlas://data/images/defaulttheme/button_pressed',
-                background_color = (0,0,0.1,0.75),
-                opacity = 1
-                                ) 
-            popupWindow.open()
+    def add_menu(self):
+        print('Add menu')
+        show = PopUpShow() 
+    
+        popupWindow = Popup(
+            title="Add Menu", 
+            content=show, 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1
+                            ) 
+        popupWindow.open()
 
-        def modify_menu(self):
-            print('Modify menu')
-            
-            show = PopUpShow() 
+    def modify_menu(self):
+        print('Modify menu')
         
-            popupWindow = Popup(
-                title="Modify Menu", 
-                content=show, 
-                size_hint=(None,None),
-                size=(600,400),
-                background = 'atlas://data/images/defaulttheme/button_pressed',
-                background_color = (0,0,0.1,0.75),
-                opacity = 1
-                                ) 
-            popupWindow.open()
+        show = PopUpShow() 
+    
+        popupWindow = Popup(
+            title="Modify Menu", 
+            content=show, 
+            size_hint=(None,None),
+            size=(600,400),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1
+                            ) 
+        popupWindow.open()
         
     def delete(self, instance):
         self.display.text = str(eval(instance))
