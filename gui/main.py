@@ -25,6 +25,7 @@ class Test(VKeyboard):
     player = VKeyboard() 
   
 class AskId(Widget):
+    order = ListProperty([]) 
     order = []
     def CheckId(self):
         displayPOSid  = ''
@@ -133,7 +134,8 @@ class MyGridLayout(ScrollView):
                     self.ids.label.text = ''
                     compteur = compteur + 1
                 total = sum(order_price)
-                self.ids.label_backup_addition.text += '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
+                addtexttotal = '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
+                self.ids.label_backup_addition.text += addtexttotal
             else: 
                 PopUpShow.show_popup_nomenu()
                 self.ids.label.text = ''
@@ -211,28 +213,18 @@ class MyGridLayout(ScrollView):
         self.display.text = instance[:0]
     
     def del1(self):
+        order = ListProperty([]) 
         print(self.purchase_menu["id employee"][23])
-        print(self.purchase_menu["id employee"]["prix"])
-        self.order.pop()
-        self.order[:-1] 
-        self.order_price[:-1]
-        self.list_menu()
+
+        print(order)
+
+        self.purchase_menu["id employee"][23] = self.purchase_menu["id employee"][23][:-1]
+        self.purchase_menu["id employee"]["prix"] = self.purchase_menu["id employee"]["prix"][:-1]
+        self.total = sum(self.purchase_menu["id employee"]["prix"])
+        print(self.purchase_menu["id employee"])
         
-        print(self.purchase_menu["id employee"][23])
-        print(self.purchase_menu["id employee"]["prix"])
     def addition(self, instance):
-        try:
-            self.display.text = str(eval(instance))
-            self.result.text = str(eval(instance))
-            display = self.result.text
-            total = [0, 0, 0]
-            total.append(int(display))
-
-            print(total)
-
-        except Exception:
-            self.display.text = '0'
-            self.result.text = 'ERROR'
+        pass
 
 class Meals(App):
     trigger = False
