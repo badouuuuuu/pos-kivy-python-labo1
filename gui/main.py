@@ -19,6 +19,11 @@ from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_descr
 from kivy.uix.recycleview import RecycleView 
 from app.menuPopup import PopUpShow
 
+from kivy.uix.vkeyboard import VKeyboard 
+
+class Test(VKeyboard): 
+    player = VKeyboard() 
+  
 class AskId(Widget):
     order = []
     def CheckId(self):
@@ -138,7 +143,7 @@ class MyGridLayout(ScrollView):
     def add_user(self):
         print('Add User')
         show = PopUpShow() 
-    
+        
         popupWindow = Popup(
             title="Ajouter un employée", 
             content=show, 
