@@ -88,7 +88,7 @@ def purchase(menu_id, confirm, employee_id):
     disconnect_from_db(db_link)
     save_database(db_path)
   print('FINISHED')
-  return menu_id
+  return ticket_data
 
 
 def get_purchase_id():

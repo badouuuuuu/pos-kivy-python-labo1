@@ -114,6 +114,8 @@ class MyGridLayout(ScrollView):
                 total = sum(order_price)
                 addtexttotal = '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
                 self.ids.label_backup_addition.text += addtexttotal
+                
+
             else: 
                 PopUpShow.show_popup_nomenu()
                 self.ids.label.text = ''
