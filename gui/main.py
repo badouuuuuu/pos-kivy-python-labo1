@@ -19,7 +19,7 @@ from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_descr
 from kivy.uix.recycleview import RecycleView 
 from app.menuPopup import PopUpShow
 from kivy.config import Config
-
+import datetime
 from kivy.uix.vkeyboard import VKeyboard 
 Config.set('kivy','window_icon','meals.ico')
 
@@ -61,7 +61,10 @@ class MyGridLayout(ScrollView):
     def __init__(self, **kwargs):
         super(MyGridLayout, self).__init__(**kwargs)
         label_backup = StringProperty('')
-        self.ids.label_backup.text += 'Menu:\n\n'
+        current_date = datetime.datetime.now()
+        formated_date = current_date.strftime("%b %d %Y")
+        formated_seconde = current_date.strftime("%H:%M:%S")
+        self.ids.label_backup.text += f'{formated_date} - {formated_seconde}\n\nMenu:\n\n'
         for id_menu in self.menu_id_db:
                 self.descr = get_menu_description(id_menu)
                 self.price = str(get_menu_price(id_menu))
