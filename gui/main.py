@@ -17,7 +17,7 @@ from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
 from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name, get_purchase_id, get_menu_price
 from kivy.uix.recycleview import RecycleView 
-from app.menuPopup import PopUpShow
+from app.menuPopup import PopUpShow,PopUpShow2
 from kivy.config import Config
 import datetime
 from kivy.uix.vkeyboard import VKeyboard 
@@ -143,7 +143,7 @@ class MyGridLayout(ScrollView):
         
     def modify_user(self):
         print('Modify User')   
-        show = PopUpShow() 
+        show = PopUpShow2() 
         popupWindow = Popup(
             title="Modify Employee", 
             content=show, 
@@ -174,7 +174,7 @@ class MyGridLayout(ScrollView):
     def modify_menu(self):
         print('Modify menu')
         
-        show = PopUpShow() 
+        show = PopUpShow2() 
     
         popupWindow = Popup(
             title="Modify Menu", 
