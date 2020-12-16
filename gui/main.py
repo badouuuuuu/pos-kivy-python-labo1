@@ -27,8 +27,7 @@ class Test(VKeyboard):
     player = VKeyboard() 
   
 class AskId(Widget):
-    order = ListProperty([]) 
-    order = []
+
     def CheckId(self):
         displayPOSid  = ''
         employee_id_db = get_id_list('employee')
@@ -77,7 +76,7 @@ class MyGridLayout(ScrollView):
         menuList = []
         displayLeft = self.ids.label.text 
         
-        if displayLeft == ' ' or displayLeft == '' or len(displayLeft) > 1:
+        if displayLeft == ' ' or displayLeft == '':
             print('ErrorMessage')
             PopUpShow.ErrorMessage()
             self.ids.label.text = ''
@@ -96,27 +95,35 @@ class MyGridLayout(ScrollView):
                 self.order.append(MenuDescription)
                 self.order_price.append(MenuPrice)
                 self.ids.label.text = ''
-                order_of_employee = self.purchase_menu["id employee"][23]
+                order_of_employee = self.purchase_menu["id employee"][self.getpurchase_id]
                 order_of_employee_price = self.purchase_menu["id employee"]['prix']
 
                 self.ids.label_backup_addition.text = 'Votre menu: \n\n'
                 
                 order_price = []
-                compteur = 0
+               
 
                 for price in order_of_employee_price:
             
                     order_price.append(price)
                     print(order_price)
-                
+                idmenulist = self.purchase_menu["id employee"][self.getpurchase_id]
+                compteur = 0
                 for nameMenuOrdered in order_of_employee:
                     print(nameMenuOrdered)
                     self.ids.label_backup_addition.text +=  nameMenuOrdered + '  ' + str(order_price[compteur]) + ' €\n'
                     self.ids.label.text = ''
+                    index = idmenulist.index(idmenulist[compteur])
+                    purchase(index, 3)  # A CORRIGER
+              
                     compteur = compteur + 1
-                    purchase(displayLeft, 23)
-                    if self.ids.label.text == '0000':
-                        purchase().confirm = '0000'
+                    if self.ids.label.text == '.':
+                        purchase(index, 3)
+                    
+
+                        
+                    #purchase(self.purchase_menu["id employee"][self.getpurchase_id][2], 3, 'y')
+ 
                     
                     
                 total = sum(order_price)
@@ -193,7 +200,7 @@ class MyGridLayout(ScrollView):
         popupWindow.open()
 
     def del1(self):
-        self.purchase_menu["id employee"][23] = self.purchase_menu["id employee"][23][:-1]
+        self.purchase_menu["id employee"][self.getpurchase_id] = self.purchase_menu["id employee"][self.getpurchase_id][:-1]
         self.purchase_menu["id employee"]["prix"] = self.purchase_menu["id employee"]["prix"][:-1]
         self.total = sum(self.purchase_menu["id employee"]["prix"])
         print(self.purchase_menu["id employee"])
