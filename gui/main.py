@@ -56,7 +56,7 @@ class MyGridLayout(ScrollView):
         "prix" : order_price
                         }
                     }       
-
+    confirm = 'n'
     def __init__(self, **kwargs):
         super(MyGridLayout, self).__init__(**kwargs)
         label_backup = StringProperty('')
@@ -70,7 +70,7 @@ class MyGridLayout(ScrollView):
                 self.ids.label_backup.text += f'{str(id_menu)} - {self.price}€ - ' + self.descr  + '\n' 
 
 
-    def list_menu(self):
+    def list_menu(self):          
         menuList = ListProperty([]) 
         menu_id_db = get_id_list('menu')
         menuList = []
@@ -81,55 +81,53 @@ class MyGridLayout(ScrollView):
             PopUpShow.ErrorMessage()
             self.ids.label.text = ''
         else:
-            if int(displayLeft) in menu_id_db:
+            if self.ids.label.text == '0000':
+                self.confirm = 'y'
+            if int(displayLeft) in menu_id_db or int(displayLeft) == 0000:
                 
                 for id in menu_id_db:
                     menu = get_menu_description(id)
                     self.ids.label_backup_addition.text = self.ids.label_backup.text + self.descr + '\n'
                     menuList.append(menu)
-
-                MenuDescription = get_menu_description(displayLeft) 
-                MenuPrice = get_menu_price(displayLeft)
-                label_backup_addition = StringProperty('')
-                
-                self.order.append(MenuDescription)
-                self.order_price.append(MenuPrice)
-                self.ids.label.text = ''
-                order_of_employee = self.purchase_menu["id employee"][self.getpurchase_id]
-                order_of_employee_price = self.purchase_menu["id employee"]['prix']
-
-                self.ids.label_backup_addition.text = 'Votre menu: \n\n'
-                
-                order_price = []
-               
-
-                for price in order_of_employee_price:
-            
-                    order_price.append(price)
-                    print(order_price)
-                idmenulist = self.purchase_menu["id employee"][self.getpurchase_id]
-                compteur = 0
-                for nameMenuOrdered in order_of_employee:
-                    print(nameMenuOrdered)
-                    self.ids.label_backup_addition.text +=  nameMenuOrdered + '  ' + str(order_price[compteur]) + ' €\n'
+                if displayLeft == '0000':
+                    pos_app.screen_manager.current = "Ticket"
+                else:
+                    MenuDescription = get_menu_description(displayLeft) 
+                    MenuPrice = get_menu_price(displayLeft)
+                    label_backup_addition = StringProperty('')
+                    
+                    self.order.append(MenuDescription)
+                    self.order_price.append(MenuPrice)
                     self.ids.label.text = ''
-                    index = idmenulist.index(idmenulist[compteur])
-                    purchase(index, 3)  # A CORRIGER
-              
-                    compteur = compteur + 1
-                    if self.ids.label.text == '.':
-                        purchase(index, 3)
-                    
+                    order_of_employee = self.purchase_menu["id employee"][self.getpurchase_id]
+                    order_of_employee_price = self.purchase_menu["id employee"]['prix']
 
-                        
-                    #purchase(self.purchase_menu["id employee"][self.getpurchase_id][2], 3, 'y')
- 
+                    self.ids.label_backup_addition.text = 'Votre menu: \n\n'
                     
-                    
-                total = sum(order_price)
-                addtexttotal = '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
-                self.ids.label_backup_addition.text += addtexttotal
+                    order_price = []
                 
+                    for price in order_of_employee_price:
+                
+                        order_price.append(price)
+                        print(order_price)
+                    idmenulist = self.purchase_menu["id employee"][self.getpurchase_id]
+                    compteur = 0
+                    for nameMenuOrdered in order_of_employee:
+                        print(nameMenuOrdered)
+                        self.ids.label_backup_addition.text +=  nameMenuOrdered + '  ' + str(order_price[compteur]) + ' €\n'
+                        self.ids.label.text = ''
+                        index = idmenulist.index(idmenulist[compteur])
+                        purchase(index, 3, self.confirm)  # A CORRIGER
+                
+                        compteur = compteur + 1
+                        if self.ids.label.text == '.':
+                            purchase(index, 3, self.confirm)
+
+                        #purchase(self.purchase_menu["id employee"][self.getpurchase_id][2], 3, 'y')
+
+                    total = sum(order_price)
+                    addtexttotal = '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
+                    self.ids.label_backup_addition.text += addtexttotal
 
             else: 
                 PopUpShow.show_popup_nomenu()
@@ -204,7 +202,10 @@ class MyGridLayout(ScrollView):
         self.purchase_menu["id employee"]["prix"] = self.purchase_menu["id employee"]["prix"][:-1]
         self.total = sum(self.purchase_menu["id employee"]["prix"])
         print(self.purchase_menu["id employee"])
-
+        
+class DisplayTicket(Widget):
+    print('OK')
+    
 class Meals(App):
     trigger = False
     triggerC = False
@@ -224,6 +225,11 @@ class Meals(App):
         self.pos_page = MyGridLayout()
         screen = Screen(name="POS")
         screen.add_widget(self.pos_page)
+        self.screen_manager.add_widget(screen)
+        
+        self.ticket_page = DisplayTicket()
+        screen = Screen(name="Ticket")
+        screen.add_widget(self.ticket_page)
         self.screen_manager.add_widget(screen)
         
         return self.screen_manager

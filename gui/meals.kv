@@ -360,8 +360,8 @@
                     size: self.parent.size[0], 200
                     multiline: False
                     on_text_validate: root.list_menu()
-
-            
+           
+        
                 GridLayout:
                     padding: 2
                     spacing:4
@@ -474,7 +474,15 @@
                             background_color: (0, 200, 0, .5)
                             on_press:
                                 root.list_menu()
-
+                AnchorLayout:
+                    anchor_x:'left'
+                    anchor_y:'bottom'
+              
+                    size_hint: .1, .1
+                    Label:
+                        text:'Tapez << 0000 >> pour confirmer la commande'
+                        color: 1, 0, 0, 1
+                        font_size: '12dp'
 <PopUpShow2>:
     id : popup_id_unknown2
     popup_label : popup_label2
@@ -572,3 +580,44 @@
             on_press: root.backPopup()
             
             pos_hint: {"x":0.45, "y":0.05}
+
+
+
+
+<DisplayTicket>
+    
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'center'
+        pos_hint: {'top': 0.5 + self.size_hint[1]/2}
+
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        BoxLayout:
+            size_hint: 1, .2
+            padding: 40
+            spacing: 40
+            canvas.before:
+                Color:
+                    rgba: (0,0,0.53,0.2)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Label:
+                bold: True
+                text: "Votre Ticket"
+                font_size: '65dp'
+
+        BoxLayout:
+            size_hint: 1, 1
+            padding: 40
+            spacing: 40
+
+            canvas.before:
+                Color:
+                    rgba: (0,0,0.53,0.2)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos

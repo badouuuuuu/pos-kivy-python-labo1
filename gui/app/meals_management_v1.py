@@ -49,7 +49,7 @@ def trigger_enquiry(choice): # déclencher une requête
   elif (choice == 'Exit'):
     exit_program()
 
-def purchase(menu_id, employee_id):
+def purchase(menu_id, employee_id, confirm):
   print(menu_id)
   purchase_id = get_purchase_id()
   current_date = datetime.datetime.now()
@@ -84,11 +84,11 @@ def purchase(menu_id, employee_id):
     display_ticket(ticket_data)
     break
   
-  confirm = 'y'
+  confirm = confirm
   if ((confirm == 'y')):
     commit_to_db(db_link)
     disconnect_from_db(db_link)
-    save_database(db_path)
+    #save_database(db_path)
   print('FINISHED')
   return display_ticket
 
