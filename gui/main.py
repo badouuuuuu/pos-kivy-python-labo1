@@ -15,7 +15,7 @@ from kivy.properties import ObjectProperty
 from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
-from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name, get_purchase_id, get_menu_price
+from app.meals_management_v1 import get_employee_id, get_id_list, get_menu_description, get_employee_name, get_purchase_id, get_menu_price, purchase
 from kivy.uix.recycleview import RecycleView 
 from app.menuPopup import PopUpShow,PopUpShow2
 from kivy.config import Config
@@ -114,6 +114,11 @@ class MyGridLayout(ScrollView):
                     self.ids.label_backup_addition.text +=  nameMenuOrdered + '  ' + str(order_price[compteur]) + ' €\n'
                     self.ids.label.text = ''
                     compteur = compteur + 1
+                    purchase(displayLeft, 23)
+                    if self.ids.label.text == '0000':
+                        purchase().confirm = '0000'
+                    
+                    
                 total = sum(order_price)
                 addtexttotal = '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
                 self.ids.label_backup_addition.text += addtexttotal

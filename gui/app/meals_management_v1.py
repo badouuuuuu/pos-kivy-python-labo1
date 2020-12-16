@@ -49,7 +49,8 @@ def trigger_enquiry(choice): # déclencher une requête
   elif (choice == 'Exit'):
     exit_program()
 
-def purchase(menu_id, confirm, employee_id):
+def purchase(menu_id2, employee_id):
+  print(menu_id2)
   purchase_id = get_purchase_id()
   current_date = datetime.datetime.now()
   formated_date = current_date.strftime("%d-%m-%Y %H:%M:%S")
@@ -67,7 +68,7 @@ def purchase(menu_id, confirm, employee_id):
   menu_id_list = get_id_list('menu')
   
   while True:
-    menu_id = menu_id
+    menu_id = menu_id2
 
     if not menu_id: #TODO if menu_id in menu_id_list:
       break
@@ -81,14 +82,15 @@ def purchase(menu_id, confirm, employee_id):
         write_to_cursor(db_cursor,sql_query,sql_values)
         ticket_data.append(sql_values)
     display_ticket(ticket_data)
+    break
   
-  confirm = confirm
+  confirm = '0000'
   if ((confirm == 'y') and (len(ticket_data) >= 4)):
     commit_to_db(db_link)
     disconnect_from_db(db_link)
     save_database(db_path)
   print('FINISHED')
-  return ticket_data
+  return display_ticket
 
 
 def get_purchase_id():
@@ -170,9 +172,10 @@ def display_ticket(ticket_data):
     detail_line = detail_string.format(description,price)
     
     amount = amount + price
-    return amount
+
   amount_line = '\nAmount : ' + str(amount) + ' €'
   print(amount_line)
+  return amount
   
 
 def get_menu_description(menu_id):
