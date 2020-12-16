@@ -76,7 +76,7 @@ class MyGridLayout(ScrollView):
         menuList = []
         displayLeft = self.ids.label.text 
         
-        if displayLeft == ' ' or displayLeft == '':
+        if displayLeft == ' ' or displayLeft == '' or int(displayLeft) not in menu_id_db and displayLeft != '0000':
             print('ErrorMessage')
             PopUpShow.ErrorMessage()
             self.ids.label.text = ''
@@ -90,7 +90,9 @@ class MyGridLayout(ScrollView):
                     self.ids.label_backup_addition.text = self.ids.label_backup.text + self.descr + '\n'
                     menuList.append(menu)
                 if displayLeft == '0000':
+                    displayLeft = ''
                     pos_app.screen_manager.current = "Ticket"
+                    
                 else:
                     MenuDescription = get_menu_description(displayLeft) 
                     MenuPrice = get_menu_price(displayLeft)
