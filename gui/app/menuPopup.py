@@ -110,7 +110,7 @@ class PopUpShow(BoxLayout):
 
         popupWindow = Popup(
             title='Menu inexistant', 
-            content=Label(text="Veuillez n'encoder qu'un seul chiffre a la fois"), 
+            content=Label(text="Le menu n'existe pas"), 
             size_hint=(None,None),
             size=(600,400),
             background = 'atlas://data/images/defaulttheme/button_pressed',
