@@ -261,9 +261,26 @@ def modify_employee(employeeid, new_firstname, new_familyname, new_email):
 
 
 
-def add_menu():
+def add_menu(description, price):
   print('add_menu')
-  choose_enquiry()
+   
+  new_description = description
+  new_price = price
+
+  
+  db_link = connect_to_db(db_path)
+  db_cursor = create_cursor(db_link)
+  sql_query = "INSERT INTO menu(description, price) VALUES (?,?)"
+  sql_values = (new_description, new_price)
+  write_to_cursor(db_cursor, sql_query, sql_values)
+  print('ok add')
+  confirm = 'y'
+  
+  if confirm == 'y':
+    commit_to_db(db_link)
+    disconnect_from_db(db_link)
+    print('Sended to database')
+    #save_database(db_path)
 
 def modify_menu():
   print('modify_menu')

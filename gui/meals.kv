@@ -170,7 +170,82 @@
                         background_color: (0, 200, 0, .5)
                         on_release:
                             root.CheckId()
+<PopUpShowAddMenu>
+    id : popup_id_addmenu
+    popup_label_addmenu : popup_label_addmenu
+    size: root.width, root.height
 
+    BoxLayout:
+        orientation: 'vertical'
+        GridLayout:
+            cols: 2
+            size_hint: 1, .35
+            padding: 40
+            spacing: 40
+            Label:
+                id: popup_label_addmenu
+                text: "Description"
+
+            TextInput:
+                padding: [0, (self.height-self.line_height)/2]
+                on_text_validate: label_familyname.focus = True
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                background_color: 0,0,0.53,0.1
+                id: label_menu_add_description
+                disabled_foreground_color: [0,0,0,0]
+                foreground_color: [255,255,255,255]
+                text: ''
+                text_color: 255,255,255
+                allow_copy: False
+                cursor_blink: False
+                multiline: False
+                on_text_validate: label_menu_add_price.focus = True
+            Label:
+                id: popup_label_addmenu
+                text: "Prix"
+
+
+            TextInput:
+                padding: [0, (self.height-self.line_height)/2]
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                background_color: 0,0,0.53,0.1
+                id: label_menu_add_price
+                disabled_foreground_color: [0,0,0,0]
+                foreground_color: [255,255,255,255]
+                text: ''
+                text_color: 255,255,255
+                allow_copy: False
+                cursor_blink: False
+                multiline: False
+                on_text_validate: root.popup_addmenu()
+
+        
+        Button:
+            cols:1
+            size_hint: 0.17, 0.05
+            background_color: (0, 200, 0, .5)
+            text: "Save"
+            on_release: root.popup_addmenu()
+            
+            spacing :40
+            pos_hint: {"x":0.45, "y":0.05}
+            bold: True
+        Button:
+            
+            spacing :40
+            cols:2
+            size_hint: 0.17, 0.05
+            background_color: (1.0, 0.0, 0.0, 1.0)
+            text: "Cancel"
+            on_press: root.backPopup()
+            
+            pos_hint: {"x":0.45, "y":0.05}
 
 <PopUpShow>:
     id : popup_id_unknown

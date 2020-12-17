@@ -15,9 +15,35 @@ from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
 # from app.getFunction import getEmployee, getMenuList
-from app.meals_management_v1 import add_employee, modify_employee
+from app.meals_management_v1 import add_employee, modify_employee, add_menu
 from kivy.uix.recycleview import RecycleView 
 
+
+class PopUpShowAddMenu(BoxLayout):
+    def popup_addmenu(self):
+        new_menu_description = self.ids.label_menu_add_description.text
+        new_menu_price = self.ids.label_menu_add_price.text
+     
+    
+        if new_menu_description == '' or new_menu_price == '':
+            print('pas de champs vide')
+        else:
+            popupWindow = Popup(
+            title='Enregistré', 
+            content=Label(text=f"Menu a été registre\n"), 
+            size_hint=(None,None),
+            size=((400,200)),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1,
+                                ) 
+            popupWindow.open()
+            add_menu(new_menu_description, new_menu_price)
+            
+            self.ids.label_menu_add_description.text = ''
+            self.ids.label_menu_add_price.text = ''
+            
+            
 
 class PopUpShow(BoxLayout):
 
@@ -52,8 +78,7 @@ class PopUpShow(BoxLayout):
             self.ids.label_name.text = ''
             self.ids.label_email.text = ''
             self.ids.label_familyname.text = ''
-
-    
+                
     def backPopup(self):
         self.ids.label_email.text = ''
         self.ids.label_familyname.text = ''
