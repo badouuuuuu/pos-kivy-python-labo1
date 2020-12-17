@@ -489,18 +489,42 @@
     size: root.width, root.height
 
     BoxLayout:
+    
         orientation: 'vertical'
         GridLayout:
             cols: 2
-            size_hint: 1, .35
-            padding: 40
-            spacing: 40
+            size_hint: 1, .7
+            padding: 20
+            spacing: 20
+
+            
             Label:
-                id: popup_label2
-                text: "Name"
+                id: popup_label_id
+                text: "Id to change"
 
             TextInput:
-                padding: [0, (self.height-self.line_height)/2]
+                
+                on_text_validate: label_familyname.focus = True
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                background_color: 0,0,0.53,0.1
+                id: label_idmodify
+                disabled_foreground_color: [0,0,0,0]
+                foreground_color: [255,255,255,255]
+                text: ''
+                text_color: 255,255,255
+                allow_copy: False
+                cursor_blink: False
+                multiline: False
+
+            Label:
+                id: popup_label2
+                text: "new name"
+
+            TextInput:
+                
                 on_text_validate: label_familyname.focus = True
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 text_size: self.size
@@ -518,11 +542,11 @@
 
             Label:
                 id: popup_label2
-                text: "Family Name"
+                text: "new family name"
 
 
             TextInput:
-                padding: [0, (self.height-self.line_height)/2]
+                
                 on_text_validate: root.popup_modifyuser()
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 text_size: self.size
@@ -541,10 +565,10 @@
 
             Label:
                 id: popup_label2
-                text: "Email"
+                text: "new email"
 
             TextInput:
-                padding: [0, (self.height-self.line_height)/2]
+                
                 on_text_validate: root.popup_modifyuser()
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 text_size: self.size

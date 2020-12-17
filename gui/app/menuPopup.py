@@ -15,7 +15,7 @@ from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
 # from app.getFunction import getEmployee, getMenuList
-from app.meals_management_v1 import add_employee
+from app.meals_management_v1 import add_employee, modify_employee
 from kivy.uix.recycleview import RecycleView 
 
 
@@ -135,16 +135,17 @@ class PopUpShow2(BoxLayout):
         self.ids.label_name2.text = ''
 
     def popup_modifyuser(self):
-        name = self.ids.label_name2.text
-        email = self.ids.label_email2.text
-        family = self.ids.label_familyname2.text
+        id_to_change = self.ids.label_idmodify.text
+        new_firstname = self.ids.label_name2.text
+        new_email = self.ids.label_email2.text
+        new_familyname = self.ids.label_familyname2.text
     
-        if name == '' or email == '' or family == '':
+        if new_firstname == '' or new_email == '' or new_familyname == '':
             print('pas de champs vide')
         else:
             popupWindow = Popup(
-            title='Enregistré', 
-            content=Label(text=f"Ajouté au registre\n"), 
+            title="Modification d'employé", 
+            content=Label(text=f"'L'utilisateur : {id_to_change} \n a bien été modifié'\n"), 
             size_hint=(None,None),
             size=((400,200)),
             background = 'atlas://data/images/defaulttheme/button_pressed',
@@ -152,8 +153,9 @@ class PopUpShow2(BoxLayout):
             opacity = 1,
                                 ) 
             popupWindow.open()
+            modify_employee(id_to_change, new_firstname, new_familyname, new_email)
             confirm = 'y'
-            add_employee(name, family, email, confirm)
+            
             self.ids.label_name2.text = ''
             self.ids.label_email2.text = ''
             self.ids.label_familyname2.text = ''

@@ -220,43 +220,44 @@ def add_employee(name, family, email, confirm):
 
   #choose_enquiry()
 
-def modify_employee():
+def modify_employee(employeeid, new_firstname, new_familyname, new_email):
   print('modify_employee')
-  employee_id = input("Enter the employee ID : ")
+  employee_id = employeeid
   
   db_link = connect_to_db(db_path)
   db_cursor = create_cursor(db_link)
   sql_query = "SELECT first_name, family_name, email_address FROM employee WHERE id=?"
   sql_values = (employee_id,)
   query_result =  read_from_cursor(db_cursor, sql_query, sql_values)
-  first_name = query_result[0]
-  family_name = query_result[1]
-  email_address = query_result[2]
+
   
-  new_first_name = input("First Name [" + first_name + "] : ")
+  new_first_name = new_firstname
+  #input("First Name [" + first_name + "] : ")
   if new_first_name:
         sql_query = "UPDATE employee SET first_name = ? WHERE id=?"
         sql_values = (new_first_name, employee_id)
         write_to_cursor(db_cursor, sql_query, sql_values)
 
-  new_family_name = input("Family Name [" + family_name + "] : ")
+  new_family_name = new_familyname
+  #input("Family Name [" + family_name + "] : ")
   if new_family_name:
         sql_query = "UPDATE employee SET family_name = ? WHERE id=?"
         sql_values = (new_family_name, employee_id)
         write_to_cursor(db_cursor, sql_query, sql_values)
 
-  new_email_address = input("Email Adress [" + email_address + "] : ")
+  new_email_address = new_email
+  #input("Email Adress [" + email_address + "] : ")
   if new_email_address:
         sql_query = "UPDATE employee SET email_address = ? WHERE id=?"
         sql_values = (new_email_address, employee_id)
         write_to_cursor(db_cursor, sql_query, sql_values)
   
-  confirm = input("Confirm your request (y/n) : ")
+  confirm = 'y'
   
   if confirm == 'y':
     commit_to_db(db_link)
     disconnect_from_db(db_link)
-    save_database(db_path)
+    #save_database(db_path)
 
 
 
