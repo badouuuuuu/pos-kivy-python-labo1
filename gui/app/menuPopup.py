@@ -205,7 +205,7 @@ class PopUpShow2(BoxLayout):
         else:
             popupWindow = Popup(
             title="Modification d'employé", 
-            content=Label(text=f"'L'utilisateur : {id_to_change} \n a bien été modifié'\n"), 
+            content=Label(text=f"L'utilisateur : {id_to_change} \n a bien été modifié\n"), 
             size_hint=(None,None),
             size=((400,200)),
             background = 'atlas://data/images/defaulttheme/button_pressed',
