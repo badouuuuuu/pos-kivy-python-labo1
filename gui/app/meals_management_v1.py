@@ -263,7 +263,7 @@ def modify_employee(employeeid, new_firstname, new_familyname, new_email):
 
 def add_menu(description, price):
   print('add_menu')
-   
+
   new_description = description
   new_price = price
 
@@ -282,9 +282,38 @@ def add_menu(description, price):
     print('Sended to database')
     #save_database(db_path)
 
-def modify_menu():
+def modify_menu(menu_id, new_description, new_price):
   print('modify_menu')
-  choose_enquiry()
+
+  menu_id = menu_id
+  
+  db_link = connect_to_db(db_path)
+  db_cursor = create_cursor(db_link)
+  sql_query = "SELECT description, price FROM menu WHERE id=?"
+  sql_values = (menu_id,)
+  query_result =  read_from_cursor(db_cursor, sql_query, sql_values)
+
+  
+  new_description = new_description
+  #input("First Name [" + first_name + "] : ")
+  if new_description:
+        sql_query = "UPDATE menu SET description = ? WHERE id=?"
+        sql_values = (new_description, menu_id)
+        write_to_cursor(db_cursor, sql_query, sql_values)
+
+  new_price = new_price
+  #input("Family Name [" + family_name + "] : ")
+  if new_price:
+        sql_query = "UPDATE menu SET price = ? WHERE id=?"
+        sql_values = (new_price, menu_id)
+        write_to_cursor(db_cursor, sql_query, sql_values)
+
+  confirm = 'y'
+  
+  if confirm == 'y':
+    commit_to_db(db_link)
+    disconnect_from_db(db_link)
+    #save_database(db_path)
 
 def exit_program():
   print('exit_program')

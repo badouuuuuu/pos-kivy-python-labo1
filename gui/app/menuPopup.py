@@ -15,7 +15,7 @@ from kivy.properties import StringProperty, ListProperty
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.scrollview import ScrollView
 # from app.getFunction import getEmployee, getMenuList
-from app.meals_management_v1 import add_employee, modify_employee, add_menu
+from app.meals_management_v1 import add_employee, modify_employee, add_menu, modify_menu
 from kivy.uix.recycleview import RecycleView 
 
 
@@ -147,7 +147,32 @@ class PopUpShow(BoxLayout):
         popupWindow.open() # show the popup
         
         
+class PopShowModifyMenu(BoxLayout):
+    def popup_modifymenu(self):
+        id_to_change = self.ids.label_idmodify.text
+        new_description = self.ids.label_menu_modify_description.text
+        new_price = self.ids.label_menu_modify_price.text
+        
+    
+        if new_description == '' or new_price == '':
+            print('pas de champs vide')
+        else:
+            popupWindow = Popup(
+            title="Modification d'employé", 
+            content=Label(text=f"'L'utilisateur : {id_to_change} \n a bien été modifié'\n"), 
+            size_hint=(None,None),
+            size=((400,200)),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1,
+                                ) 
+            popupWindow.open()
 
+            modify_menu(id_to_change, new_description, new_price)
+            
+            self.ids.label_idmodify.text = ''
+            self.ids.label_menu_modify_description.text = ''
+            self.ids.label_menu_modify_price.text = ''
 
 class PopUpShow2(BoxLayout):
 
