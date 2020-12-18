@@ -88,7 +88,7 @@ def purchase(menu_id, employee_id, confirm):
   if ((confirm == 'y')):
     commit_to_db(db_link)
     disconnect_from_db(db_link)
-    #save_database(db_path)
+    save_database(db_path)
   print('FINISHED')
   return display_ticket
 
@@ -195,8 +195,8 @@ def save_database(db_name):
   date = datetime.datetime.now()
   hour = date.strftime("%H")
   source = db_name
-  backup = backup_dir + '/' + db_name + '_' + hour
-  shutil.copyfile(source, backup)
+  backup = db_name + '_backup_' + hour
+  shutil.copyfile('./database/meals.db', backup)
 
 def add_employee(name, family, email, confirm):
   print('add_employee')
@@ -216,7 +216,7 @@ def add_employee(name, family, email, confirm):
     commit_to_db(db_link)
     disconnect_from_db(db_link)
     print('Sended to database')
-    #save_database(db_path)
+    save_database(db_path)
 
   #choose_enquiry()
 
@@ -257,7 +257,7 @@ def modify_employee(employeeid, new_firstname, new_familyname, new_email):
   if confirm == 'y':
     commit_to_db(db_link)
     disconnect_from_db(db_link)
-    #save_database(db_path)
+    save_database(db_path)
 
 
 
@@ -280,7 +280,7 @@ def add_menu(description, price):
     commit_to_db(db_link)
     disconnect_from_db(db_link)
     print('Sended to database')
-    #save_database(db_path)
+    save_database(db_path)
 
 def modify_menu(menu_id, new_description, new_price):
   print('modify_menu')
@@ -313,7 +313,7 @@ def modify_menu(menu_id, new_description, new_price):
   if confirm == 'y':
     commit_to_db(db_link)
     disconnect_from_db(db_link)
-    #save_database(db_path)
+    save_database(db_path)
 
 def exit_program():
   print('exit_program')
