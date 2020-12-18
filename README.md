@@ -22,10 +22,12 @@
  - Pip3
  
   	   sudo apt-get -y install python3-pip
-- Kivy
+- Kivy & package
  
   	   pip3 install kivy
   	   pip3 install kivy_examples
+	   pip3 install fpdf
+	   pip3 install enquiries
 
 **Utilisation :** 
 
