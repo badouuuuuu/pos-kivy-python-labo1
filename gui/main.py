@@ -184,8 +184,7 @@ class MyGridLayout(ScrollView):
         popupWindow.open()
 
     def modify_menu(self):
-        print('Modify menu')
-        
+
         show = PopShowModifyMenu() 
     
         popupWindow = Popup(
