@@ -207,12 +207,14 @@ class MyGridLayout(ScrollView):
         print(self.purchase_menu["id employee"])
         
 class DisplayTicket(Widget):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font('Arial', 'B', 16)
-    pdf.cell(40, 10, 'Purchase')
-    time = datetime.datetime.now()
-    pdf.output(f'bill_{time}_purchase.pdf', 'F')
+    
+    def getbill(self):
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font('Arial', 'B', 16)
+        pdf.cell(40, 10, 'Purchase')
+        time = datetime.datetime.now()
+        pdf.output(f'bill_{time}_purchase.pdf', 'F')
     
 class Meals(App):
     trigger = False
