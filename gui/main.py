@@ -211,7 +211,8 @@ class DisplayTicket(Widget):
     pdf.add_page()
     pdf.set_font('Arial', 'B', 16)
     pdf.cell(40, 10, 'Purchase')
-    pdf.output('bill.pdf', 'F')
+    time = datetime.datetime.now()
+    pdf.output(f'bill_{time}_purchase.pdf', 'F')
     
 class Meals(App):
     trigger = False

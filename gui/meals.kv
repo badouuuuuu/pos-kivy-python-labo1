@@ -3,7 +3,7 @@
 <AskId>
     layout_widget: askid_label
     id: ask_id
-    
+    askid_label : askid_label
 
     AnchorLayout:
         anchor_x: 'right'
@@ -188,7 +188,7 @@
 
             TextInput:
                 padding: [0, (self.height-self.line_height)/2]
-                on_text_validate: label_familyname.focus = True
+                on_text_validate: label_menu_add_price.focus = True
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 text_size: self.size
                 halign: 'center'
@@ -579,7 +579,7 @@
 
             TextInput:
                 
-                on_text_validate: label_familyname.focus = True
+                on_text_validate: label_name2.focus = True
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 text_size: self.size
                 halign: 'center'
@@ -600,7 +600,7 @@
 
             TextInput:
                 
-                on_text_validate: label_familyname.focus = True
+                on_text_validate: label_familyname2.focus = True
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 text_size: self.size
                 halign: 'center'
@@ -622,7 +622,7 @@
 
             TextInput:
                 
-                on_text_validate: root.popup_modifyuser()
+                on_text_validate: label_email2.focus = True
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 text_size: self.size
                 halign: 'center'
@@ -636,7 +636,7 @@
                 allow_copy: False
                 cursor_blink: False
                 multiline: False
-                on_text_validate: label_email.focus = True
+
 
             Label:
                 id: popup_label2
