@@ -49,7 +49,7 @@ def trigger_enquiry(choice): # déclencher une requête
   elif (choice == 'Exit'):
     exit_program()
 
-def purchase(menu_id, employee_id, confirm):
+def purchase(menu_id, employee_id):
   print(menu_id)
   purchase_id = get_purchase_id()
   current_date = datetime.datetime.now()

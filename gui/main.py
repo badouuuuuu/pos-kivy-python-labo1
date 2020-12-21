@@ -59,6 +59,7 @@ class MyGridLayout(ScrollView):
                         }
                     }       
     confirm = 'n'
+    
     def __init__(self, **kwargs):
         super(MyGridLayout, self).__init__(**kwargs)
         label_backup = StringProperty('')
@@ -121,18 +122,20 @@ class MyGridLayout(ScrollView):
                         self.ids.label_backup_addition.text +=  nameMenuOrdered + '  ' + str(order_price[compteur]) + ' €\n'
                         self.ids.label.text = ''
                         index = idmenulist.index(idmenulist[compteur])
-                        purchase(index, 3, self.confirm)  # A CORRIGER
-                
+                        
+
                         compteur = compteur + 1
-                        if self.ids.label.text == '.':
-                            purchase(index, 3, self.confirm)
+                        if self.ids.label.text == '0000':
+                            purchase(index, 3)
 
                         #purchase(self.purchase_menu["id employee"][self.getpurchase_id][2], 3, 'y')
 
                     total = sum(order_price)
                     addtexttotal = '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
                     self.ids.label_backup_addition.text += addtexttotal
-
+                    topdftext = self.ids.label_backup_addition.text 
+                    purchase_detail_PDF = topdftext.encode('latin-1', 'replace').decode('utf-8')
+                    self.createPDF(purchase_detail_PDF)
             else: 
                 PopUpShow.show_popup_nomenu()
                 self.ids.label.text = ''
@@ -205,14 +208,20 @@ class MyGridLayout(ScrollView):
         self.purchase_menu["id employee"]["prix"] = self.purchase_menu["id employee"]["prix"][:-1]
         self.total = sum(self.purchase_menu["id employee"]["prix"])
         print(self.purchase_menu["id employee"])
-        
-class DisplayTicket(Widget):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font('Arial', 'B', 16)
-    pdf.cell(40, 10, 'Purchase')
-    pdf.output('bill.pdf', 'F')
     
+    def createPDF(self, topdftext):
+
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font('Arial', 'B', 8)
+        pdf.cell(80, 80, f'{topdftext}')
+        current_date = datetime.datetime.now()
+        formated_date = current_date.strftime("%H")
+        pdf.output(f"order_{formated_date}.pdf", 'F')
+
+class DisplayTicket(Widget):
+    pass
+
 class Meals(App):
     trigger = False
     triggerC = False
