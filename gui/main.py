@@ -30,21 +30,7 @@ class Test(VKeyboard):
   
 class AskId(Widget):
 
-    def CheckId(self):
-        displayPOSid  = ''
-        employee_id_db = get_id_list('employee')
-        displayPOSid = self.ids.askid_label.text 
-
-        intdisplayPOSid = int(displayPOSid)
-
-        if intdisplayPOSid in employee_id_db:
-                employeeName = get_employee_name(displayPOSid)
-                print('Employee Name:' + employeeName)
-                pos_app.screen_manager.current = "POS"
-
-        else:
-            self.ids.askid_label.text   = ''
-            PopUpShow.show_popup_askid()
+    pass
 
 class MyGridLayout(ScrollView):
     menu_id_db = get_id_list('menu')
@@ -61,81 +47,85 @@ class MyGridLayout(ScrollView):
     confirm = 'n'
     def __init__(self, **kwargs):
         super(MyGridLayout, self).__init__(**kwargs)
-        label_backup = StringProperty('')
-        current_date = datetime.datetime.now()
-        formated_date = current_date.strftime("%b %d %Y")
-        formated_seconde = current_date.strftime("%H:%M:%S")
-        self.ids.label_backup.text += f'{formated_date} - {formated_seconde}\n\nMenu:\n\n'
-        for id_menu in self.menu_id_db:
-                self.descr = get_menu_description(id_menu)
-                self.price = str(get_menu_price(id_menu))
-                self.ids.label_backup.text += f'{str(id_menu)} - {self.price}€ - ' + self.descr  + '\n' 
 
+        self.ids.label_backup.text = 'Entrez votre id'
+    dada = True
+    def CheckId(self):
+        displayPOSid  = 0
+        employee_id_db = get_id_list('employee')
+        displayPOSid = self.ids.label.text 
+        if displayPOSid == '':
+            self.ids.label.text   = ''
+            PopUpShow.show_popup_askid()
+        else:
+            intdisplayPOSid = int(displayPOSid)
+            
+            if intdisplayPOSid in employee_id_db:
+                    employeeName = get_employee_name(displayPOSid)
+                    self.ids.label_backup.text = employeeName
+                    self.ids.label.text   = ''
 
+                    Meals.AskId_nOk = True
+                    self.dada = False
+                    
+            else: 
+                self.ids.label.text   = ''
+                PopUpShow.show_popup_askid()
+
+            
     def list_menu(self):          
         menuList = ListProperty([]) 
         menu_id_db = get_id_list('menu')
         menuList = []
-        displayLeft = self.ids.label.text 
-        
-        if displayLeft == ' ' or displayLeft == '' or int(displayLeft) not in menu_id_db and displayLeft != '0000':
-            print('ErrorMessage')
-            PopUpShow.ErrorMessage()
-            self.ids.label.text = ''
+        tata = self.ids.label.text 
+        displayLeft = int(tata)
+
+        if displayLeft in menu_id_db:
+            
+            self.ids.label_backup_addition.text = displayLeft+ '\n'
+            menuList.append(displayLeft)
+            
+        if displayLeft == '0000':
+            displayLeft = ''
+            pos_app.screen_manager.current = "Ticket"
+            
         else:
-            if self.ids.label.text == '0000':
-                self.confirm = 'y'
-            if int(displayLeft) in menu_id_db or int(displayLeft) == 0000:
-                
-                for id in menu_id_db:
-                    menu = get_menu_description(id)
-                    self.ids.label_backup_addition.text = self.ids.label_backup.text + self.descr + '\n'
-                    menuList.append(menu)
-                if displayLeft == '0000':
-                    displayLeft = ''
-                    pos_app.screen_manager.current = "Ticket"
-                    
-                else:
-                    MenuDescription = get_menu_description(displayLeft) 
-                    MenuPrice = get_menu_price(displayLeft)
-                    label_backup_addition = StringProperty('')
-                    
-                    self.order.append(MenuDescription)
-                    self.order_price.append(MenuPrice)
-                    self.ids.label.text = ''
-                    order_of_employee = self.purchase_menu["id employee"][self.getpurchase_id]
-                    order_of_employee_price = self.purchase_menu["id employee"]['prix']
+            MenuDescription = get_menu_description(displayLeft) 
+            MenuPrice = get_menu_price(displayLeft)
+            label_backup_addition = StringProperty('')
+            
+            self.order.append(MenuDescription)
+            self.order_price.append(MenuPrice)
+            self.ids.label.text = ''
+            order_of_employee = self.purchase_menu["id employee"][self.getpurchase_id]
+            order_of_employee_price = self.purchase_menu["id employee"]['prix']
 
-                    self.ids.label_backup_addition.text = 'Votre menu: \n\n'
-                    
-                    order_price = []
-                
-                    for price in order_of_employee_price:
-                
-                        order_price.append(price)
-                        print(order_price)
-                    idmenulist = self.purchase_menu["id employee"][self.getpurchase_id]
-                    compteur = 0
-                    for nameMenuOrdered in order_of_employee:
-                        print(nameMenuOrdered)
-                        self.ids.label_backup_addition.text +=  nameMenuOrdered + '  ' + str(order_price[compteur]) + ' €\n'
-                        self.ids.label.text = ''
-                        index = idmenulist.index(idmenulist[compteur])
-                        purchase(index, 3, self.confirm)  # A CORRIGER
-                
-                        compteur = compteur + 1
-                        if self.ids.label.text == '.':
-                            purchase(index, 3, self.confirm)
-
-                        #purchase(self.purchase_menu["id employee"][self.getpurchase_id][2], 3, 'y')
-
-                    total = sum(order_price)
-                    addtexttotal = '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
-                    self.ids.label_backup_addition.text += addtexttotal
-
-            else: 
-                PopUpShow.show_popup_nomenu()
+            self.ids.label_backup_addition.text = 'Votre menu: \n\n'
+            
+            order_price = []
+        
+            for price in order_of_employee_price:
+        
+                order_price.append(price)
+                print(order_price)
+            idmenulist = self.purchase_menu["id employee"][self.getpurchase_id]
+            compteur = 0
+            for nameMenuOrdered in order_of_employee:
+                print(nameMenuOrdered)
+                self.ids.label_backup_addition.text +=  nameMenuOrdered + '  ' + str(order_price[compteur]) + ' €\n'
                 self.ids.label.text = ''
+                index = idmenulist.index(idmenulist[compteur])
+               # purchase(index, 3, self.confirm)  # A CORRIGER
+        
+                compteur = compteur + 1
+                if self.ids.label.text == '.':
+                    pass
+
+                #purchase(self.purchase_menu["id employee"][self.getpurchase_id][2], 3, 'y')
+
+            total = sum(order_price)
+            addtexttotal = '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
+            self.ids.label_backup_addition.text += addtexttotal
 
     def back(self):
         pos_app.screen_manager.current = "Connect"
@@ -214,6 +204,7 @@ class DisplayTicket(Widget):
     pdf.output('bill.pdf', 'F')
     
 class Meals(App):
+    AskId_nOk = False
     trigger = False
     triggerC = False
     triggerD = False
@@ -223,11 +214,6 @@ class Meals(App):
 
     def build(self):
         self.screen_manager = ScreenManager()
-
-        self.connect_page = AskId()
-        screen = Screen(name="Connect")
-        screen.add_widget(self.connect_page)
-        self.screen_manager.add_widget(screen)
         
         self.pos_page = MyGridLayout()
         screen = Screen(name="POS")

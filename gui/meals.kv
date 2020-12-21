@@ -169,7 +169,8 @@
                         text: "Enter"
                         background_color: (0, 200, 0, .5)
                         on_release:
-                            root.CheckId()
+                            if (app.AskId_nOk): root.CheckId()
+                            else: root.list_menu()
 <PopUpShowAddMenu>
     id : popup_id_addmenu
     popup_label_addmenu : popup_label_addmenu
@@ -417,7 +418,7 @@
                     id: label_backup_addition
                     size_hint: .3, .5
                     background: 3,0,5.53,0.1
-                    text: 'Choisissez votre menu...\n'
+                    text: ''
                 TextInput:
                     size_hint: 1, .5
                     background_color: 0,0,0.53,0.1
@@ -434,7 +435,7 @@
                     valign: 'middle'
                     size: self.parent.size[0], 200
                     multiline: False
-                    on_text_validate: root.list_menu()
+                    on_text_validate: root.CheckId()
            
         
                 GridLayout:
@@ -548,7 +549,7 @@
                             text: "Enter"
                             background_color: (0, 200, 0, .5)
                             on_press:
-                                root.list_menu()
+                                root.CheckId()
                 AnchorLayout:
                     anchor_x:'left'
                     anchor_y:'bottom'
