@@ -127,16 +127,17 @@ class MyGridLayout(ScrollView):
 
                         compteur = compteur + 1
                         if self.ids.label.text == '0000':
-                            purchase(index, 3)
-
-                        #purchase(self.purchase_menu["id employee"][self.getpurchase_id][2], 3, 'y')
+                            topdftext = self.ids.label_backup_addition.text 
+                            f = open("order.txt", "w+") 
+                            f.write(unidecode(topdftext))
 
                     total = sum(order_price)
                     addtexttotal = '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
                     self.ids.label_backup_addition.text += addtexttotal
-                    topdftext = self.ids.label_backup_addition.text 
-                    purchase_detail_PDF = unidecode(topdftext)
-                    self.createPDF(purchase_detail_PDF)
+
+
+                    
+                    self.createPDF()
             else: 
                 PopUpShow.show_popup_nomenu()
                 self.ids.label.text = ''
@@ -210,14 +211,17 @@ class MyGridLayout(ScrollView):
         self.total = sum(self.purchase_menu["id employee"]["prix"])
         print(self.purchase_menu["id employee"])
     
-    def createPDF(self, topdftext):
-
+    def createPDF(self):
         pdf = FPDF()
         pdf.add_page()
         pdf.set_font('Arial', 'B', 13)
-        pdf.cell(25, 25, f'{topdftext}')
+        
         current_date = datetime.datetime.now()
         formated_date = current_date.strftime("%H")
+        f = open("order.txt", "r") 
+        for x in f:
+            pdf.cell(200,10, txt = x, ln = 1, align='C')
+
         pdf.output(f"order_{formated_date}h.pdf", 'F')
 
 class DisplayTicket(Widget):
