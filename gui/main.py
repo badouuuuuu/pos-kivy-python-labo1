@@ -1,5 +1,5 @@
 #! /usr/bin/python3
-# coding: utf-8
+# -*- coding: utf-8 -*-
  
 from kivy.app import App
 from kivy.uix.label import Label
@@ -22,6 +22,7 @@ from kivy.config import Config
 import datetime
 from kivy.uix.vkeyboard import VKeyboard 
 from fpdf import FPDF
+from unidecode import unidecode
 
 Config.set('kivy','window_icon','meals.ico')
 
@@ -134,7 +135,7 @@ class MyGridLayout(ScrollView):
                     addtexttotal = '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
                     self.ids.label_backup_addition.text += addtexttotal
                     topdftext = self.ids.label_backup_addition.text 
-                    purchase_detail_PDF = topdftext.encode('latin-1', 'replace').decode('utf-8')
+                    purchase_detail_PDF = unidecode(topdftext)
                     self.createPDF(purchase_detail_PDF)
             else: 
                 PopUpShow.show_popup_nomenu()
@@ -213,8 +214,8 @@ class MyGridLayout(ScrollView):
 
         pdf = FPDF()
         pdf.add_page()
-        pdf.set_font('Arial', 'B', 8)
-        pdf.cell(80, 80, f'{topdftext}')
+        pdf.set_font('Arial', 'B', 13)
+        pdf.cell(25, 25, f'{topdftext}')
         current_date = datetime.datetime.now()
         formated_date = current_date.strftime("%H")
         pdf.output(f"order_{formated_date}.pdf", 'F')
