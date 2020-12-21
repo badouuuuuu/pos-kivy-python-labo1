@@ -218,7 +218,7 @@ class MyGridLayout(ScrollView):
         pdf.cell(25, 25, f'{topdftext}')
         current_date = datetime.datetime.now()
         formated_date = current_date.strftime("%H")
-        pdf.output(f"order_{formated_date}.pdf", 'F')
+        pdf.output(f"order_{formated_date}h.pdf", 'F')
 
 class DisplayTicket(Widget):
     pass
