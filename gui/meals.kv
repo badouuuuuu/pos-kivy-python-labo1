@@ -675,47 +675,46 @@
 
 <DisplayTicket>
     
-    AnchorLayout:
-        anchor_x: 'right'
-        anchor_y: 'center'
-        pos_hint: {'top': 0.5 + self.size_hint[1]/2}
-
-    BoxLayout:
-        orientation: 'vertical'
-        size: root.width, root.height
-
+    ScrollView:
+        size_hint: 1, 1
+        canvas.before:
+            Color:
+                rgba: (0,0,0.53,0.2)
+            Rectangle:
+                size: self.size
+                pos: self.pos
         BoxLayout:
-            size_hint: 1, .2
-            padding: 40
-            spacing: 40
+            orientation:'vertical'
+
+            id: layout_content
+            padding: 20
+            spacing: 20
             canvas.before:
                 Color:
                     rgba: (0,0,0.53,0.2)
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
             Label:
                 bold: True
-                text: "Votre commande est enregistrée\n"
-                font_size: '45dp'
+                id: display_ticket_print
+                size_hint: 1, 1
+                background: 3,25,5.53,0.1
+                text: 'Your order is confirmed'
+                background_color: 0,0,0.53,0.1
+                disabled_foreground_color: [0,0,0,0]
+                foreground_color: [255,255,255,255]
 
-            Label:
+                text_color: 255,255,255
+                allow_copy: False
+                cursor_blink: False
+            Button:
+
+                size_hint: 0.17, 0.05
+                background_color: (0, 200, 0, .5)
+                text: "Back"
+                on_release: root.backToApp()
+                
+                spacing :40
+                pos_hint: {"x":0.5, "y":0.06}
                 bold: True
-                id: order_displayticket
-                text: "\n"
-                font_size: '35dp'
-
-        BoxLayout:
-            size_hint: 1, 1
-            padding: 40
-            spacing: 40
-
-            canvas.before:
-                Color:
-                    rgba: (0,0,0.53,0.2)
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
 
 <PopShowModifyMenu>
     id : popup_id_addmenu

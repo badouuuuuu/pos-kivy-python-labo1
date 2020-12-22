@@ -95,9 +95,11 @@ class MyGridLayout(ScrollView):
                     menuList.append(menu)
                 if displayLeft == '0000':
                     displayLeft = ''
-                    pos_app.screen_manager.current = "Ticket"
 
+                    self.ids.label_backup_addition.text = 'Votre facture est présente dans le dossier labo1'
+                    
                     self.createPDF()
+                    pos_app.screen_manager.current = "Ticket"
                 else:
                     MenuDescription = get_menu_description(displayLeft) 
                     MenuPrice = get_menu_price(displayLeft)
@@ -226,16 +228,17 @@ class MyGridLayout(ScrollView):
         for x in order_to_pdf:
             pdf.cell(40,10, txt = f'Menu: {x}', ln = 8, align='C')
         pdf.cell(40,5, txt = f"----------------------------------------------------------", ln=10, align='C' )
-        pdf.cell(40,5, txt = f"----------------------------------------------------------", ln=10, align='C' )
+        pdf.cell(40,6, txt = f"                  excl.VAT     VAT     incl. VAT", ln=11, align='C' )
+        pdf.cell(40,6, txt = f"                    00.00     0.00     00.00", ln=11, align='C' )
+        pdf.cell(40,6, txt = f"----------------------------------------------------------", ln=10, align='C' )
+        pdf.cell(40,6, txt = f"TOTAL                                {self.total}", ln=15, align='C' )
         pdf.output(f"order_{formated_date}h.pdf", 'F')
+        
+        return pdf
 
 class DisplayTicket(ScrollView):
-    
-    def finalPage(self):
-        f = open("order.txt", "r") 
-        for x in f:
-            print(x)
-            self.ids.order_displayticket.text += x
+    def backToApp(self):
+        pos_app.screen_manager.current = "Ticket"
 
 class Meals(App):
     trigger = False
