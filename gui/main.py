@@ -22,6 +22,7 @@ from kivy.config import Config
 import datetime
 from fpdf import FPDF
 from unidecode import unidecode
+import webbrowser
 
 Config.set('kivy','window_icon','meals.ico')
 
@@ -238,9 +239,9 @@ class MyGridLayout(ScrollView):
         pdf.cell(42,8, txt = f"Date          {datedisplay}", ln=18, align='L' )
         pdf.cell(42,8, txt = f"VAT number    BE 0123 0456 789", ln=18, align='L' )
         
-        
-        pdf.output(f"order_{formated_date}h.pdf", 'F')
-        
+        file = f"order_{formated_date}h.pdf"
+        pdf.output(file, 'F')
+        webbrowser.open(file)
         return pdf
 
 class DisplayTicket(ScrollView):
