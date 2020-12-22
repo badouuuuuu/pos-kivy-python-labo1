@@ -17,6 +17,9 @@ from kivy.uix.scrollview import ScrollView
 # from app.getFunction import getEmployee, getMenuList
 from app.meals_management_v1 import add_employee, modify_employee, add_menu, modify_menu, get_id_list
 from kivy.uix.recycleview import RecycleView 
+from kivy.uix.vkeyboard import VKeyboard 
+from kivy.config import Config
+Config.set('kivy', 'keyboard_mode', 'systemandmulti')
 
 
 class PopUpShowAddMenu(BoxLayout):
@@ -61,11 +64,20 @@ class PopUpShow(BoxLayout):
         family = self.ids.label_familyname.text
     
         if name == '' or email == '' or family == '':
-            print('pas de champs vide')
+            popupWindow = Popup(
+            title="Missing information", 
+            content=Label(text=f"You need to complete all information\n"), 
+            size_hint=(None,None),
+            size=((400,200)),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1,
+                                ) 
+            popupWindow.open()
         else:
             popupWindow = Popup(
             title='Enregistré', 
-            content=Label(text=f"Ajouté au registre\n"), 
+            content=Label(text=f"Employee added to the register ! :)"), 
             size_hint=(None,None),
             size=((400,200)),
             background = 'atlas://data/images/defaulttheme/button_pressed',
@@ -102,8 +114,8 @@ class PopUpShow(BoxLayout):
         show = PopUpShow() 
 
         popupWindow = Popup(
-            title='Votre id est inconnu', 
-            content=Label(text="Cet utilisateur n'existe pas"), 
+            title='Unknown Employee ID', 
+            content=Label(text="This ID is unknown, retry !"), 
             size_hint=(None,None),
             size=(600,400),
             background = 'atlas://data/images/defaulttheme/button_pressed',
@@ -118,8 +130,8 @@ class PopUpShow(BoxLayout):
         show = PopUpShow() 
 
         popupWindow = Popup(
-            title='Menu inexistant', 
-            content=Label(text="Le menu n'existe pas"), 
+            title="Unknown Menu", 
+            content=Label(text="This MENU doesn't exist"), 
             size_hint=(None,None),
             size=(600,400),
             background = 'atlas://data/images/defaulttheme/button_pressed',
@@ -134,8 +146,8 @@ class PopUpShow(BoxLayout):
         show = PopUpShow() 
 
         popupWindow = Popup(
-            title='Menu inexistant', 
-            content=Label(text="Le menu n'existe pas"), 
+            title='Unknown', 
+            content=Label(text="This MENU doesn't exist"), 
             size_hint=(None,None),
             size=(600,400),
             background = 'atlas://data/images/defaulttheme/button_pressed',
@@ -157,8 +169,8 @@ class PopShowModifyMenu(ScrollView):
         
         if new_description == '' or new_price == '' or id_to_change == '':
             popupWindowNoInfo = Popup(
-            title="Erreur", 
-            content=Label(text="Menu inexistant / info manquante"),
+            title="Error", 
+            content=Label(text="Missing or wrong information"),
             size_hint=(None,None),
             size=((400,200)),
             background = 'atlas://data/images/defaulttheme/button_pressed',
@@ -168,8 +180,8 @@ class PopShowModifyMenu(ScrollView):
             popupWindowNoInfo.open()
         else:
             popupWindow = Popup(
-            title="Modification du menu", 
-            content=Label(text=f"Le menu : #{id_to_change}\na bien été modifié\n{new_description} - {new_price}"),
+            title="Modify Menu", 
+            content=Label(text=f"Menu : #{id_to_change}\nis change\n{new_description} - {new_price}\nYou'll see the change in the next restart"),
             size_hint=(None,None),
             size=((400,200)),
             background = 'atlas://data/images/defaulttheme/button_pressed',
@@ -185,7 +197,6 @@ class PopShowModifyMenu(ScrollView):
             self.ids.label_menu_modify_price.text = ''
 
 class PopUpShow2(BoxLayout):
-
     value = []
     
     def __init__(self, **kwargs):
@@ -201,11 +212,20 @@ class PopUpShow2(BoxLayout):
         new_familyname = self.ids.label_familyname2.text
     
         if new_firstname == '' or new_email == '' or new_familyname == '':
-            print('pas de champs vide')
+            popupWindow = Popup(
+            title="Missing information", 
+            content=Label(text=f"You need to complete all information\n"), 
+            size_hint=(None,None),
+            size=((400,200)),
+            background = 'atlas://data/images/defaulttheme/button_pressed',
+            background_color = (0,0,0.1,0.75),
+            opacity = 1,
+                                ) 
+            popupWindow.open()
         else:
             popupWindow = Popup(
-            title="Modification d'employé", 
-            content=Label(text=f"L'utilisateur : {id_to_change} \n a bien été modifié\n"), 
+            title="Update employee", 
+            content=Label(text=f"Employee : {id_to_change} is update\n"), 
             size_hint=(None,None),
             size=((400,200)),
             background = 'atlas://data/images/defaulttheme/button_pressed',
@@ -214,8 +234,7 @@ class PopUpShow2(BoxLayout):
                                 ) 
             popupWindow.open()
             modify_employee(id_to_change, new_firstname, new_familyname, new_email)
-            confirm = 'y'
-            
+
             self.ids.label_name2.text = ''
             self.ids.label_email2.text = ''
             self.ids.label_familyname2.text = ''
@@ -244,8 +263,8 @@ class PopUpShow2(BoxLayout):
         show = PopUpShow2() 
 
         popupWindow = Popup(
-            title='Votre id est inconnu', 
-            content=Label(text="Cet utilisateur n'existe pas"), 
+            title='Unkown ID', 
+            content=Label(text="This employee doesn't exist, retry"), 
             size_hint=(None,None),
             size=(600,400),
             background = 'atlas://data/images/defaulttheme/button_pressed',
@@ -260,8 +279,8 @@ class PopUpShow2(BoxLayout):
         show = PopUpShow2() 
 
         popupWindow = Popup(
-            title='Menu inexistant', 
-            content=Label(text="Le menu n'existe pas"), 
+            title='Unknown menu', 
+            content=Label(text="Menu doesn't exist, retry"), 
             size_hint=(None,None),
             size=(600,400),
             background = 'atlas://data/images/defaulttheme/button_pressed',

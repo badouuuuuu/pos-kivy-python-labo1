@@ -26,8 +26,8 @@
                     pos: self.pos
             Label:
                 bold: True
-                text: "Entrez votre id"
-                font_size: '75dp'
+                text: "Enter employee ID"
+                font_size: '60dp'
 
         BoxLayout:
             size_hint: 1, 1
@@ -56,7 +56,7 @@
                 size: self.parent.size[0], 200
                 on_text_validate: root.CheckId()
                 multiline: False
-
+        
 
             GridLayout:
                 padding: 2
@@ -151,8 +151,7 @@
                     
                 Button:
                     text: 'DEL'
-                    background_color: (126, 25, 0, .9)
-                    color: (0,0,0,0.5)
+
                     on_press:
                         askid_label.text = ''
 
@@ -417,7 +416,7 @@
                     id: label_backup_addition
                     size_hint: .3, .5
                     background: 3,0,5.53,0.1
-                    text: 'Choisissez votre menu...\n'
+                    text: 'Choose your menu...\n'
                 TextInput:
                     size_hint: 1, .5
                     background_color: 0,0,0.53,0.1
@@ -528,11 +527,9 @@
                             if (app.triggerC): app.triggerC = False
                         
                     Button:
-                        text: '.'
+                        text: 'DEL'
                         on_press:
-                            if (app.trigger): label.text += self.text
-                            if (app.trigger): app.triggerC = False
-                            if (app.trigger): app.trigger = False
+                            label.text = ''
 
                     BoxLayout:
                         orientation: 'vertical'
@@ -552,10 +549,9 @@
                 AnchorLayout:
                     anchor_x:'left'
                     anchor_y:'bottom'
-              
                     size_hint: .1, .1
                     Label:
-                        text:'Tapez << 0000 >> pour confirmer la commande'
+                        text:'Enter << 0000 >> to confirm order'
                         color: 1, 0, 0, 1
                         font_size: '12dp'
 <PopUpShow2>:
@@ -568,14 +564,14 @@
         orientation: 'vertical'
         GridLayout:
             cols: 2
-            size_hint: 1, .7
+            size_hint: 1, .5
             padding: 20
             spacing: 20
 
             
             Label:
                 id: popup_label_id
-                text: "Id to change"
+                text: "Employee ID"
 
             TextInput:
                 
@@ -593,10 +589,10 @@
                 allow_copy: False
                 cursor_blink: False
                 multiline: False
-
+                hint_text: "" 
             Label:
                 id: popup_label2
-                text: "new name"
+                text: "New name"
 
             TextInput:
                 
@@ -614,10 +610,10 @@
                 allow_copy: False
                 cursor_blink: False
                 multiline: False
-
+                hint_text: ""
             Label:
                 id: popup_label2
-                text: "new family name"
+                text: "New family name"
 
 
             TextInput:
@@ -636,11 +632,11 @@
                 allow_copy: False
                 cursor_blink: False
                 multiline: False
-
-
+                on_text_validate: label_email.focus = True
+                hint_text: ""
             Label:
                 id: popup_label2
-                text: "new email"
+                text: "New Email"
 
             TextInput:
                 
@@ -658,7 +654,7 @@
                 allow_copy: False
                 cursor_blink: False
                 multiline: False
-        
+                hint_text: ""
         Button:
             cols:1
             size_hint: 0.17, 0.05
@@ -667,59 +663,54 @@
             on_release: root.popup_modifyuser()
             
             spacing :40
-            pos_hint: {"x":0.45, "y":0.05}
+            pos_hint: {"x":0.5, "y":0.06}
             bold: True
-        Button:
-            
-            spacing :40
-            cols:2
-            size_hint: 0.17, 0.05
-            background_color: (1.0, 0.0, 0.0, 1.0)
-            text: "Cancel"
-            on_press: root.backPopup()
-            
-            pos_hint: {"x":0.45, "y":0.05}
 
 
 
 
 <DisplayTicket>
     
-    AnchorLayout:
-        anchor_x: 'right'
-        anchor_y: 'center'
-        pos_hint: {'top': 0.5 + self.size_hint[1]/2}
-
     BoxLayout:
-        orientation: 'vertical'
-        size: root.width, root.height
-
+        size_hint: 1, 1
+        orientation:'vertical'
+        canvas.before:
+            Color:
+                rgba: (0,0,0.53,0.2)
+            Rectangle:
+                size: self.size
+                pos: self.pos
         BoxLayout:
-            size_hint: 1, .2
-            padding: 40
-            spacing: 40
+            orientation:'vertical'
+
+            id: layout_content
+            padding: 20
+            spacing: 20
             canvas.before:
                 Color:
                     rgba: (0,0,0.53,0.2)
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
             Label:
                 bold: True
-                text: "Votre Ticket"
-                font_size: '65dp'
+                id: display_ticket_print
+                size_hint: 1, 1
+                background: 3,25,5.53,0.1
+                text: 'Your order is confirmed'
+                background_color: 0,0,0.53,0.1
+                disabled_foreground_color: [0,0,0,0]
+                foreground_color: [255,255,255,255]
 
-        BoxLayout:
-            size_hint: 1, 1
-            padding: 40
-            spacing: 40
-
-            canvas.before:
-                Color:
-                    rgba: (0,0,0.53,0.2)
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
+                text_color: 255,255,255
+                allow_copy: False
+                cursor_blink: False
+            Button:
+                size_hint: 0.15, 0.1
+                size: self.size
+                background_color: (0, 200, 0, .5)
+                text: "Back"
+                on_press: root.backToApp()
+                pos: self.pos
+                pos_hint: {"x":0.42, "y":0.06}
+                bold: True
 
 <PopShowModifyMenu>
     id : popup_id_addmenu

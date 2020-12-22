@@ -1,5 +1,5 @@
 #! /usr/bin/python3
-# coding: utf-8
+# -*- coding: utf-8 -*-
  
 from kivy.app import App
 from kivy.uix.label import Label
@@ -20,14 +20,11 @@ from kivy.uix.recycleview import RecycleView
 from app.menuPopup import PopUpShow,PopUpShow2, PopUpShowAddMenu, PopShowModifyMenu
 from kivy.config import Config
 import datetime
-from kivy.uix.vkeyboard import VKeyboard 
 from fpdf import FPDF
+from unidecode import unidecode
 
 Config.set('kivy','window_icon','meals.ico')
 
-class Test(VKeyboard): 
-    player = VKeyboard() 
-  
 class AskId(Widget):
 
     def CheckId(self):
@@ -59,6 +56,7 @@ class MyGridLayout(ScrollView):
                         }
                     }       
     confirm = 'n'
+    
     def __init__(self, **kwargs):
         super(MyGridLayout, self).__init__(**kwargs)
         label_backup = StringProperty('')
@@ -93,8 +91,11 @@ class MyGridLayout(ScrollView):
                     menuList.append(menu)
                 if displayLeft == '0000':
                     displayLeft = ''
-                    pos_app.screen_manager.current = "Ticket"
+
+                    self.ids.label_backup_addition.text = 'Votre facture est présente dans le dossier labo1'
                     
+                    self.createPDF()
+                    pos_app.screen_manager.current = "Ticket"
                 else:
                     MenuDescription = get_menu_description(displayLeft) 
                     MenuPrice = get_menu_price(displayLeft)
@@ -106,7 +107,7 @@ class MyGridLayout(ScrollView):
                     order_of_employee = self.purchase_menu["id employee"][self.getpurchase_id]
                     order_of_employee_price = self.purchase_menu["id employee"]['prix']
 
-                    self.ids.label_backup_addition.text = 'Votre menu: \n\n'
+                    self.ids.label_backup_addition.text = ''
                     
                     order_price = []
                 
@@ -121,13 +122,11 @@ class MyGridLayout(ScrollView):
                         self.ids.label_backup_addition.text +=  nameMenuOrdered + '  ' + str(order_price[compteur]) + ' €\n'
                         self.ids.label.text = ''
                         index = idmenulist.index(idmenulist[compteur])
-                        purchase(index, 3, self.confirm)  # A CORRIGER
-                
                         compteur = compteur + 1
-                        if self.ids.label.text == '.':
-                            purchase(index, 3, self.confirm)
+                    topdftext = self.ids.label_backup_addition.text 
+                    f = open("order.txt", "w+") 
+                    f.write(unidecode(topdftext))
 
-                        #purchase(self.purchase_menu["id employee"][self.getpurchase_id][2], 3, 'y')
 
                     total = sum(order_price)
                     addtexttotal = '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
@@ -205,17 +204,43 @@ class MyGridLayout(ScrollView):
         self.purchase_menu["id employee"]["prix"] = self.purchase_menu["id employee"]["prix"][:-1]
         self.total = sum(self.purchase_menu["id employee"]["prix"])
         print(self.purchase_menu["id employee"])
-        
-class DisplayTicket(Widget):
     
-    def getbill(self):
+    def createPDF(self):
         pdf = FPDF()
         pdf.add_page()
-        pdf.set_font('Arial', 'B', 16)
-        pdf.cell(40, 10, 'Purchase')
-        time = datetime.datetime.now()
-        pdf.output(f'bill_{time}_purchase.pdf', 'F')
-    
+        pdf.set_font('Arial', 'B', 12)
+        purchase_number = self.purchase_menu["id employee"]
+        print(purchase_number.keys())
+        res = list(purchase_number.keys())[0]
+        current_date = datetime.datetime.now()
+        formated_date = current_date.strftime("%H")
+        datedisplay = str(current_date.strftime("%d-%m-%Y %H:%M:%S"))
+        order_to_pdf = open("order.txt", "r") 
+        pdf.cell(35,5, txt = "ABC inc.", ln = 1, align='L')
+        pdf.cell(35,5, txt = "Waterloo street", ln = 2, align='L')
+        pdf.cell(35,5, txt = "1000 Brussels", ln=3, align='L' )
+        pdf.cell(35,5, txt = f"Purchase number : {res}", ln=6, align='L' )
+        pdf.cell(40,5, txt = f"Employee : ", ln=6, align='L' )
+        
+        for x in order_to_pdf:
+            pdf.cell(40,8, txt = f'Menu: {x}', ln = 7, align='L')
+        pdf.cell(40,5, txt = f"----------------------------------------------------------", ln=10, align='C' )
+        pdf.cell(40,6, txt = f"                  excl.VAT    VAT     incl. VAT", ln=11, align='C' )
+        pdf.cell(40,6, txt = f"                    00.00     0.00     00.00", ln=11, align='C' )
+        pdf.cell(40,6, txt = f"----------------------------------------------------------", ln=10, align='C' )
+        pdf.cell(40,6, txt = f"TOTAL                                {self.total}", ln=15, align='L' )
+        pdf.cell(42,8, txt = f"Date          {datedisplay}", ln=18, align='L' )
+        pdf.cell(42,8, txt = f"VAT number    BE 0123 0456 789", ln=18, align='L' )
+        
+        
+        pdf.output(f"order_{formated_date}h.pdf", 'F')
+        
+        return pdf
+
+class DisplayTicket(ScrollView):
+    def backToApp(self):
+        pos_app.screen_manager.current = "Ticket"
+
 class Meals(App):
     trigger = False
     triggerC = False
