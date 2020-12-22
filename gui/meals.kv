@@ -26,8 +26,8 @@
                     pos: self.pos
             Label:
                 bold: True
-                text: "Entrez votre id"
-                font_size: '75dp'
+                text: "Enter employee ID"
+                font_size: '60dp'
 
         BoxLayout:
             size_hint: 1, 1
@@ -151,8 +151,7 @@
                     
                 Button:
                     text: 'DEL'
-                    background_color: (126, 25, 0, .9)
-                    color: (0,0,0,0.5)
+
                     on_press:
                         askid_label.text = ''
 
@@ -417,7 +416,7 @@
                     id: label_backup_addition
                     size_hint: .3, .5
                     background: 3,0,5.53,0.1
-                    text: 'Choisissez votre menu...\n'
+                    text: 'Choose your menu...\n'
                 TextInput:
                     size_hint: 1, .5
                     background_color: 0,0,0.53,0.1
@@ -528,11 +527,9 @@
                             if (app.triggerC): app.triggerC = False
                         
                     Button:
-                        text: '.'
+                        text: 'DEL'
                         on_press:
-                            if (app.trigger): label.text += self.text
-                            if (app.trigger): app.triggerC = False
-                            if (app.trigger): app.trigger = False
+                            label.text = ''
 
                     BoxLayout:
                         orientation: 'vertical'
@@ -552,10 +549,9 @@
                 AnchorLayout:
                     anchor_x:'left'
                     anchor_y:'bottom'
-              
                     size_hint: .1, .1
                     Label:
-                        text:'Tapez << 0000 >> pour confirmer la commande'
+                        text:'Enter << 0000 >> to confirm order'
                         color: 1, 0, 0, 1
                         font_size: '12dp'
 <PopUpShow2>:

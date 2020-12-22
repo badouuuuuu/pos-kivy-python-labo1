@@ -20,15 +20,11 @@ from kivy.uix.recycleview import RecycleView
 from app.menuPopup import PopUpShow,PopUpShow2, PopUpShowAddMenu, PopShowModifyMenu
 from kivy.config import Config
 import datetime
-from kivy.uix.vkeyboard import VKeyboard 
 from fpdf import FPDF
 from unidecode import unidecode
 
 Config.set('kivy','window_icon','meals.ico')
 
-class Test(VKeyboard): 
-    player = VKeyboard() 
-  
 class AskId(Widget):
 
     def CheckId(self):
