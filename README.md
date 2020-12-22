@@ -32,7 +32,7 @@
 	   pip3 install fpdf
 	   pip3 install unidecode
 	   pip3 install enquiries (normalement plus nécessaire)
-
+ 
 **Utilisation :** 
 
  - Executez le fichier main.py
