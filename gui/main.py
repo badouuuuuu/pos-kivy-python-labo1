@@ -218,20 +218,25 @@ class MyGridLayout(ScrollView):
         res = list(purchase_number.keys())[0]
         current_date = datetime.datetime.now()
         formated_date = current_date.strftime("%H")
+        datedisplay = str(current_date.strftime("%d-%m-%Y %H:%M:%S"))
         order_to_pdf = open("order.txt", "r") 
         pdf.cell(35,5, txt = "ABC inc.", ln = 1, align='L')
         pdf.cell(35,5, txt = "Waterloo street", ln = 2, align='L')
         pdf.cell(35,5, txt = "1000 Brussels", ln=3, align='L' )
-        pdf.cell(40,5, txt = f"Purchase number : {res}", ln=6, align='L' )
+        pdf.cell(35,5, txt = f"Purchase number : {res}", ln=6, align='L' )
         pdf.cell(40,5, txt = f"Employee : ", ln=6, align='L' )
         
         for x in order_to_pdf:
-            pdf.cell(40,10, txt = f'Menu: {x}', ln = 8, align='C')
+            pdf.cell(40,8, txt = f'Menu: {x}', ln = 7, align='L')
         pdf.cell(40,5, txt = f"----------------------------------------------------------", ln=10, align='C' )
-        pdf.cell(40,6, txt = f"                  excl.VAT     VAT     incl. VAT", ln=11, align='C' )
+        pdf.cell(40,6, txt = f"                  excl.VAT    VAT     incl. VAT", ln=11, align='C' )
         pdf.cell(40,6, txt = f"                    00.00     0.00     00.00", ln=11, align='C' )
         pdf.cell(40,6, txt = f"----------------------------------------------------------", ln=10, align='C' )
-        pdf.cell(40,6, txt = f"TOTAL                                {self.total}", ln=15, align='C' )
+        pdf.cell(40,6, txt = f"TOTAL                                {self.total}", ln=15, align='L' )
+        pdf.cell(42,8, txt = f"Date          {datedisplay}", ln=18, align='L' )
+        pdf.cell(42,8, txt = f"VAT number    BE 0123 0456 789", ln=18, align='L' )
+        
+        
         pdf.output(f"order_{formated_date}h.pdf", 'F')
         
         return pdf

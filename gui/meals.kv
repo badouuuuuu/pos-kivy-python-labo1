@@ -706,14 +706,12 @@
                 allow_copy: False
                 cursor_blink: False
             Button:
-
-                size_hint: 0.17, 0.05
+                size_hint: 0.2, 0.2
+                size: self.size
                 background_color: (0, 200, 0, .5)
                 text: "Back"
                 on_release: root.backToApp()
-                
-                spacing :40
-                pos_hint: {"x":0.5, "y":0.06}
+                pos: self.pos
                 bold: True
 
 <PopShowModifyMenu>

@@ -1,0 +1,3 @@
+Chicken  10.0 EUR
+Steak  15.0 EUR
+Steak  15.0 EUR
