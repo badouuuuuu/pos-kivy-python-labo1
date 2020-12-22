@@ -23,7 +23,8 @@
   	   sudo apt update
 	   sudo apt install python3.8
 
- - Pip3
+- Pip3
+ 
   	   sudo apt-get -y install python3-pip
 
 - Kivy & package
