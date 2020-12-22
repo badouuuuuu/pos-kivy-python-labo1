@@ -227,11 +227,12 @@ class MyGridLayout(ScrollView):
 
         inclVAT = sum(self.purchase_menu["id employee"]["prix"])
         exVAT = (inclVAT/100)*6
+        VATdiff = inclVAT - exVAT
         for x in order_to_pdf:
             pdf.cell(40,8, txt = f'Menu: {x}', ln = 7, align='L')
         pdf.cell(40,5, txt = f"----------------------------------------------------------", ln=10, align='C' )
         pdf.cell(40,6, txt = f"                     excl.VAT     VAT      incl. VAT", ln=11, align='C' )
-        pdf.cell(45,6, txt = f"VAT {VAT}%       {exVAT}     {inclVAT - exVAT}       {inclVAT}", ln=11, align='C' )
+        pdf.cell(45,6, txt = f"VAT {VAT}%       {round(VATdiff, 2)}     {exVAT}       {inclVAT}", ln=11, align='C' )
         pdf.cell(40,6, txt = f"----------------------------------------------------------", ln=10, align='C' )
         pdf.cell(40,6, txt = f"TOTAL                        {inclVAT}", ln=15, align='L' )
         pdf.cell(42,8, txt = f"Date          {datedisplay}", ln=18, align='L' )
