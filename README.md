@@ -6,10 +6,14 @@
 - [Python *3.8.6*](https://www.python.org/) 
 - [sqlite3 *3.33.0*](https://www.sqlite.org/index.html)
 
+
 **Dev on branch :**
 
-- [test-gui](https://github.com/badouuuuuu/labo1/tree/test-gui)
 - [dev](https://github.com/badouuuuuu/labo1/tree/dev)
+
+**Main branch :**
+
+- [main](https://github.com/badouuuuuu/labo1/tree/main)
 
 **Linux installation :**
 
@@ -20,17 +24,19 @@
 	   sudo apt install python3.8
 
  - Pip3
- 
   	   sudo apt-get -y install python3-pip
+
 - Kivy & package
  
   	   pip3 install kivy
-  	   pip3 install kivy_examples
 	   pip3 install fpdf
-	   pip3 install enquiries
+	   pip3 install unidecode
+	   pip3 install enquiries (normalement plus nécessaire)
 
 **Utilisation :** 
 
  - Executez le fichier main.py
  
   	   python3 ./gui/main.py
+
+ 
