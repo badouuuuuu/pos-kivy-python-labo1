@@ -96,7 +96,8 @@ class MyGridLayout(ScrollView):
                 if displayLeft == '0000':
                     displayLeft = ''
                     pos_app.screen_manager.current = "Ticket"
-                    
+
+                    self.createPDF()
                 else:
                     MenuDescription = get_menu_description(displayLeft) 
                     MenuPrice = get_menu_price(displayLeft)
@@ -108,7 +109,7 @@ class MyGridLayout(ScrollView):
                     order_of_employee = self.purchase_menu["id employee"][self.getpurchase_id]
                     order_of_employee_price = self.purchase_menu["id employee"]['prix']
 
-                    self.ids.label_backup_addition.text = 'Votre menu: \n\n'
+                    self.ids.label_backup_addition.text = ''
                     
                     order_price = []
                 
@@ -123,21 +124,16 @@ class MyGridLayout(ScrollView):
                         self.ids.label_backup_addition.text +=  nameMenuOrdered + '  ' + str(order_price[compteur]) + ' €\n'
                         self.ids.label.text = ''
                         index = idmenulist.index(idmenulist[compteur])
-                        
-
                         compteur = compteur + 1
-                        if self.ids.label.text == '0000':
-                            topdftext = self.ids.label_backup_addition.text 
-                            f = open("order.txt", "w+") 
-                            f.write(unidecode(topdftext))
+                    topdftext = self.ids.label_backup_addition.text 
+                    f = open("order.txt", "w+") 
+                    f.write(unidecode(topdftext))
+
 
                     total = sum(order_price)
                     addtexttotal = '\n\n-------------\n\nTotal: ' + str(total)  + ' €'
                     self.ids.label_backup_addition.text += addtexttotal
 
-
-                    
-                    self.createPDF()
             else: 
                 PopUpShow.show_popup_nomenu()
                 self.ids.label.text = ''
@@ -214,18 +210,32 @@ class MyGridLayout(ScrollView):
     def createPDF(self):
         pdf = FPDF()
         pdf.add_page()
-        pdf.set_font('Arial', 'B', 13)
-        
+        pdf.set_font('Arial', 'B', 12)
+        purchase_number = self.purchase_menu["id employee"]
+        print(purchase_number.keys())
+        res = list(purchase_number.keys())[0]
         current_date = datetime.datetime.now()
         formated_date = current_date.strftime("%H")
-        f = open("order.txt", "r") 
-        for x in f:
-            pdf.cell(200,10, txt = x, ln = 1, align='C')
-
+        order_to_pdf = open("order.txt", "r") 
+        pdf.cell(35,5, txt = "ABC inc.", ln = 1, align='L')
+        pdf.cell(35,5, txt = "Waterloo street", ln = 2, align='L')
+        pdf.cell(35,5, txt = "1000 Brussels", ln=3, align='L' )
+        pdf.cell(40,5, txt = f"Purchase number : {res}", ln=6, align='L' )
+        pdf.cell(40,5, txt = f"Employee : ", ln=6, align='L' )
+        
+        for x in order_to_pdf:
+            pdf.cell(40,10, txt = f'Menu: {x}', ln = 8, align='C')
+        pdf.cell(40,5, txt = f"----------------------------------------------------------", ln=10, align='C' )
+        pdf.cell(40,5, txt = f"----------------------------------------------------------", ln=10, align='C' )
         pdf.output(f"order_{formated_date}h.pdf", 'F')
 
-class DisplayTicket(Widget):
-    pass
+class DisplayTicket(ScrollView):
+    
+    def finalPage(self):
+        f = open("order.txt", "r") 
+        for x in f:
+            print(x)
+            self.ids.order_displayticket.text += x
 
 class Meals(App):
     trigger = False
