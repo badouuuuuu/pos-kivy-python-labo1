@@ -43,4 +43,6 @@
  
 **Exemple :**
 
-![Example img](https://i.imgur.com/hvw02Ux.gif?raw=True = 250x250)
+![Example img](https://i.imgur.com/hvw02Ux.gif?raw=True)
+<img src="https://i.imgur.com/hvw02Ux.gif?raw=True" width="200" height="200">
+
