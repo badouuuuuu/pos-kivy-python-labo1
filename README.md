@@ -41,3 +41,6 @@
   	   python3 ./gui/main.py
 
  
+**Exemple :**
+
+![Image of python kivy tuto learn](python kivy tuto learn.gif)
