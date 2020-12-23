@@ -43,4 +43,4 @@
  
 **Exemple :**
 
-![Example img](https://i.imgur.com/hvw02Ux.gif?raw=True)
+![Example img](https://i.imgur.com/hvw02Ux.gif?raw=True = 250x250)
