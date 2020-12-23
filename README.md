@@ -43,7 +43,7 @@
  
 **Exemple :**
 <p align="center">
-<img src="https://i.imgur.com/hvw02Ux.gif?raw=True" width="490" height="380">
+<img src="https://i.imgur.com/hvw02Ux.gif?raw=True" width="520" height="410">
 </p>
 
 
