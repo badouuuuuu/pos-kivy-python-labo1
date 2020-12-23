@@ -43,4 +43,4 @@
  
 **Exemple :**
 
-![Image of python kivy tuto learn](python kivy tuto learn.gif)
+[Example img](https://i.imgur.com/hvw02Ux.gifv)
