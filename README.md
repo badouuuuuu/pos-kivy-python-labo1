@@ -42,6 +42,8 @@
 
  
 **Exemple :**
+<p align="center">
+<img src="https://i.imgur.com/hvw02Ux.gif?raw=True" width="490" height="380">
+</p>
 
-<img src="https://i.imgur.com/hvw02Ux.gif?raw=True" width="510" height="400">
 
