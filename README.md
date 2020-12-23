@@ -43,4 +43,4 @@
  
 **Exemple :**
 
-[Example img](https://i.imgur.com/hvw02Ux.gifv)
+[Example img](https://i.imgur.com/hvw02Ux.gifv?raw=True)
