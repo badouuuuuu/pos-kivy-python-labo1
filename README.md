@@ -43,6 +43,5 @@
  
 **Exemple :**
 
-![Example img](https://i.imgur.com/hvw02Ux.gif?raw=True)
-<img src="https://i.imgur.com/hvw02Ux.gif?raw=True" width="200" height="200">
+<img src="https://i.imgur.com/hvw02Ux.gif?raw=True" width="510" height="400">
 
