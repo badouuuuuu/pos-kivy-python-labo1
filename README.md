@@ -29,10 +29,7 @@
 
 - Kivy & package
  
-  	   pip3 install kivy
-	   pip3 install fpdf
-	   pip3 install unidecode
-	   pip3 install enquiries (normalement plus nécessaire)
+  	  pip3 install -r requirements.txt
  
 **Utilisation :** 
 
